@@ -6,7 +6,7 @@ public class Aluno extends Pessoa {
     private String objetivo;
     private boolean presenca;
     
-    // alterado via web
+    // alterado via netbeans
     
     public Aluno(String nome, String cpf, String endereco, Date dataNasc
     ,String objetivo,boolean presenca) {
