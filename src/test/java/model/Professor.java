@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Professor extends Pessoa {
 
-	
+	// teste de utilizacao do git via netbeans
 	private int craft;
 	private String Especialidade;
 	private boolean ativo;
