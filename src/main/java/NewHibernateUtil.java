@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 
-
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.jboss.jandex.Main;
+import org.hibernate.SessionFactory;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -15,7 +13,7 @@ import org.jboss.jandex.Main;
  *
  * @author BobaNote
  */
-public class HibernateUtil {
+public class NewHibernateUtil {
 
     private static final SessionFactory sessionFactory;
     
@@ -33,12 +31,5 @@ public class HibernateUtil {
     
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
-    }
-    
-    
-    public static void main(String args[]){
-        
-        HibernateUtil.getSessionFactory();
-        
     }
 }

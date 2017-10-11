@@ -3,16 +3,25 @@ package model;
 import java.util.Date;
 
 public class Aluno extends Pessoa {
-    private String objetivo;
+    private int codigo;
+   private String objetivo;
     private boolean presenca;
-    
-    // alterado via netbeans
-    
-    public Aluno(String nome, String cpf, String endereco, Date dataNasc
-    ,String objetivo,boolean presenca) {
+
+  
+
+    public Aluno(int codigo, String objetivo, boolean presenca, String nome, String cpf, String endereco, Date dataNasc) {
         super(nome, cpf, endereco, dataNasc);
+        this.codigo = codigo;
         this.objetivo = objetivo;
         this.presenca = presenca;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getObjetivo() {
@@ -30,5 +39,5 @@ public class Aluno extends Pessoa {
     public void setPresenca(boolean presenca) {
         this.presenca = presenca;
     }
-    
+ 
 }
