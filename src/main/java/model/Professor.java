@@ -2,24 +2,24 @@ package model;
 
 import java.util.Date;
 
+public class Professor {
 
+    private int codigo;
+    private int craft;
+    private String Especialidade;
+    private boolean ativo;
+    private Pessoa pessoa;
 
-// lucas da o boga
+    public Professor() {
 
+    }
 
-public class Professor extends Pessoa {
-
-        private int codigo;
-	private int craft;
-	private String Especialidade;
-	private boolean ativo;
-
-    public Professor(int codigo, int craft, String Especialidade, boolean ativo, String nome, String cpf, String endereco, Date dataNasc) {
-        super(nome, cpf, endereco, dataNasc);
+    public Professor(int codigo, int craft, String Especialidade, boolean ativo, Pessoa pessoa) {
         this.codigo = codigo;
         this.craft = craft;
         this.Especialidade = Especialidade;
         this.ativo = ativo;
+        this.pessoa = pessoa;
     }
 
     public int getCodigo() {
@@ -53,7 +53,5 @@ public class Professor extends Pessoa {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-	
-		
-	
+
 }

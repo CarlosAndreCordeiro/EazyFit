@@ -1,19 +1,32 @@
 package model;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Aluno extends Pessoa {
+@Table
+@Entity
+public class Aluno {
+
+    @Id
+    @GeneratedValue
     private int codigo;
-   private String objetivo;
-    private boolean presenca;
 
-  
+    @Column(length = 120)
+    private String objetivo;
+    private Pessoa pessoa;
 
-    public Aluno(int codigo, String objetivo, boolean presenca, String nome, String cpf, String endereco, Date dataNasc) {
-        super(nome, cpf, endereco, dataNasc);
+    public Aluno() {
+
+    }
+
+    public Aluno(int codigo, String objetivo, Pessoa pessoa) {
         this.codigo = codigo;
         this.objetivo = objetivo;
-        this.presenca = presenca;
+        this.pessoa = pessoa;
     }
 
     public int getCodigo() {
@@ -32,12 +45,4 @@ public class Aluno extends Pessoa {
         this.objetivo = objetivo;
     }
 
-    public boolean isPresenca() {
-        return presenca;
-    }
-
-    public void setPresenca(boolean presenca) {
-        this.presenca = presenca;
-    }
- 
 }
