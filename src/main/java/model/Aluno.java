@@ -20,7 +20,7 @@ public class Aluno {
     private Pessoa pessoa;
 
     public Aluno() {
-
+\\milena ta lembrando do ex amor
     }
 
     public Aluno(int codigo, String objetivo, Pessoa pessoa) {
