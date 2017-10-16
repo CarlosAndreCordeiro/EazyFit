@@ -1,57 +1,67 @@
 package model;
 
-import java.util.Date;
-
-public class Professor {
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table
+public class Professor extends Pessoa{
+    
+    @Id
+    @Column
     private int codigo;
+    @Column
     private int craft;
+    @Column
     private String Especialidade;
+    @Column
     private boolean ativo;
-    private Pessoa pessoa;
 
     public Professor() {
-
+     
     }
 
-    public Professor(int codigo, int craft, String Especialidade, boolean ativo, Pessoa pessoa) {
+    public Professor(int codigo, int craft, String Especialidade, boolean ativo, String nome, String cpf, String endereco, String dataNasc) {
+        super(nome, cpf, endereco, dataNasc);
         this.codigo = codigo;
         this.craft = craft;
         this.Especialidade = Especialidade;
         this.ativo = ativo;
-        this.pessoa = pessoa;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     public int getCraft() {
         return craft;
-    }
-
-    public void setCraft(int craft) {
-        this.craft = craft;
     }
 
     public String getEspecialidade() {
         return Especialidade;
     }
 
-    public void setEspecialidade(String Especialidade) {
-        this.Especialidade = Especialidade;
-    }
-
     public boolean isAtivo() {
         return ativo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setCraft(int craft) {
+        this.craft = craft;
+    }
+
+    public void setEspecialidade(String Especialidade) {
+        this.Especialidade = Especialidade;
     }
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
+
 
 }

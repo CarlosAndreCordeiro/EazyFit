@@ -5,15 +5,16 @@
  */
 package repositorios;
 
-import java.util.ArrayList;
 
-interface RepositorioGenerico<T> {
+import java.util.List;
+
+interface Dao<T> {
     
     public void adiciona (T t);
     public T recuperar (int codigo);
     public void alterar (T t);
     public void deletar (T t);
-    public ArrayList recuperarTodos();
+    public List recuperarTodos();
     
     
 }

@@ -7,57 +7,51 @@ public class Pessoa {
 	private String nome;
 	private String cpf;
 	private String endereco;
-	private Date dataNasc;
+	private String dataNasc;
+        
+        public Pessoa(){
+            
+        }
 	
 	
-	public Pessoa(String nome, String cpf, String endereco, Date dataNasc) {
+	public Pessoa(String nome, String cpf, String endereco, String dataNasc) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.dataNasc = dataNasc;
 	}
 
+    public String getNome() {
+        return nome;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
+    public String getCpf() {
+        return cpf;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
+    public String getEndereco() {
+        return endereco;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
+    public String getDataNasc() {
+        return dataNasc;
+    }
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-
-	public Date getDataNasc() {
-		return dataNasc;
-	}
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
+    }
 
 
-	public void setDataNasc(Date dataNasc) {
-		this.dataNasc = dataNasc;
-	}
-
-	
-	
-	
 }
