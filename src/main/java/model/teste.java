@@ -1,6 +1,7 @@
 
 package model;
 
+import java.util.List;
 import repositorios.AlunoHibernate;
 
 public class teste {
@@ -11,13 +12,14 @@ public class teste {
     AlunoHibernate ah = new AlunoHibernate();
 
 
-    Aluno a = new Aluno(2,"c","u","r","l","os");
-    
-    
-    
-    ah.adiciona(a);
-    //ah.deletar(a);
-   
+  List lista = ah.recuperarTodos();
+ 
+   for(int  i = 0; i < lista.size();i++){
+      
+       Aluno a = (Aluno) lista.get(i);
+       
+       System.out.println(a.getNome());
+   }
     
     
     }
