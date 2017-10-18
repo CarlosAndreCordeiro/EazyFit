@@ -11,7 +11,7 @@ public class teste {
     AlunoHibernate ah = new AlunoHibernate();
 
 
-    Aluno a = new Aluno(1,"a","b","c","d","e");
+    Aluno a = new Aluno(2,"c","u","r","l","os");
     
     ah.adiciona(a);
    

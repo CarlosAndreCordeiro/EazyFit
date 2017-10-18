@@ -31,7 +31,7 @@
 <dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
-    <version>42.1.4</version>
+    <version>9.3-1104-jdbc4</version>
 </dependency>
           <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
 <dependency>
