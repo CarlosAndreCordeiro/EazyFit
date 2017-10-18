@@ -1,12 +1,30 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-public class Pessoa {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 
+public abstract class Pessoa implements Serializable{
+        
+    
+        @Id  
+        @Column(length = 50)
 	private String nome;
-	private String cpf;
-	private String endereco;
+	
+        @Column(length = 15)
+        private String cpf;
+	
+        @Column(length = 120)
+        private String endereco;
+        
+        @Column(length = 10)
 	private String dataNasc;
         
         public Pessoa(){

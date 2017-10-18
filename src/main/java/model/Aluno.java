@@ -7,11 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table
+
 @Entity
 public class Aluno extends Pessoa {
 
-    @Id
+   //@Id
     @GeneratedValue
     private int codigo;
 

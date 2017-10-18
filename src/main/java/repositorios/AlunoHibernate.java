@@ -1,6 +1,5 @@
 package repositorios;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import model.Aluno;
@@ -8,8 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import static org.hibernate.criterion.Expression.sql;
-import org.hibernate.criterion.Restrictions;
 
 public class AlunoHibernate implements AlunoDao {
 
@@ -52,6 +49,7 @@ public class AlunoHibernate implements AlunoDao {
     public Aluno recuperar(int codigo) {
         Session session = this.sessions.openSession();
         try {
+            
             return (Aluno) session.getSession().createQuery("From Aluno Where codigo=" + codigo).getResultList().get(0);
 
         } finally {
@@ -88,7 +86,7 @@ public class AlunoHibernate implements AlunoDao {
 
         try {
 
-            return (List) session.getSession().createQuery("");
+            return (List) session.getSession().createQuery("select * FROM ALUNO");
 
         } finally {
 

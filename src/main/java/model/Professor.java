@@ -4,13 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
-@Table
+
 public class Professor extends Pessoa{
     
-    @Id
+  //@Id
     @Column
-    private int codigo;
+ private int codigo;
     @Column
     private int craft;
     @Column
