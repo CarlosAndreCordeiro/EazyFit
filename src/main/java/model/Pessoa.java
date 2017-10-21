@@ -70,6 +70,4 @@ public abstract class Pessoa implements Serializable{
     public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
-
-
 }

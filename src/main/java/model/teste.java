@@ -1,26 +1,21 @@
 
 package model;
 
+import java.util.Arrays;
 import java.util.List;
 import repositorios.AlunoHibernate;
 
 public class teste {
     
     public static void main(String args[]){
-    
-    
+  
+//   Aluno a  = new Aluno(5,"Objetivo de Tiao", "Tiao Macalé", "4423.24345", "Mirassica", "44/44/3421"); 
     AlunoHibernate ah = new AlunoHibernate();
-
-
-  List lista = ah.recuperarTodos();
- 
-   for(int  i = 0; i < lista.size();i++){
-      
-       Aluno a = (Aluno) lista.get(i);
-       
-       System.out.println(a.getNome());
-   }
+//   ah.deletar(a);
+    List<Aluno> lista = ah.recuperarTodos();
     
-    
+    for(Aluno a : lista){
+        System.out.println(a.getNome());
     }
+}
 }

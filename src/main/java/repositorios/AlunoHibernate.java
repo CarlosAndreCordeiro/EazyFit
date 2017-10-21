@@ -1,22 +1,21 @@
 package repositorios;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import model.Aluno;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
+   
 
 public class AlunoHibernate implements AlunoDao {
-
+   
     private   EntityManager em;
     private SessionFactory sessions;
     private static AlunoHibernate instance = null;
-    private EntityManagerFactory emf = null;
 
     public static AlunoHibernate getInstance() {
 
@@ -86,20 +85,24 @@ public class AlunoHibernate implements AlunoDao {
 
     @Override
     public List<Aluno> recuperarTodos() {
-       
-       
-        Query query = (Query) em.createQuery("from Aluno");
-
- 
-
-            return query.getResultList();
-
-    }
-
+        Session session = this.sessions.openSession();
+        List<Aluno> listaAluno = new ArrayList();
+        try{
+            
+    listaAluno = session.createQuery("FROM Aluno").list();
+        }catch(Exception e){
+            System.out.println("deu merda");
+        }finally{
+            session.close();
+        }
+    
+    
+    return listaAluno;
+   
+     }
     @Override
     public boolean logarAluno(String login, String senha) {
         throw new UnsupportedOperationException("Not supported yet."); 
-    //To change body of generated methods, choose Tools | Templates.
+    
     }
-
 }

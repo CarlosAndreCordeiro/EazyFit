@@ -5,13 +5,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
 
 
 @Entity
 public class Aluno extends Pessoa {
 
-   //@Id
+    //@Id
     @GeneratedValue
     private int codigo;
 
@@ -21,9 +22,6 @@ public class Aluno extends Pessoa {
     public Aluno(){
         
     }
-    
-  
-
     public Aluno(int codigo, String objetivo, String nome, String cpf, String endereco, String dataNasc) {
         super(nome, cpf, endereco, dataNasc);
         this.codigo = codigo;
@@ -45,6 +43,4 @@ public class Aluno extends Pessoa {
     public void setObjetivo(String objetivo) {
         this.objetivo = objetivo;
     }
-
-
 }
