@@ -1,5 +1,4 @@
-package repositorios;
-
+package model.DAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -9,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-   
 
 public class AlunoHibernate implements AlunoDao {
    
@@ -24,6 +22,12 @@ public class AlunoHibernate implements AlunoDao {
         }
 
         return instance;
+    }
+
+     @Override
+    public boolean logarAluno(String login, String senha) {    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     public AlunoHibernate() {
@@ -59,14 +63,10 @@ public class AlunoHibernate implements AlunoDao {
             //Fechamos a sessão
             session.close();
         }
-
     }
-
     @Override
-    public void alterar(Aluno t) {
-        
+    public void alterar(Aluno aluno) {   
     }
-
     @Override
     public void deletar(Aluno aluno) {
         Session session = this.sessions.openSession();
@@ -100,9 +100,5 @@ public class AlunoHibernate implements AlunoDao {
     return listaAluno;
    
      }
-    @Override
-    public boolean logarAluno(String login, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    
-    }
+   
 }

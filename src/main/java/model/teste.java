@@ -3,7 +3,7 @@ package model;
 
 import java.util.Arrays;
 import java.util.List;
-import repositorios.AlunoHibernate;
+import model.DAO.AlunoHibernate;
 
 public class teste {
     
@@ -16,6 +16,6 @@ public class teste {
     
     for(Aluno a : lista){
         System.out.println(a.getNome());
+        }
     }
-}
 }
