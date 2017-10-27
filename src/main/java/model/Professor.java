@@ -9,58 +9,47 @@ import javax.persistence.Table;
 
 public class Professor extends Pessoa{
     
-  //@Id
+  
     @Column
- private int codigo;
+    private int codigo;
     @Column
-    private int craft;
+    private String cref;
     @Column
-    private String Especialidade;
-    @Column
-    private boolean ativo;
+    private String especialidade;
+ 
 
     public Professor() {
-     
     }
 
-    public Professor(int codigo, int craft, String Especialidade, boolean ativo, String nome, String cpf, String endereco, String dataNasc) {
+    public Professor(int codigo, String cref, String especialidade, String nome, String cpf, String endereco, String dataNasc) {
         super(nome, cpf, endereco, dataNasc);
         this.codigo = codigo;
-        this.craft = craft;
-        this.Especialidade = Especialidade;
-        this.ativo = ativo;
+        this.cref = cref;
+        this.especialidade = especialidade;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public int getCraft() {
-        return craft;
-    }
-
-    public String getEspecialidade() {
-        return Especialidade;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public void setCraft(int craft) {
-        this.craft = craft;
+    public String getCref() {
+        return cref;
     }
 
-    public void setEspecialidade(String Especialidade) {
-        this.Especialidade = Especialidade;
+    public void setCref(String cref) {
+        this.cref = cref;
     }
 
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
 
 

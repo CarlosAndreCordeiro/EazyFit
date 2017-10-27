@@ -14,11 +14,11 @@ import javax.persistence.InheritanceType;
 public abstract class Pessoa implements Serializable{
         
     
-        @Id  
+      
         @Column(length = 50)
 	private String nome;
 	
-        @Column(length = 15)
+        @Id  
         private String cpf;
 	
         @Column(length = 120)

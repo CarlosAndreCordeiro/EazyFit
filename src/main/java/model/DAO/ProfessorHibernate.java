@@ -62,6 +62,19 @@ public class ProfessorHibernate implements ProfessorDao {
     }
     @Override
     public void alterar(Professor professor) {   
+        
+         Session session = this.sessions.openSession();
+        Transaction t = session.beginTransaction();
+
+        try {
+            session.update(professor);
+            t.commit();
+        } catch (Exception e) {
+            t.rollback();
+
+        } finally {
+            session.close();
+        }
     }
     @Override
     public void deletar(Professor professor) {

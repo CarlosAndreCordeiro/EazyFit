@@ -65,7 +65,20 @@ public class AlunoHibernate implements AlunoDao {
         }
     }
     @Override
-    public void alterar(Aluno aluno) {   
+    public void alterar(Aluno aluno) { 
+         Session session = this.sessions.openSession();
+        Transaction t = session.beginTransaction();
+
+        try {
+            session.update(aluno);
+            t.commit();
+        } catch (Exception e ) {
+            System.out.println("deu merda ao alterar ");
+            t.rollback();
+
+        } finally {
+            session.close();
+        }
     }
     @Override
     public void deletar(Aluno aluno) {
