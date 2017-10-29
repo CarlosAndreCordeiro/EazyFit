@@ -11,6 +11,8 @@
     <mapping class="model.Aluno"/>
     <mapping class="model.Pessoa"/>
     <mapping class="model.Professor"/>
+    <mapping class="model.Treino"/>
+    <mapping class="model.Evolucao"/>
   
   
   

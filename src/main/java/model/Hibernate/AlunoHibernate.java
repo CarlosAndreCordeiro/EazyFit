@@ -1,59 +1,64 @@
-
-package model.DAO;
+package model.Hibernate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import model.Aluno;
-import model.Professor;
+import model.DAO.AlunoDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-
-
-public class ProfessorHibernate implements ProfessorDao {
-    
-    private EntityManager em;
+public class AlunoHibernate implements AlunoDao {
+   
+    private   EntityManager em;
     private SessionFactory sessions;
-    private static ProfessorHibernate instance = null;    
-    public static ProfessorHibernate getInstance(){
-        if(instance == null){
-         instance = new ProfessorHibernate();
-     }   
-     return instance;  
+    private static AlunoHibernate instance = null;
+
+    public static AlunoHibernate getInstance() {
+
+        if (instance == null) {
+            instance = new AlunoHibernate();
+        }
+
+        return instance;
     }
-    @Override
-    public boolean logarProfessor(String login, String senha) {
+
+     @Override
+    public boolean logarAluno(String login, String senha) {    
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
-    public ProfessorHibernate(){
+
+    public AlunoHibernate() {
+
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();
     }
-    
+
     @Override
-    public void adiciona(Professor professor) {
+    public void adiciona(Aluno aluno) {
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
-            session.persist(professor);
+            session.persist(aluno);
             t.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             t.rollback();
+
         } finally {
             session.close();
         }
     }
 
-   @Override
-    public Professor recuperar(int codigo) {
+    @Override
+    public Aluno recuperar(int codigo) {
         Session session = this.sessions.openSession();
         try {
             
-            return (Professor) session.getSession().createQuery("From Professor Where codigo=" + codigo).getResultList().get(0);
+            return (Aluno) session.getSession().createQuery("From Aluno Where codigo=" + codigo).getResultList().get(0);
 
         } finally {
             //Fechamos a sessão
@@ -61,15 +66,15 @@ public class ProfessorHibernate implements ProfessorDao {
         }
     }
     @Override
-    public void alterar(Professor professor) {   
-        
+    public void alterar(Aluno aluno) { 
          Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
-            session.update(professor);
+            session.update(aluno);
             t.commit();
-        } catch (Exception e) {
+        } catch (Exception e ) {
+            System.out.println("deu merda ao alterar ");
             t.rollback();
 
         } finally {
@@ -77,34 +82,37 @@ public class ProfessorHibernate implements ProfessorDao {
         }
     }
     @Override
-    public void deletar(Professor professor) {
+    public void deletar(Aluno aluno) {
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
-            session.delete(professor);
+            session.delete(aluno);
             t.commit();
         } catch (Exception e) {
+            System.out.println("erro ao deletar");
             t.rollback();
 
         } finally {
             session.close();
         }
     }
-
     @Override
-    public List<Professor> recuperarTodos() {
+    public List<Aluno> recuperarTodos() {
         Session session = this.sessions.openSession();
-        List<Professor> listaProfessor = new ArrayList();
+        List<Aluno> listaAluno = new ArrayList();
         try{
             
-    listaProfessor = session.createQuery("FROM Professor").list();
+    listaAluno = session.createQuery("FROM Aluno").list();
         }catch(Exception e){
-            System.out.println("deu Erro na consulta");
+            System.out.println("deu merda");
         }finally{
             session.close();
-        }    
-    return listaProfessor;
+        }
+    
+    
+    return listaAluno;
    
-    }
+     }
+   
 }

@@ -14,7 +14,6 @@ public class Aluno extends Pessoa {
 
     @Column   
     private int codigo;
-
     @Column(length = 120)
     private String objetivo;
     @Column
@@ -66,5 +65,7 @@ public class Aluno extends Pessoa {
     public void setAltura(double altura) {
         this.altura = altura;
     }
+    
+    
    
 }
