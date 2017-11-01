@@ -5,12 +5,12 @@
  */
 package model.DAO;
 
-import model.Evolucao;
+import model.Atividade;
 
 /**
  *
  * @author BobaNote
  */
-public interface EvolucaoDao extends Dao<Evolucao>{
+public interface AtividadeDao extends Dao<Atividade>{
     
 }

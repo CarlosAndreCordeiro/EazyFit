@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,31 +10,19 @@ import javax.persistence.Table;
 
 public class Professor extends Pessoa{
     
-  
-    @Column
-    private int codigo;
     @Column
     private String cref;
     @Column
     private String especialidade;
- 
-
+    
     public Professor() {
     }
 
-    public Professor(int codigo, String cref, String especialidade, String nome, String cpf, String endereco, String dataNasc) {
-        super(nome, cpf, endereco, dataNasc);
-        this.codigo = codigo;
+
+    public Professor(String cref, String especialidade, String cpf, int codigo, String nome, String endereco, Date dataNasc) {
+        super(cpf, codigo, nome, endereco, dataNasc);
         this.cref = cref;
         this.especialidade = especialidade;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public String getCref() {
@@ -51,7 +40,7 @@ public class Professor extends Pessoa{
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
-
-
-
+    
+    
+    
 }

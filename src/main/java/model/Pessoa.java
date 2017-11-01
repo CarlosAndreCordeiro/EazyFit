@@ -1,50 +1,44 @@
 package model;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 
 public abstract class Pessoa implements Serializable{
-        
-    
-      
-        @Column(length = 50)
-	private String nome;
-	
-        @Id  
-        private String cpf;
-	
-        @Column(length = 120)
-        private String endereco;
-        
-        @Column(length = 10)
-	private String dataNasc;
-        
-        public Pessoa(){
-            
-        }
-	
-	
-	public Pessoa(String nome, String cpf, String endereco, String dataNasc) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.endereco = endereco;
-		this.dataNasc = dataNasc;
-	}
+  
+  @Id
+  private String cpf;
+  
+  @Column
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private int codigo;
+  @Column
+  private String nome;
+  @Column
+  private String endereco;
+  @Column
+  private Date dataNasc;
 
-    public String getNome() {
-        return nome;
+    public Pessoa() {
     }
 
-    public void setNome(String nome) {
+    public Pessoa(String cpf, int codigo, String nome, String endereco, Date dataNasc) {
+        this.cpf = cpf;
+        this.codigo = codigo;
         this.nome = nome;
+        this.endereco = endereco;
+        this.dataNasc = dataNasc;
     }
 
     public String getCpf() {
@@ -55,6 +49,22 @@ public abstract class Pessoa implements Serializable{
         this.cpf = cpf;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getEndereco() {
         return endereco;
     }
@@ -63,11 +73,11 @@ public abstract class Pessoa implements Serializable{
         this.endereco = endereco;
     }
 
-    public String getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(String dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
 }

@@ -9,33 +9,33 @@ import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import model.DAO.EvolucaoDao;
-import model.Evolucao;
+import model.Atividade;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import model.DAO.AtividadeDao;
 
 /**
  *
  * @author BobaNote
  */
-public class EvolucaoHibernate implements EvolucaoDao {
+public class AtividadeHibernate implements AtividadeDao {
 
     private EntityManager em;
     private SessionFactory sessions;
-    private static EvolucaoHibernate instance = null;
+    private static AtividadeHibernate instance = null;
 
-    public static EvolucaoHibernate getInstance() {
+    public static AtividadeHibernate getInstance() {
 
         if (instance == null) {
-            instance = new EvolucaoHibernate();
+            instance = new AtividadeHibernate();
         }
 
         return instance;
     }
 
-     public EvolucaoHibernate() {
+     public AtividadeHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();
@@ -43,7 +43,7 @@ public class EvolucaoHibernate implements EvolucaoDao {
     
     
     @Override
-    public void adiciona(Evolucao evolucao) {
+    public void adiciona(Atividade evolucao) {
     Session session = this.sessions.openSession();
     Transaction t = session.beginTransaction();
         try{
@@ -57,11 +57,11 @@ public class EvolucaoHibernate implements EvolucaoDao {
     }
 
     @Override
-    public Evolucao recuperar(int codigo) {
+    public Atividade recuperar(int codigo) {
     Session session = this.sessions.openSession();
         try {
             
-            return (Evolucao) session.getSession().createQuery("From Evolucao Where codigo=" + codigo).getResultList().get(0);
+            return (Atividade) session.getSession().createQuery("From Evolucao Where codigo=" + codigo).getResultList().get(0);
 
         } finally {
             //Fechamos a sessão
@@ -71,7 +71,7 @@ public class EvolucaoHibernate implements EvolucaoDao {
     }
 
     @Override
-    public void alterar(Evolucao evolucao) {
+    public void alterar(Atividade evolucao) {
              Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
@@ -89,7 +89,7 @@ public class EvolucaoHibernate implements EvolucaoDao {
     }
 
     @Override
-    public void deletar(Evolucao evolucao) {
+    public void deletar(Atividade evolucao) {
          Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
@@ -108,7 +108,7 @@ public class EvolucaoHibernate implements EvolucaoDao {
     @Override
     public List recuperarTodos() {
      Session session = this.sessions.openSession();
-        List<Evolucao> listaEvolucao = new ArrayList();
+        List<Atividade> listaEvolucao = new ArrayList();
         try{
             
     listaEvolucao = session.createQuery("FROM Evolucao").list();

@@ -15,10 +15,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class TreinoHibernate implements TreinoDao{
-    
-     
-    private   EntityManager em;
+public class TreinoHibernate implements TreinoDao {
+
+    private EntityManager em;
     private SessionFactory sessions;
     private static TreinoHibernate instance = null;
 
@@ -30,17 +29,17 @@ public class TreinoHibernate implements TreinoDao{
 
         return instance;
     }
+
     public TreinoHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();
     }
 
-    
     @Override
     public void adiciona(Treino treino) {
-    
-    Session session = this.sessions.openSession();
+
+        Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
@@ -53,15 +52,14 @@ public class TreinoHibernate implements TreinoDao{
         } finally {
             session.close();
         }
-  
-    
+
     }
-    
+
     @Override
     public Treino recuperar(int codigo) {
         Session session = this.sessions.openSession();
         try {
-            
+
             return (Treino) session.getSession().createQuery("From Treino Where codigo=" + codigo).getResultList().get(0);
 
         } finally {
@@ -72,53 +70,47 @@ public class TreinoHibernate implements TreinoDao{
 
     @Override
     public void alterar(Treino treino) {
-     Session session= this.sessions.openSession();
-     Transaction t = session.beginTransaction();
-     
-     try{
-         session.update(treino);
-         t.commit();
-     } finally{
-         session.close();
-     }
+        Session session = this.sessions.openSession();
+        Transaction t = session.beginTransaction();
+
+        try {
+            session.update(treino);
+            t.commit();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public void deletar(Treino treino) {
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
-    
-        try{
+
+        try {
             session.delete(treino);
             t.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("erro ao deletar");
             t.rollback();
-        } finally{
+        } finally {
             session.close();
         }
     }
 
     @Override
-    public List <Treino> recuperarTodos() {
-    Session session = this.sessions.openSession();
-    List<Treino> listaTreino = new ArrayList();
-    
-    try{
-        listaTreino = session.createQuery("FROM treino").list();
-    } catch (Exception e){
-        System.out.println("Erro ao Recuperar Treinos");
-        
-    }finally{
-        session.close();
-    }
-    
-    return listaTreino;
-    }
-  }
+    public List<Treino> recuperarTodos() {
+        Session session = this.sessions.openSession();
+        List<Treino> listaTreino = new ArrayList();
 
-   
-    
-    
-    
+        try {
+            listaTreino = session.createQuery("FROM treino").list();
+        } catch (Exception e) {
+            System.out.println("Erro ao Recuperar Treinos");
 
+        } finally {
+            session.close();
+        }
+
+        return listaTreino;
+    }
+}

@@ -1,45 +1,39 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 public class Aluno extends Pessoa {
-
-
-    @Column   
-    private int codigo;
-    @Column(length = 120)
+    
+    @Column
     private String objetivo;
     @Column
-    private double peso;
-    @Column
     private double altura;
+    @Column
+    private double peso;
+    @OneToMany
+    private List<Treino> listaTrein;
+    
     
     
     public Aluno(){    
     }
 
 
-    public Aluno(int codigo, String objetivo, double peso, double altura, String nome, String cpf, String endereco, String dataNasc) {
-        super(nome, cpf, endereco, dataNasc);
-        this.codigo = codigo;
+    public Aluno(String objetivo, double altura, double peso, List listaTrein, String cpf, int codigo, String nome, String endereco, Date dataNasc) {
+        super(cpf, codigo, nome, endereco, dataNasc);
         this.objetivo = objetivo;
-        this.peso = peso;
         this.altura = altura;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        this.peso = peso;
+        this.listaTrein = listaTrein;
     }
 
     public String getObjetivo() {
@@ -50,6 +44,14 @@ public class Aluno extends Pessoa {
         this.objetivo = objetivo;
     }
 
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
     public double getPeso() {
         return peso;
     }
@@ -58,14 +60,18 @@ public class Aluno extends Pessoa {
         this.peso = peso;
     }
 
-    public double getAltura() {
-        return altura;
+    public List getListaTrein() {
+        return listaTrein;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    public void setListaTrein(List listaTrein) {
+        this.listaTrein = listaTrein;
     }
+ 
     
     
-   
+    
+    
+    
+    
 }
