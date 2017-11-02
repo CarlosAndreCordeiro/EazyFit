@@ -1,6 +1,6 @@
 package model;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -19,7 +19,6 @@ public abstract class Pessoa implements Serializable{
   
   @Id
   private String cpf;
-  
   @Column
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private int codigo;

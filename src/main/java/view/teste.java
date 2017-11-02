@@ -1,9 +1,11 @@
 
 package view;
 
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import model.Aluno;
 import model.Atividade;
 import model.Hibernate.AlunoHibernate;
 import model.Hibernate.AtividadeHibernate;
@@ -16,25 +18,31 @@ public class teste {
     
     public static void main(String args[]){
 
-//          adicionar professor
+
 
         ProfessorHibernate ph = new ProfessorHibernate();
         Professor p = new Professor
-        ("String cref", "String especialidade",  "String cpf", 0
-                , "Tiao Macalé", "String endereco", new Date()); 
-        
+        ("123456abc", "Natacao",  "123.156.321.12", 1, "Tiao Macalé", "Garanhuns", new Date()); 
         ph.adiciona(p);
         
-//        
-//    Treino(int codigo, String descricao, String tipoLocal, String intensidade, int repeticoes) {
-//     
-//        Treino t = new Treino(3, "tempo treino", "tipo local", "intensidade", 20);
-//        
-//        TreinoHibernate.getInstance().adiciona(t);
-//
+        
+        AlunoHibernate ah = new AlunoHibernate();
+        Aluno a = new Aluno("Definir Bumbum", 0, 0, null, "123.123.321.12", 0, "Milena Santos", "Mirassica", new Date());
+        ah.adiciona(a);
+
     
-//           TreinoHibernate eh = new TreinoHibernate();
-//            Treino e = new Treino(1, "tempo treino"," tipo local" ,"intensidade", 10);
-//            eh.adiciona(e);
+        TreinoHibernate th = new TreinoHibernate();
+        Treino t = new Treino(0, "rasga peito", LocalTime.MIN, "aberto", 0, p, null, true);
+        th.adiciona(t);
+            
+      
+        AtividadeHibernate at = new AtividadeHibernate();
+        Atividade ta = new Atividade(0, "stif","agachar e saltar", "maxima", "5");
+        at.adiciona(ta);
+         
+         
+         
+         
+            
     }
 }
