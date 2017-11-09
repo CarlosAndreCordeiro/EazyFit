@@ -31,7 +31,6 @@ public class Atividade  {
     public Atividade() {
     }
 
-    
     public Atividade(int codigo, String nome, String descricao, String intensidade, String serie) {
         this.codigo = codigo;
         this.nome = nome;

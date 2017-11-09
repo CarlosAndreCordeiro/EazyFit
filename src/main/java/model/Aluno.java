@@ -2,8 +2,10 @@ package model;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,27 +15,25 @@ import javax.persistence.Table;
 @Entity
 public class Aluno extends Pessoa {
     
+    
     @Column
     private String objetivo;
     @Column
     private double altura;
     @Column
     private double peso;
-    @OneToMany
-    private List<Treino> listaTrein;
-    
-    
+    @OneToMany(mappedBy = "aluno", targetEntity = Treino.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Treino> treinos;
     
     public Aluno(){    
     }
-
-
-    public Aluno(String objetivo, double altura, double peso, List listaTrein, String cpf, int codigo, String nome, String endereco, Date dataNasc) {
+    public Aluno(String objetivo, double altura, double peso, List treinos, String cpf, int codigo, String nome, String endereco, Date dataNasc) {
+        
         super(cpf, codigo, nome, endereco, dataNasc);
         this.objetivo = objetivo;
         this.altura = altura;
         this.peso = peso;
-        this.listaTrein = listaTrein;
+        this.treinos = treinos;
     }
 
     public String getObjetivo() {
@@ -60,18 +60,12 @@ public class Aluno extends Pessoa {
         this.peso = peso;
     }
 
-    public List getListaTrein() {
-        return listaTrein;
+    public List getTreinos() {
+        return treinos;
     }
 
-    public void setListaTrein(List listaTrein) {
-        this.listaTrein = listaTrein;
+    public void setTreinos(List treinos) {
+        this.treinos = treinos;
     }
- 
-    
-    
-    
-    
-    
-    
+
 }

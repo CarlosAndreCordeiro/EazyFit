@@ -2,8 +2,10 @@ package model;
 
 import java.time.LocalTime;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +31,10 @@ public class Treino {
     private double duracao;
     @OneToOne
     private Professor professor;
-    @OneToMany
+    
+    @OneToMany(mappedBy = "treino", targetEntity = Atividade.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Atividade> atividades;
+    
     @Column
     private boolean status;
    
