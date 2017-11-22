@@ -14,22 +14,23 @@ import javax.persistence.Table;
 
 @Entity
 public class Aluno extends Pessoa {
-    
-    
-    @Column
+   
+    @Column(length = 50)
     private String objetivo;
-    @Column
+    @Column 
     private double altura;
-    @Column
-    private double peso;
-    @OneToMany(mappedBy = "aluno", targetEntity = Treino.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Treino> treinos;
+    @Column()
+    private double peso; 
     
-    public Aluno(){    
+ 
+    @OneToMany
+    private List<Treino> treinos;
+   
+    public Aluno(){
     }
-    public Aluno(String objetivo, double altura, double peso, List treinos, String cpf, int codigo, String nome, String endereco, Date dataNasc) {
-        
-        super(cpf, codigo, nome, endereco, dataNasc);
+
+    public Aluno(String objetivo, double altura, double peso, List<Treino>treinos, String cpf, String nome, String endereco, Date dataNasc) {
+        super(cpf, nome, endereco, dataNasc);
         this.objetivo = objetivo;
         this.altura = altura;
         this.peso = peso;
@@ -60,12 +61,14 @@ public class Aluno extends Pessoa {
         this.peso = peso;
     }
 
-    public List getTreinos() {
+    public List<Treino> getTreinos() {
         return treinos;
     }
 
-    public void setTreinos(List treinos) {
+    public void setTreinos(List<Treino> treinos) {
         this.treinos = treinos;
     }
 
+    
+    
 }

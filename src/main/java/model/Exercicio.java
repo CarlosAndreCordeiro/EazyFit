@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -13,30 +14,28 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Atividade  {
+public class Exercicio  {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo;
-    @Column
+    @Column(length = 50)
     private String nome;
-    @Column
+    @Column(length = 50)
     private String descricao;
-    @Column
+    @Column(length = 50)
     private String intensidade;
-    @Column
-    private String serie;
-  
-    
-    public Atividade() {
+    @Column(length = 2)
+    private int repeticoes;
+
+    public Exercicio() {
     }
 
-    public Atividade(int codigo, String nome, String descricao, String intensidade, String serie) {
-        this.codigo = codigo;
+    public Exercicio(String nome, String descricao, String intensidade, int repeticoes) {
         this.nome = nome;
         this.descricao = descricao;
         this.intensidade = intensidade;
-        this.serie = serie;
+        this.repeticoes = repeticoes;
     }
 
     public int getCodigo() {
@@ -71,15 +70,16 @@ public class Atividade  {
         this.intensidade = intensidade;
     }
 
-    public String getSerie() {
-        return serie;
+    public int getRepeticoes() {
+        return repeticoes;
     }
 
-    public void setSerie(String serie) {
-        this.serie = serie;
+    public void setRepeticoes(int repeticoes) {
+        this.repeticoes = repeticoes;
     }
 
-    
-    
     
 }
+
+
+

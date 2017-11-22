@@ -45,7 +45,9 @@ public class AlunoHibernate implements AlunoDao {
         try {
             session.persist(aluno);
             t.commit();
-        } catch (Exception e) {
+        } catch (Exception e){
+            
+            
             t.rollback();
 
         } finally {
@@ -58,7 +60,8 @@ public class AlunoHibernate implements AlunoDao {
         Session session = this.sessions.openSession();
         try {
             
-            return (Aluno) session.getSession().createQuery("From Aluno Where codigo=" + codigo).getResultList().get(0);
+            return (Aluno) session.getSession().createQuery
+        ("From Aluno Where codigo=" + codigo).getResultList().get(0);
 
         } finally {
             //Fechamos a sessão
@@ -74,7 +77,7 @@ public class AlunoHibernate implements AlunoDao {
             session.update(aluno);
             t.commit();
         } catch (Exception e ) {
-            System.out.println("deu merda ao alterar ");
+            System.out.println("deu merda ao alterar Aluno");
             t.rollback();
 
         } finally {
@@ -90,7 +93,7 @@ public class AlunoHibernate implements AlunoDao {
             session.delete(aluno);
             t.commit();
         } catch (Exception e) {
-            System.out.println("erro ao deletar");
+            System.out.println("erro ao deletar o Aluno");
             t.rollback();
 
         } finally {
@@ -100,18 +103,18 @@ public class AlunoHibernate implements AlunoDao {
     @Override
     public List<Aluno> recuperarTodos() {
         Session session = this.sessions.openSession();
-        List<Aluno> listaAluno = new ArrayList();
+        List<Aluno> alunos = new ArrayList();
         try{
             
-    listaAluno = session.createQuery("FROM Aluno").list();
+    alunos = session.createQuery("FROM Aluno").list();
         }catch(Exception e){
-            System.out.println("deu merda");
+            System.out.println("deu merda ao recuperar lista de alunos");
         }finally{
             session.close();
         }
     
     
-    return listaAluno;
+    return alunos;
    
      }
    

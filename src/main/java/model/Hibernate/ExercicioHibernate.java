@@ -9,47 +9,46 @@ import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import model.Atividade;
+import model.Exercicio;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import model.DAO.AtividadeDao;
+import model.DAO.ExercicioDao;
 
 /**
  *
  * @author BobaNote
  */
-public class AtividadeHibernate implements AtividadeDao {
+public class ExercicioHibernate implements ExercicioDao {
 
     private EntityManager em;
     private SessionFactory sessions;
-    private static AtividadeHibernate instance = null;
+    private static ExercicioHibernate instance = null;
 
-    public static AtividadeHibernate getInstance() {
+    public static ExercicioHibernate getInstance() {
 
         if (instance == null) {
-            instance = new AtividadeHibernate();
+            instance = new ExercicioHibernate();
         }
-
         return instance;
     }
 
-     public AtividadeHibernate() {
+     public ExercicioHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();
     }
-    
-    
+     
     @Override
-    public void adiciona(Atividade evolucao) {
+    public void adiciona(Exercicio exercicio) {
     Session session = this.sessions.openSession();
     Transaction t = session.beginTransaction();
         try{
-            session.persist(evolucao);
+            session.persist(exercicio);
             t.commit();
         }catch (Exception e){
+            System.out.println("deu merda ao Adicionar exercicio ");
             t.rollback();
         } finally{
             session.close();
@@ -57,47 +56,45 @@ public class AtividadeHibernate implements AtividadeDao {
     }
 
     @Override
-    public Atividade recuperar(int codigo) {
+    public Exercicio recuperar(int codigo) {
     Session session = this.sessions.openSession();
         try {
-            
-            return (Atividade) session.getSession().createQuery("From Evolucao Where codigo=" + codigo).getResultList().get(0);
+            return (Exercicio) session.getSession().createQuery(
+                    "From Exercicio Where codigo=" + codigo).getResultList().get(0);
 
         } finally {
             //Fechamos a sessão
             session.close();
         }    
-    
     }
 
     @Override
-    public void alterar(Atividade evolucao) {
+    public void alterar(Exercicio exercicio) {
              Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
-            session.update(evolucao);
+            session.update(exercicio);
             t.commit();
         } catch (Exception e ) {
-            System.out.println("deu merda ao alterar ");
+            System.out.println("deu merda ao alterar exercicio");
             t.rollback();
 
         } finally {
             session.close();
-        }
-    
+        }    
     }
 
     @Override
-    public void deletar(Atividade evolucao) {
+    public void deletar(Exercicio exercicio) {
          Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
-            session.delete(evolucao);
+            session.delete(exercicio);
             t.commit();
         } catch (Exception e ) {
-            System.out.println("Deu erro ao deletar ");
+            System.out.println("Deu erro ao deletar exercicio");
             t.rollback();
 
         } finally {
@@ -108,19 +105,14 @@ public class AtividadeHibernate implements AtividadeDao {
     @Override
     public List recuperarTodos() {
      Session session = this.sessions.openSession();
-        List<Atividade> listaEvolucao = new ArrayList();
-        try{
-            
-    listaEvolucao = session.createQuery("FROM Evolucao").list();
+        List<Exercicio> exercicios = new ArrayList();
+        try{   
+    exercicios = session.createQuery("FROM exercicios").list();
         }catch(Exception e){
-            System.out.println("deu *##@#@ na recuperacao de todos");
+            System.out.println("deu *##@#@ na recuperacao de todos os exercicios cadastrados");
         }finally{
             session.close();
         }
-    
-    
-    return listaEvolucao;
-   
+    return exercicios;
      }
-    
 }

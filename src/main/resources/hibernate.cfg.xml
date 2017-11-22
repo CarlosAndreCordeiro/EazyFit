@@ -13,6 +13,6 @@
     <mapping class="model.Pessoa"/>
     <mapping class="model.Professor"/>
     <mapping class="model.Treino"/>
-    <mapping class="model.Atividade"/>
+    <mapping class="model.Exercicio"/>
   </session-factory>
 </hibernate-configuration>

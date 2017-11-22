@@ -21,35 +21,30 @@ public class Treino {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int codigo;
-    @Column
+    @Column(length = 20)
     private String nome;
-    @Column
-    private LocalTime horario;
-    @Column
-    private String tipoLocal;
-    @Column
-    private double duracao;
-    @OneToOne
-    private Professor professor;
+    @Column(length = 70)
+    private String descricao;
+    @Column(length = 3)
+    private int duracao;
+    @OneToOne 
+    private Professor professor;   
+    @Column(length = 6)
+    private String intensidade;
     
-    @OneToMany(mappedBy = "treino", targetEntity = Atividade.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Atividade> atividades;
-    
-    @Column
-    private boolean status;
-   
+    @OneToMany
+    private List<Exercicio> exercicios;
+
     public Treino() {
     }
 
-    public Treino(int codigo, String nome, LocalTime horario, String tipoLocal, double duracao, Professor professor, List atividades, boolean status) {
-        this.codigo = codigo;
+    public Treino(String nome, String descricao, int duracao, Professor professor, String intensidade, List<Exercicio> exercicios) {
         this.nome = nome;
-        this.horario = horario;
-        this.tipoLocal = tipoLocal;
+        this.descricao = descricao;
         this.duracao = duracao;
         this.professor = professor;
-        this.atividades = atividades;
-        this.status = status;
+        this.intensidade = intensidade;
+        this.exercicios = exercicios;
     }
 
     public int getCodigo() {
@@ -68,27 +63,19 @@ public class Treino {
         this.nome = nome;
     }
 
-    public LocalTime getHorario() {
-        return horario;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setHorario(LocalTime horario) {
-        this.horario = horario;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getTipoLocal() {
-        return tipoLocal;
-    }
-
-    public void setTipoLocal(String tipoLocal) {
-        this.tipoLocal = tipoLocal;
-    }
-
-    public double getDuracao() {
+    public int getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(double duracao) {
+    public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
 
@@ -100,23 +87,24 @@ public class Treino {
         this.professor = professor;
     }
 
-    public List getAtividades() {
-        return atividades;
+    public String getIntensidade() {
+        return intensidade;
     }
 
-    public void setAtividades(List atividades) {
-        this.atividades = atividades;
+    public void setIntensidade(String intensidade) {
+        this.intensidade = intensidade;
     }
 
-    public boolean getStatus() {
-        return status;
+    public List<Exercicio> getExercicios() {
+        return exercicios;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setExercicios(List<Exercicio> exercicios) {
+        this.exercicios = exercicios;
     }
-
-
     
-    
+
+
+
+
 }

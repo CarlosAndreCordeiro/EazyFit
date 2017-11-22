@@ -8,7 +8,7 @@ package model.DAO;
 
 import java.util.List;
 
-interface Dao<T> {
+interface DaoGenerico<T> {
     
     public void adiciona (T t);
     public T recuperar (int codigo);

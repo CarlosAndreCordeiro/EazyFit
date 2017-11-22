@@ -17,35 +17,28 @@ import javax.persistence.InheritanceType;
 
 public abstract class Pessoa implements Serializable{
   
-  @Id
-  private String cpf;
+  
   @Column
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private int codigo;
-  @Column
+  @Id
+  private String cpf;
+  @Column(length = 50)
   private String nome;
-  @Column
+  @Column(length = 50)
   private String endereco;
-  @Column
+  @Column(length = 10)
   private Date dataNasc;
 
     public Pessoa() {
     }
 
-    public Pessoa(String cpf, int codigo, String nome, String endereco, Date dataNasc) {
+    public Pessoa( String cpf, String nome, String endereco, Date dataNasc) {
+        
         this.cpf = cpf;
-        this.codigo = codigo;
         this.nome = nome;
         this.endereco = endereco;
         this.dataNasc = dataNasc;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public int getCodigo() {
@@ -54,6 +47,14 @@ public abstract class Pessoa implements Serializable{
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -79,4 +80,5 @@ public abstract class Pessoa implements Serializable{
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
+
 }

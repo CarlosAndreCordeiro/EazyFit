@@ -10,17 +10,17 @@ import javax.persistence.Table;
 
 public class Professor extends Pessoa{
     
-    @Column
+    @Column(length = 10)
     private String cref;
-    @Column
+    @Column(length = 30)
     private String especialidade;
-    
+
     public Professor() {
     }
 
 
-    public Professor(String cref, String especialidade, String cpf, int codigo, String nome, String endereco, Date dataNasc) {
-        super(cpf, codigo, nome, endereco, dataNasc);
+    public Professor(String cref, String especialidade, String cpf, String nome, String endereco, Date dataNasc) {
+        super( cpf, nome, endereco, dataNasc);
         this.cref = cref;
         this.especialidade = especialidade;
     }

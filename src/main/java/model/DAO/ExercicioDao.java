@@ -5,12 +5,12 @@
  */
 package model.DAO;
 
-import model.Atividade;
+import model.Exercicio;
 
 /**
  *
  * @author BobaNote
  */
-public interface AtividadeDao extends Dao<Atividade>{
+public interface ExercicioDao extends DaoGenerico<Exercicio>{
     
 }

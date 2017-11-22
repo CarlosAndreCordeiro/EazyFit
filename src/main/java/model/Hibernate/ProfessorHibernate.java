@@ -43,7 +43,10 @@ public class ProfessorHibernate implements ProfessorDao {
             session.persist(professor);
             t.commit();
         } catch (Exception e){
+          
+            System.out.println("deu merda ao alterar Professor");
             t.rollback();
+         
         } finally {
             session.close();
         }
@@ -64,7 +67,7 @@ public class ProfessorHibernate implements ProfessorDao {
     @Override
     public void alterar(Professor professor) {   
         
-         Session session = this.sessions.openSession();
+        Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
@@ -96,16 +99,16 @@ public class ProfessorHibernate implements ProfessorDao {
     @Override
     public List<Professor> recuperarTodos() {
         Session session = this.sessions.openSession();
-        List<Professor> listaProfessor = new ArrayList();
+        List<Professor> professores = new ArrayList();
         try{
             
-    listaProfessor = session.createQuery("FROM Professor").list();
+    professores = session.createQuery("FROM Professor").list();
         }catch(Exception e){
-            System.out.println("deu Erro na consulta");
+            System.out.println("deu Erro na consulta lista de professores");
         }finally{
             session.close();
         }    
-    return listaProfessor;
+    return professores;
    
     }
 }

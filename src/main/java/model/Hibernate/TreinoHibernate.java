@@ -90,7 +90,7 @@ public class TreinoHibernate implements TreinoDao {
             session.delete(treino);
             t.commit();
         } catch (Exception e) {
-            System.out.println("erro ao deletar");
+            System.out.println("erro ao deletar Treino");
             t.rollback();
         } finally {
             session.close();
@@ -100,10 +100,10 @@ public class TreinoHibernate implements TreinoDao {
     @Override
     public List<Treino> recuperarTodos() {
         Session session = this.sessions.openSession();
-        List<Treino> listaTreino = new ArrayList();
+        List<Treino> treinos = new ArrayList();
 
         try {
-            listaTreino = session.createQuery("FROM treino").list();
+            treinos = session.createQuery("FROM treino").list();
         } catch (Exception e) {
             System.out.println("Erro ao Recuperar Treinos");
 
@@ -111,6 +111,6 @@ public class TreinoHibernate implements TreinoDao {
             session.close();
         }
 
-        return listaTreino;
+        return treinos;
     }
 }
