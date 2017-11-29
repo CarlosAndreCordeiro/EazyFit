@@ -58,7 +58,7 @@ public class teste {
         Aluno a = new Aluno("crescer", 10, 80, treinos, "cpf1", "carlos", "jupi", new Date());
         t.setAluno(a);
         ah.adiciona(a);
-        a = ah.recuperarCpf("cpf1");
+//        a = ah.recuperarCpf("cpf1");
         
       
     }
