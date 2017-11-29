@@ -113,4 +113,21 @@ public class TreinoHibernate implements TreinoDao {
 
         return treinos;
     }
+
+    @Override
+    public Treino recuperarNome(String nome) {
+        Session session = this.sessions.openSession();
+        try {
+
+            return (Treino) session.getSession().createQuery("From Treino Where nome='" + nome+ "'").getResultList().get(0);
+        } catch (Exception e) {
+
+            System.out.println("Nome do treino não encontrado!!");
+            return null;
+
+        } finally {
+            //Fechamos a sessão
+            session.close();
+        }
+    }
 }

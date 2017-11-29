@@ -19,7 +19,7 @@ public abstract class Pessoa implements Serializable{
   
   
   @Column
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int codigo;
   @Id
   private String cpf;

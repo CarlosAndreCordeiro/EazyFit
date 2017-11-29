@@ -46,6 +46,7 @@ public class ExercicioHibernate implements ExercicioDao {
     Transaction t = session.beginTransaction();
         try{
             session.persist(exercicio);
+            session.flush();
             t.commit();
         }catch (Exception e){
             System.out.println("deu merda ao Adicionar exercicio ");
@@ -115,4 +116,21 @@ public class ExercicioHibernate implements ExercicioDao {
         }
     return exercicios;
      }
+
+    @Override
+    public Exercicio recuperarNome(String nome) {
+        Session session = this.sessions.openSession();
+        try {
+
+            return (Exercicio) session.getSession().createQuery("From Exercicio Where nome='" + nome+ "'").getResultList().get(0);
+        } catch (Exception e) {
+
+            System.out.println("CPF não encontrado!!");
+            return null;
+
+        } finally {
+            //Fechamos a sessão
+            session.close();
+        }
+    }
 }

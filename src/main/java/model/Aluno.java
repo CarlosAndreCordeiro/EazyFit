@@ -20,16 +20,15 @@ public class Aluno extends Pessoa {
     @Column 
     private double altura;
     @Column()
-    private double peso; 
-    
- 
-    @OneToMany
+    private double peso;  
+    @OneToMany (mappedBy = "aluno", cascade = CascadeType.MERGE)
     private List<Treino> treinos;
    
     public Aluno(){
     }
 
-    public Aluno(String objetivo, double altura, double peso, List<Treino>treinos, String cpf, String nome, String endereco, Date dataNasc) {
+
+    public Aluno(String objetivo, double altura, double peso, List<Treino> treinos, String cpf, String nome, String endereco, Date dataNasc) {
         super(cpf, nome, endereco, dataNasc);
         this.objetivo = objetivo;
         this.altura = altura;
@@ -69,6 +68,5 @@ public class Aluno extends Pessoa {
         this.treinos = treinos;
     }
 
-    
     
 }

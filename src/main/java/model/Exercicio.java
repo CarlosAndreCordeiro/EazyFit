@@ -17,9 +17,9 @@ import javax.persistence.OneToOne;
 public class Exercicio  {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String nome;
     @Column(length = 50)
     private String descricao;

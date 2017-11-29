@@ -6,9 +6,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -19,9 +22,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Treino {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String nome;
     @Column(length = 70)
     private String descricao;
@@ -30,10 +33,12 @@ public class Treino {
     @OneToOne 
     private Professor professor;   
     @Column(length = 6)
-    private String intensidade;
-    
+    private String intensidade;    
     @OneToMany
     private List<Exercicio> exercicios;
+    @ManyToOne
+    @JoinColumn(name = "aluno_id")
+    private Aluno aluno;
 
     public Treino() {
     }
@@ -101,6 +106,14 @@ public class Treino {
 
     public void setExercicios(List<Exercicio> exercicios) {
         this.exercicios = exercicios;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
     
 
