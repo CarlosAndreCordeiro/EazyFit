@@ -1,5 +1,4 @@
 package model;
-
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -67,6 +66,4 @@ public class Aluno extends Pessoa {
     public void setTreinos(List<Treino> treinos) {
         this.treinos = treinos;
     }
-
-    
 }

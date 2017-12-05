@@ -115,9 +115,4 @@ public class Treino {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    
-
-
-
-
 }

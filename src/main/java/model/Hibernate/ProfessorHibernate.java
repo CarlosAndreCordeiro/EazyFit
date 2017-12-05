@@ -43,10 +43,8 @@ public class ProfessorHibernate implements ProfessorDao {
             session.flush();
             t.commit();
         } catch (Exception e) {
-
-            System.out.println("deu merda ao alterar Professor");
+            System.out.println("Erro ao alterar Professor");
             t.rollback();
-
         } finally {
             session.close();
         }
@@ -56,9 +54,7 @@ public class ProfessorHibernate implements ProfessorDao {
     public Professor recuperar(int codigo) {
         Session session = this.sessions.openSession();
         try {
-
             return (Professor) session.getSession().createQuery("From Professor Where codigo=" + codigo).getResultList().get(0);
-
         } finally {
             //Fechamos a sessão
             session.close();
@@ -75,6 +71,7 @@ public class ProfessorHibernate implements ProfessorDao {
             session.update(professor);
             t.commit();
         } catch (Exception e) {
+            System.out.println("Erro ao Alterar Professor");
             t.rollback();
 
         } finally {
@@ -91,6 +88,7 @@ public class ProfessorHibernate implements ProfessorDao {
             session.delete(professor);
             t.commit();
         } catch (Exception e) {
+            System.out.println("Erro ao deletar Professor");
             t.rollback();
 
         } finally {

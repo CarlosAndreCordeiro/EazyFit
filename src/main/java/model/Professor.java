@@ -1,20 +1,20 @@
 package model;
 
 import java.util.Date;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-
 public class Professor extends Pessoa{
     
     @Column(length = 10)
     private String cref;
     @Column(length = 30)
     private String especialidade;
-
+    
+    @Deprecated
     public Professor() {
     }
 

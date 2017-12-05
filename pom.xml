@@ -43,12 +43,19 @@
     <artifactId>postgresql</artifactId>
     <version>9.3-1104-jdbc4</version>
 </dependency>
-          <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
-<dependency>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>1.2.1</version>
-</dependency>
+
+
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.2.1</version>
+        </dependency>
       
     </dependencies>
 
