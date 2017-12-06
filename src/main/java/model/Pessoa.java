@@ -2,7 +2,6 @@ package model;
 
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,11 +18,13 @@ public abstract class Pessoa implements Serializable{
   
   
   @Column
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  
+//  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(generator= "true", strategy = GenerationType.AUTO)
   private int codigo;
   @Id
   private String cpf;
-  @Column(length = 50)
+  @Column(length = 14)
   private String nome;
   @Column(length = 50)
   private String endereco;
@@ -33,8 +34,8 @@ public abstract class Pessoa implements Serializable{
     public Pessoa() {
     }
 
-    public Pessoa( String cpf, String nome, String endereco, String dataNasc) {
-//      this.codigo = codigo;
+    public Pessoa(String cpf, String nome, String endereco, String dataNasc) {
+        
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;

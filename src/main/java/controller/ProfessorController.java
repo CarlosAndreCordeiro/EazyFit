@@ -28,7 +28,13 @@ public class ProfessorController {
     }
    
     public void adicionar(){
-        instance.adiciona(selectedProfessor);
+        if(controller.ValidaCPF.isCPF(selectedProfessor.getCpf())== true){
+        
+            selectedProfessor.setCpf(ValidaCPF.imprimeCPF(selectedProfessor.getCpf())); 
+            
+            instance.adiciona(selectedProfessor);
+    
+        }
     }
    public void deletar(Professor professor){
        instance.deletar(professor);
