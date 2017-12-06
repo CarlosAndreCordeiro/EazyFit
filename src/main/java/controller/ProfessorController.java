@@ -18,19 +18,15 @@ public class ProfessorController {
     private List<Professor> repositorioProfessor = null;
     
     private Professor selectedProfessor;
+    
+    private ProfessorHibernate instance;
 
     public ProfessorController(){
-        ProfessorHibernate ph = new ProfessorHibernate();
-        this.repositorioProfessor= ph.recuperarTodos();
+        instance = new ProfessorHibernate();
+        this.repositorioProfessor= instance.recuperarTodos();
        this.selectedProfessor = new Professor();
     }
-    private static ProfessorHibernate instance = null; 
-    public static ProfessorHibernate getInstance(){
-        if(instance == null){
-            instance = new ProfessorHibernate();
-        }
-    return instance;
-    }
+   
     public void adicionar(){
         instance.adiciona(selectedProfessor);
     }

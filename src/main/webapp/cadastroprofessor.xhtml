@@ -15,41 +15,57 @@
         <h:form id="formCadProf">
             <p:growl life ="4000" showDetail="true" showSummary="true" sticky="true"/>
             <p:fieldset id="fieldCad" legend="Cadastro de Professor">
-                <p:panelGrid columns="2">
+                <p:panelGrid columns="3">
 
                     <h:outputText value="CPF*:"/>
                     <p:inputText id="txtCPF" value= "#{professorController.selectedProfessor.cpf}" required="true"
                                  requiredMessage = "Cpf obrigatorio!"/>
-<!--
-                    <p:message for="txtCPF"/>-->
+                    <p:message for="txtCPF"/>
+
+                    
                     <h:outputText value="Nome*:"/>
                     <p:inputText id="txtNome" value ="#{professorController.selectedProfessor.nome}" required ="true"
-                                 requiredMessage="Nome é campo obrigatorio"/>
-<!--                    <p:message for="txtNome"/>-->
+                                 requiredMessage= "Nome é campo obrigatorio"/>
+                    <p:message for="txtNome"/>
+
                     <h:outputText value ="Endereço*:"/>
                     <p:inputText id="txtEndereco" required ="true"
                                  value="#{professorController.selectedProfessor.endereco}" requiredMessage ="Endereço obrigatorio"/>
+                    <p:message for="txtEndereco"/>
+
+                    
                     <h:outputText value ="CREF*:"/> 
-                    <p:inputText id='txtCREF' required ="true"  
+                    <p:inputText id="txtCREF" required ="true"  
                                  value="#{professorController.selectedProfessor.cref}" requiredMessage ="CREF Obrigatório"/>
+                    <p:message for="txtCREF"/>
+
+                    
+                    <h:outputText value ="Especialidade:"/> 
+                    <p:inputText id='txtEspecialidade' required ="false"  
+                                 value="#{professorController.selectedProfessor.especialidade}" />
+                    <p:message for="txtEspecialidade"/>
+
+                                                    
                     <h:outputText value="Data de Nascimento*:"/>
                     <p:inputText id="txtDataNasc" required="true" 
                                  value="#{professorController.selectedProfessor.dataNasc}" requiredMessage="Data de Nascimento Obrigatório"/>
+                    <p:message for="txtDataNasc"/>
                     <h:outputText/>
+                
                 </p:panelGrid>
-                <p:commandButton value="Cadastrar"
-                                 oncomplete="PF('widDialConfirmaCadProfessor').show()"/>
+                
+                <p:commandButton value="Cadastrar" oncomplete="PF('widDialConfirmaCadProfessor').show()"/>
 
             </p:fieldset>
             <p:messages/>
             <p:dialog id="dialConfirmCadProfessor" visible="false" resizable="false"
-                      modal="true" widgetVar="widDialConfirmCadProfessor" header="Atencao!">
+                      modal="true" widgetVar="widDialConfirmaCadProfessor" header="Atencao!">
 
                 <h:outputText value="Deseja Realmante Cadastrar o Professor?"/><br/>
                 <p:commandButton value="Sim" action="#{professorController.adicionar()}"
-                                 update=":formCadProf" oncomplete="PF('widDialConfirmCadProfessor').hide();
+                                 update=":formCadProf" oncomplete="PF('widDialConfirmaCadProfessor').hide();
                                  "/>
-                <p:commandButton value="Não" oncomplete="PF('widDialConfirmCadProfessor'hide()"/>
+                <p:commandButton value="Não" oncomplete="PF('widDialConfirmaCadProfessor' hide()"/>
             </p:dialog>      
         </h:form> 
     </h:body>

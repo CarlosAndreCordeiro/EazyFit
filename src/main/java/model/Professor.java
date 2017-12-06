@@ -19,7 +19,7 @@ public class Professor extends Pessoa{
     }
 
 
-    public Professor(String cref, String especialidade, String cpf, String nome, String endereco, Date dataNasc) {
+    public Professor(String cref, String especialidade, String cpf, String nome, String endereco, String dataNasc) {
         super( cpf, nome, endereco, dataNasc);
         this.cref = cref;
         this.especialidade = especialidade;

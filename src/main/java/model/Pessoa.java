@@ -28,13 +28,13 @@ public abstract class Pessoa implements Serializable{
   @Column(length = 50)
   private String endereco;
   @Column(length = 10)
-  private Date dataNasc;
+  private String dataNasc;
 
     public Pessoa() {
     }
 
-    public Pessoa( String cpf, String nome, String endereco, Date dataNasc) {
-        
+    public Pessoa( String cpf, String nome, String endereco, String dataNasc) {
+//      this.codigo = codigo;
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
@@ -73,12 +73,13 @@ public abstract class Pessoa implements Serializable{
         this.endereco = endereco;
     }
 
-    public Date getDataNasc() {
+    public String getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(Date dataNasc) {
+    public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
 
+    
 }

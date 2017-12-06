@@ -27,7 +27,7 @@ public class Aluno extends Pessoa {
     }
 
 
-    public Aluno(String objetivo, double altura, double peso, List<Treino> treinos, String cpf, String nome, String endereco, Date dataNasc) {
+    public Aluno(String objetivo, double altura, double peso, List<Treino> treinos, String cpf, String nome, String endereco, String dataNasc) {
         super(cpf, nome, endereco, dataNasc);
         this.objetivo = objetivo;
         this.altura = altura;
