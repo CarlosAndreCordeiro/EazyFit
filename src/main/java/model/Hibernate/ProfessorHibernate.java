@@ -104,7 +104,7 @@ public class ProfessorHibernate implements ProfessorDao {
 
             professores = session.createQuery("FROM Professor").list();
         } catch (Exception e) {
-            System.out.println("deu Erro na consulta lista de professores");
+            System.out.println("deu Erro ao consultar lista de professores");
         } finally {
             session.close();
         }

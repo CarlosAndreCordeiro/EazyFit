@@ -6,33 +6,33 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Apresentar Professores</title>
+        <title>Facelet Title</title>
     </h:head>
     <h:body>
         <ui:include src="menu.xhtml"/>
         <p:growl id="gro" showDetail="true"/>
         <h:form id="formApresentaPro">
             <p:dataTable id="tableProfessor" var="item" value="#{professorController.recuperarTodos()}"
-                         paginator="true" rows="10" rowKey="#{item.codigo}" selectionMode="single"
+                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
                          selection="#{professorController.selectedProfessor}">
                 
                 <f:facet name="header">
                     Professores Cadastrados
                 </f:facet>
-                
-                
+<!--                <p:column headerText="Codigo" >
+                    #{item.codigo}
+                </p:column>-->
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
                     #{item.nome}
                 </p:column>
-                
-                
-                <p:column headerText="CREF" filterBy="#{item.cref}">
-                    #{item.cref}
+<!--                <p:column>
+                    <f:facet name="header">CPF</f:facet>
+                    #{item.cpf}
+                </p:column>-->
+                <p:column headerText="E-mail">
+                    #{item.email}
                 </p:column>
-                
-                
             </p:dataTable>
-            
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaProfessor').show()"
                              update="dialVisualizaProfessor"/>
             <p:commandButton value="alterar" action="alteraprofessor.xhtml"/>
@@ -44,26 +44,30 @@
             <p:dialog id="dialVisualizaProfessor" visible="false" modal="true" header="Professor Cadastrado"
                       resizable="false" widgetVar="widDialVisualizaProfessor">
                 <p:panelGrid columns="2">
+                    
                     <h:outputText value="Código:"/>
                     <h:outputText value="#{professorController.selectedProfessor.codigo}"/>
                     
                     <h:outputText value="Nome:"/>
                     <h:outputText value="#{professorController.selectedProfessor.nome}"/>
                     
-                    <h:outputText value="CREF"/>
-                    <h:outputText value="#{professorController.selectedProfessor.cref}"/>
-                    
                     <h:outputText value="CPF:"/>
                     <h:outputText value="#{professorController.selectedProfessor.cpf}"/>
                     
+                    <h:outputText value="CREF"/>
+                    <h:outputText value="#{professorController.selectedProfessor.cref}"/>
+                    
                     <h:outputText value="Data de Nascimento:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.dataNasc}"/>
+                    <h:outputText value="#{professorController.selectedProfessor.dataNascimento}"/>
                     
                     <h:outputText value="Endereço:"/>
-                    <h:outputText value="#{professorControlelr.selectedProfessor.endereco}"/>
+                    <h:outputText value="#{professorController.selectedProfessor.endereco}"/>
                     
-                    <h:outputText value="Especialidade"/>
-                    <h:outputText value="#{professorController.selectedProfessor.especialidade}"/>
+                    <h:outputText value="Sexo"/>
+                    <h:outputText value="#{professorController.selectedProfessor.sexo}"/>
+                    
+                    <h:outputText value="e-mail:"/>
+                    <h:outputText value="#{professorController.selectedProfessor.email}"/>
                 </p:panelGrid>
             </p:dialog>
             
@@ -75,3 +79,4 @@
         </h:form>
     </h:body>
 </html>
+

@@ -18,27 +18,47 @@ public abstract class Pessoa implements Serializable{
   
   
   
-  @Id
-  @GeneratedValue
-  private int codigo;
-  @Column(unique = true)
-  private String cpf;
-  @Column(length = 14)
-  private String nome;
-  @Column(length = 50)
-  private String endereco;
-  @Column(length = 20)
-  private String dataNasc;
+//  @Id
+//  @GeneratedValue
+//  private int codigo;
+//  @Column(unique = true)
+//  private String cpf;
+//  @Column(length = 14)
+//  private String nome;
+//  @Column(length = 50)
+//  private String endereco;
+//  @Column(length = 20)
+//  private String dataNasc;
+//  @Column(length =  1)
+//  private String sexo;
+
+    @Id
+    @GeneratedValue
+    private int codigo;
+    @Column(length = 15,unique = true,nullable = false)
+    private String cpf;
+    @Column(length = 50)
+    private String nome;
+    @Column(length = 100)
+    private String endereco;
+    @Column(length = 10)
+    private String sexo;
+    @Column(length = 10)
+    private String dataNascimento;
+    @Column(length = 30)
+    private String email;
 
     public Pessoa() {
     }
 
-    public Pessoa(String cpf, String nome, String endereco, String dataNasc) {
-        
+    public Pessoa( String cpf, String nome, String endereco, String sexo, String dataNascimento, String email) {
+//        this.codigo = codigo;
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
-        this.dataNasc = dataNasc;
+        this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
+        this.email = email;
     }
 
     public int getCodigo() {
@@ -73,13 +93,30 @@ public abstract class Pessoa implements Serializable{
         this.endereco = endereco;
     }
 
-    public String getDataNasc() {
-        return dataNasc;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setDataNasc(String dataNasc) {
-        this.dataNasc = dataNasc;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+ 
     
 }

@@ -2,72 +2,93 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"     
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
-
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Cadastro Professor</title>
+        <title></title>
     </h:head>
     <h:body>
         <ui:include src="menu.xhtml"/>
-
-        <h:form id="formCadProf">
-            <p:growl life ="4000" showDetail="true" showSummary="true" sticky="true"/>
+        <h:form id="formCadProfessor">
+            <p:growl life="4000" showDetail="true" showSummary="true" sticky="true"/>
             <p:fieldset id="fieldCad" legend="Cadastro de Professor">
                 <p:panelGrid columns="3">
-
+                    
                     <h:outputText value="CPF*:"/>
-                    <p:inputMask id="txtCPF" value= "#{professorController.selectedProfessor.cpf}" mask="999.999.999-99" required="true"
-                                 requiredMessage = "Cpf obrigatorio!"/>
-                    <p:message for="txtCPF"/>
-
+                    <p:inputMask id="txtCPF" value="#{professorController.selectedProfessor.cpf}" mask="999.999.999-99" required="true" requiredMessage="CPF Obrigatório"/>
+                    <p:message for='txtCPF' />
+                
                     
-                    <h:outputText value="Nome*:"/>
-                    <p:inputText id="txtNome" value ="#{professorController.selectedProfessor.nome}" required ="true"
-                                 requiredMessage= "Nome é campo obrigatorio"/>
+                    <h:outputText  value="Nome*:"/>
+                    <p:inputText id="txtNome" 
+                                 value="#{professorController.selectedProfessor.nome}" required="true"
+                                 requiredMessage="Nome Obriatório"/>
                     <p:message for="txtNome"/>
-
-                    <h:outputText value ="Endereço*:"/>
-                    <p:inputText id="txtEndereco" required ="true"
-                                 value="#{professorController.selectedProfessor.endereco}" requiredMessage ="Endereço obrigatorio"/>
-                    <p:message for="txtEndereco"/>
-
+               
                     
-                    <h:outputText value ="CREF*:"/> 
-                    <p:inputMask id="txtCREF" required ="true"  
-                                 value="#{professorController.selectedProfessor.cref}" mask="999999-a/aa" requiredMessage ="CREF Obrigatório"/>
-                    <p:message for="txtCREF"/>
-
+                    <h:outputText value="CREF"/>
+                    <p:inputMask id="txtCref"
+                                 value="#{professorController.selectedProfessor.cref}" mask="999999-a/aa" required="true"
+                        requiredMessage="CREF obrigatório"/> 
+                    <p:message for="txtCref"/>
+                   
                     
-                    <h:outputText value ="Especialidade:"/> 
-                    <p:inputText id='txtEspecialidade' required ="false"  
-                                 value="#{professorController.selectedProfessor.especialidade}" />
-                    <p:message for="txtEspecialidade"/>
-
-                                                    
-                    <h:outputText value="Data de Nascimento*:"/>
-                    <p:inputMask id="txtDataNasc" required="true" 
-                                 value="#{professorController.selectedProfessor.dataNasc}" mask="99/99/9999" requiredMessage="Data de Nascimento Obrigatório"/>
-                    <p:message for="txtDataNasc"/>
-                    <h:outputText/>
-                
+                    <h:outputText value="Data de Nascimento"/>
+                    <p:inputMask id="txtDataNascimento" value="#{professorController.selectedProfessor.dataNascimento}" mask="99/99/9999"/>
+                    <p:message for="txtDataNascimento"/>
+                    
+                    <h:outputText value="Endereço*:"/>
+                    <p:inputText id="txtEndereco"                                
+                                 value="#{professorController.selectedProfessor.endereco}"/>
+                    
+                    <!--<p:message for="txtEndereco"/>-->
+                    
+                    
+<!--                    <h:outputText value="Sexo"/>
+                    <p:inputText id="txtSexo" 
+                                value="#{professorController.selectedProfessor.sexo}"/>
+                   <p:message for="txtSexo"/>
+          
+           -->
+           
+          <h:outputLabel value="Sexo: *" for="sexo"/>
+          <p:selectOneMenu id="txtSexo" value="#{professorController.selectedProfessor.sexo}" required="true" 
+                                requiredMessage="Favor informar o sexo">
+              <f:selectItem itemLabel="Escolha"/>
+              <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+              <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+           </p:selectOneMenu>
+            <p:message for="txtSexo"/>
+                   
+                   
+                   
+                    <h:outputText value="E-mail"/>
+                    <p:inputText id="txtEmail"                                 
+                                value="#{professorController.selectedProfessor.email}"/>
+                  <p:message for="txtEmail"/>
+                    
+                    
                 </p:panelGrid>
+                <p:commandButton value="cadastrar" 
+                                 oncomplete="PF('widDialConfirmCadProfessor').show()"/>
                 
-                <p:commandButton value="Cadastrar" oncomplete="PF('widDialConfirmaCadProfessor').show()"/>
-
+               
             </p:fieldset>
+            
             <p:messages/>
-            <p:dialog id="dialConfirmCadProfessor" visible="false" resizable="false"
-                      modal="true" widgetVar="widDialConfirmaCadProfessor" header="Atencao!">
-
-                <h:outputText value="Deseja Realmante Cadastrar o Professor?"/><br/>
+            
+            <p:dialog id="dialConfirmCadCliente" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialConfirmCadProfessor" header="atenção!">
+                
+                <h:outputText value="Deseja realmente cadastrar o Professor?"/><br/>
                 <p:commandButton value="Sim" action="#{professorController.adicionar()}"
-                                 update=":formCadProf" oncomplete="PF('widDialConfirmaCadProfessor').hide();
+                                 update=":formCadProfessor" oncomplete="PF('widDialConfirmCadProfessor').hide();
                                  "/>
-                <p:commandButton value="Não" oncomplete="PF('widDialConfirmaCadProfessor' hide()"/>
-            </p:dialog>      
-        </h:form> 
+                <p:commandButton value="Não" oncomplete="PF('widDialConfirmProfessor').hide()"/>
+                
+            </p:dialog>
+        </h:form>
     </h:body>
 </html>
 

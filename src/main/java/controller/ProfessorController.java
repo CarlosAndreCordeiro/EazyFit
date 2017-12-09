@@ -1,11 +1,14 @@
 package controller;
 
-import model.ValidaCPF;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import model.Hibernate.ProfessorHibernate;
 import model.Professor;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -34,12 +37,23 @@ public class ProfessorController {
 //            selectedProfessor.setCpf(ValidaCPF.imprimeCPF(selectedProfessor.getCpf())); 
             
             instance.adiciona(selectedProfessor);
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Professor "+selectedProfessor.getNome()+" foi cadastrado com sucesso"));
+        
             this.selectedProfessor = new Professor();
     
 //        }
     }
+     public void alterar() {
+         instance.alterar(selectedProfessor);
+         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Professor "+selectedProfessor.getNome()+" foi Alterado com sucesso"));
+        
+    } 
+    
+    
    public void deletar(Professor professor){
        instance.deletar(professor);
+       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Professor foi excluído com sucesso"));
+        
    } 
     public Professor recuperar (int codigo){
         return instance.recuperar(codigo);
@@ -65,6 +79,14 @@ public class ProfessorController {
 
     public void setSelectedProfessor(Professor selectedProfessor) {
         this.selectedProfessor = selectedProfessor;
+    }
+
+    public ProfessorHibernate getInstance() {
+        return instance;
+    }
+
+    public void setInstance(ProfessorHibernate instance) {
+        this.instance = instance;
     }
 
 }

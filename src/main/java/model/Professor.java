@@ -11,18 +11,15 @@ public class Professor extends Pessoa{
     
     @Column(length = 20)
     private String cref;
-    @Column(length = 30)
-    private String especialidade;
+
     
     @Deprecated
     public Professor() {
     }
 
-
-    public Professor(String cref, String especialidade, String cpf, String nome, String endereco, String dataNasc) {
-        super( cpf, nome, endereco, dataNasc);
+    public Professor(String cref, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email) {
+        super(cpf, nome, endereco, sexo, dataNascimento, email);
         this.cref = cref;
-        this.especialidade = especialidade;
     }
 
     public String getCref() {
@@ -33,14 +30,5 @@ public class Professor extends Pessoa{
         this.cref = cref;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
-    }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
-    }
-    
-    
-    
 }
