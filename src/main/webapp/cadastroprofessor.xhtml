@@ -18,7 +18,7 @@
                 <p:panelGrid columns="3">
 
                     <h:outputText value="CPF*:"/>
-                    <p:inputText id="txtCPF" value= "#{professorController.selectedProfessor.cpf}" required="true"
+                    <p:inputMask id="txtCPF" value= "#{professorController.selectedProfessor.cpf}" mask="999.999.999-99" required="true"
                                  requiredMessage = "Cpf obrigatorio!"/>
                     <p:message for="txtCPF"/>
 
@@ -35,8 +35,8 @@
 
                     
                     <h:outputText value ="CREF*:"/> 
-                    <p:inputText id="txtCREF" required ="true"  
-                                 value="#{professorController.selectedProfessor.cref}" requiredMessage ="CREF Obrigatório"/>
+                    <p:inputMask id="txtCREF" required ="true"  
+                                 value="#{professorController.selectedProfessor.cref}" mask="999999-a/aa" requiredMessage ="CREF Obrigatório"/>
                     <p:message for="txtCREF"/>
 
                     
@@ -47,8 +47,8 @@
 
                                                     
                     <h:outputText value="Data de Nascimento*:"/>
-                    <p:inputText id="txtDataNasc" required="true" 
-                                 value="#{professorController.selectedProfessor.dataNasc}" requiredMessage="Data de Nascimento Obrigatório"/>
+                    <p:inputMask id="txtDataNasc" required="true" 
+                                 value="#{professorController.selectedProfessor.dataNasc}" mask="99/99/9999" requiredMessage="Data de Nascimento Obrigatório"/>
                     <p:message for="txtDataNasc"/>
                     <h:outputText/>
                 

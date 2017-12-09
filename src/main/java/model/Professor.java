@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @Entity
 public class Professor extends Pessoa{
     
-    @Column(length = 10)
+    @Column(length = 20)
     private String cref;
     @Column(length = 30)
     private String especialidade;

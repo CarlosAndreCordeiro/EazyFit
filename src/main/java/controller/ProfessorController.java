@@ -1,5 +1,6 @@
 package controller;
 
+import model.ValidaCPF;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -28,13 +29,14 @@ public class ProfessorController {
     }
    
     public void adicionar(){
-        if(controller.ValidaCPF.isCPF(selectedProfessor.getCpf())== true){
+//        if(model.ValidaCPF.isCPF(selectedProfessor.getCpf())== true){
         
-            selectedProfessor.setCpf(ValidaCPF.imprimeCPF(selectedProfessor.getCpf())); 
+//            selectedProfessor.setCpf(ValidaCPF.imprimeCPF(selectedProfessor.getCpf())); 
             
             instance.adiciona(selectedProfessor);
+            this.selectedProfessor = new Professor();
     
-        }
+//        }
     }
    public void deletar(Professor professor){
        instance.deletar(professor);

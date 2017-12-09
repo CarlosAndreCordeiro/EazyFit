@@ -17,18 +17,17 @@ import javax.persistence.InheritanceType;
 public abstract class Pessoa implements Serializable{
   
   
-  @Column
   
-//  @GeneratedValue(strategy=GenerationType.AUTO)
-  @GeneratedValue(generator= "true", strategy = GenerationType.AUTO)
-  private int codigo;
   @Id
+  @GeneratedValue
+  private int codigo;
+  @Column(unique = true)
   private String cpf;
   @Column(length = 14)
   private String nome;
   @Column(length = 50)
   private String endereco;
-  @Column(length = 10)
+  @Column(length = 20)
   private String dataNasc;
 
     public Pessoa() {
