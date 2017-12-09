@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Apresentar Professores</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <p:growl id="gro" showDetail="true"/>
+        <h:form id="formApresentaPro">
+            <p:dataTable id="tableProfessor" var="item" value="#{professorController.recuperarTodos()}"
+                         paginator="true" rows="10" rowKey="#{item.codigo}" selectionMode="single"
+                         selection="#{professorController.selectedProfessor}">
+                
+                <f:facet name="header">
+                    Professores Cadastrados
+                </f:facet>
+                
+                
+                <p:column headerText="Nome" filterBy="#{item.nome}" >
+                    #{item.nome}
+                </p:column>
+                
+                
+                <p:column headerText="CREF" filterBy="#{item.cref}">
+                    #{item.cref}
+                </p:column>
+                
+                
+            </p:dataTable>
+            
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaProfessor').show()"
+                             update="dialVisualizaProfessor"/>
+            <p:commandButton value="alterar" action="alteraprofessor.xhtml"/>
+            <p:commandButton value="deletar" action="#{professorController.deletar(professorController.selectedProfessor)}"
+                             update="tableProfessor :gro">
+                <p:confirm header="Atenção" message="deseja realmente deletar" />
+            </p:commandButton>
+            
+            <p:dialog id="dialVisualizaProfessor" visible="false" modal="true" header="Professor Cadastrado"
+                      resizable="false" widgetVar="widDialVisualizaProfessor">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Código:"/>
+                    <h:outputText value="#{professorController.selectedProfessor.codigo}"/>
+                    
+                    <h:outputText value="Nome:"/>
+                    <h:outputText value="#{professorController.selectedProfessor.nome}"/>
+                    
+                    <h:outputText value="CREF"/>
+                    <h:outputText value="#{professorController.selectedProfessor.cref}"/>
+                    
+                    <h:outputText value="CPF:"/>
+                    <h:outputText value="#{professorController.selectedProfessor.cpf}"/>
+                    
+                    <h:outputText value="Data de Nascimento:"/>
+                    <h:outputText value="#{professorController.selectedProfessor.dataNasc}"/>
+                    
+                    <h:outputText value="Endereço:"/>
+                    <h:outputText value="#{professorControlelr.selectedProfessor.endereco}"/>
+                    
+                    <h:outputText value="Especialidade"/>
+                    <h:outputText value="#{professorController.selectedProfessor.especialidade}"/>
+                </p:panelGrid>
+            </p:dialog>
+            
+            <p:confirmDialog  id="dialConfirm" global="true" widgetVar="widDialConfirma" >
+                <p:commandButton value="sim" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"/>
+                <p:commandButton value="não" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"/>
+            </p:confirmDialog>
+            
+        </h:form>
+    </h:body>
+</html>
