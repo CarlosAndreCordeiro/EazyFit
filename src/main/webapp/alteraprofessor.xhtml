@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
         <ui:include src="menu.xhtml"/>
+        
         <h:form>
             <p:fieldset legend="Alterar Professor">
                 <p:panelGrid columns="2">
@@ -36,10 +37,9 @@
                     <h:outputText value="e-mail"/>
                     <p:inputText value="#{professorController.selectedProfessor.email}"/>
                 </p:panelGrid>
+                <p:commandButton value="alterar" action="#{professorController.alterar}"/>
                 
-                <p:commandButton value="alterar" action="#{professorController.alterar(professorController.selectedProfessor)}"/>
             </p:fieldset>
         </h:form>
     </h:body>
 </html>
-

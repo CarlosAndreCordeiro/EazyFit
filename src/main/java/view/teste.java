@@ -38,12 +38,12 @@ public class teste {
         p = ph.recuperaCpf("cpf");
                               
         ExercicioHibernate eh = new ExercicioHibernate();
-        Exercicio e = new Exercicio("Agachammento", "Agacha e levanta rapidamente", "alta", 5);
+        Exercicio e = new Exercicio("Agachammento", "Agacha e levanta rapidamente", 5);
         eh.adiciona(e);
         e = eh.recuperarNome("Agachammento");
         exercicios.add(e);
         
-        Exercicio e2 = new Exercicio("contrai relaxa", "Contrai relaxa rapidamente o bumnum", "alta", 3);
+        Exercicio e2 = new Exercicio("contrai relaxa", "Contrai relaxa rapidamente o bumnum", 3);
         eh.adiciona(e2);
         e2 = eh.recuperarNome("contrai relaxa");
         exercicios.add(e2);

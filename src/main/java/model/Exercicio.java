@@ -17,25 +17,25 @@ import javax.persistence.OneToOne;
 public class Exercicio  {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private int codigo;
-    @Column(length = 50, unique = true)
+    @Column(length = 20, unique = true)
     private String nome;
-    @Column(length = 50)
+    @Column(length = 120)
     private String descricao;
-    @Column(length = 50)
-    private String intensidade;
     @Column(length = 2)
     private int repeticoes;
 
+    
+    @Deprecated
     public Exercicio() {
     }
 
-    public Exercicio(String nome, String descricao, String intensidade, int repeticoes) {
+    public Exercicio(String nome, String descricao, int repeticoes) {
         this.nome = nome;
         this.descricao = descricao;
-        this.intensidade = intensidade;
         this.repeticoes = repeticoes;
+        
     }
 
     public int getCodigo() {
@@ -62,14 +62,7 @@ public class Exercicio  {
         this.descricao = descricao;
     }
 
-    public String getIntensidade() {
-        return intensidade;
-    }
-
-    public void setIntensidade(String intensidade) {
-        this.intensidade = intensidade;
-    }
-
+    
     public int getRepeticoes() {
         return repeticoes;
     }

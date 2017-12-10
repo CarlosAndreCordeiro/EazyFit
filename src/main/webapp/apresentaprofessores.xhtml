@@ -16,6 +16,7 @@
                          paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
                          selection="#{professorController.selectedProfessor}">
                 
+                
                 <f:facet name="header">
                     Professores Cadastrados
                 </f:facet>
@@ -25,20 +26,20 @@
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
                     #{item.nome}
                 </p:column>
-<!--                <p:column>
+                <p:column>
                     <f:facet name="header">CPF</f:facet>
                     #{item.cpf}
-                </p:column>-->
+                </p:column>
                 <p:column headerText="E-mail">
                     #{item.email}
                 </p:column>
             </p:dataTable>
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaProfessor').show()"
                              update="dialVisualizaProfessor"/>
-            <p:commandButton value="alterar" action="alteraprofessor.xhtml"/>
-            <p:commandButton value="deletar" action="#{professorController.deletar(professorController.selectedProfessor)}"
+            <p:commandButton value="Alterar" action="alteraprofessor.xhtml"/>
+            <p:commandButton value="Deletar" action="#{professorController.deletar(professorController.selectedProfessor)}"
                              update="tableProfessor :gro">
-                <p:confirm header="Atenção" message="deseja realmente deletar" />
+                <p:confirm header="Atenção" message="deseja realmente Apagar" />
             </p:commandButton>
             
             <p:dialog id="dialVisualizaProfessor" visible="false" modal="true" header="Professor Cadastrado"
@@ -72,8 +73,8 @@
             </p:dialog>
             
             <p:confirmDialog  id="dialConfirm" global="true" widgetVar="widDialConfirma" >
-                <p:commandButton value="sim" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"/>
-                <p:commandButton value="não" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"/>
+                <p:commandButton value="Sim" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"/>
+                <p:commandButton value="Não" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"/>
             </p:confirmDialog>
             
         </h:form>

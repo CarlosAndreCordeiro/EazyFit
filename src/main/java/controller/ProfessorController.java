@@ -1,14 +1,14 @@
 package controller;
 
 import java.util.List;
+import static javafx.beans.binding.Bindings.select;
+import static javafx.beans.binding.Bindings.select;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.Hibernate.ProfessorHibernate;
 import model.Professor;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -43,12 +43,12 @@ public class ProfessorController {
     
 //        }
     }
-     public void alterar() {
+     public String alterar() {
          instance.alterar(selectedProfessor);
-         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Professor "+selectedProfessor.getNome()+" foi Alterado com sucesso"));
         
-    } 
-    
+         return "apresentaprofessores.xhtml";
+
+     }
     
    public void deletar(Professor professor){
        instance.deletar(professor);

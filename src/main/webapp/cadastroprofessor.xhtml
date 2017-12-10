@@ -12,7 +12,7 @@
         <ui:include src="menu.xhtml"/>
         <h:form id="formCadProfessor">
             <p:growl life="4000" showDetail="true" showSummary="true" sticky="true"/>
-            <p:fieldset id="fieldCad" legend="Cadastro de Professor">
+            <p:fieldset id="fieldCadProfessor" legend="Cadastro de Professor">
                 <p:panelGrid columns="3">
                     
                     <h:outputText value="CPF*:"/>
@@ -41,11 +41,11 @@
                     <h:outputText value="Endereço*:"/>
                     <p:inputText id="txtEndereco"                                
                                  value="#{professorController.selectedProfessor.endereco}"/>
+<!--                    
+                    <p:message for="txtEndereco"/>
                     
-                    <!--<p:message for="txtEndereco"/>-->
                     
-                    
-<!--                    <h:outputText value="Sexo"/>
+                    <h:outputText value="Sexo"/>
                     <p:inputText id="txtSexo" 
                                 value="#{professorController.selectedProfessor.sexo}"/>
                    <p:message for="txtSexo"/>
@@ -78,7 +78,7 @@
             
             <p:messages/>
             
-            <p:dialog id="dialConfirmCadCliente" visible="false" resizable="false"
+            <p:dialog id="dialConfirmCadProfessor" visible="false" resizable="false"
                       modal="true" widgetVar="widDialConfirmCadProfessor" header="atenção!">
                 
                 <h:outputText value="Deseja realmente cadastrar o Professor?"/><br/>
