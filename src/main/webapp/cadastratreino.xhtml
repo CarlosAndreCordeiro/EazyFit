@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CadTreino</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <h:form id="formCadTreino">
+            <p:growl life="4000" showDetail="true" showSummary="true" sticky="true"/>
+            <p:fieldset id="fieldCadTre" legend="Cadastro de Treino">
+                <p:panelGrid columns="3">
+
+                    <h:outputText  value="Nome*:"/>
+                    <p:inputText id="txtNome" 
+                                 value="#{treinoController.selectedTreino.nome}" required="true"
+                                 requiredMessage="Nome Obriatório"/>
+                    <p:message for="txtNome"/>
+
+                    <h:outputText value="Descrição"/>
+                    <p:inputTextarea id="txtDescricao"
+                                 value="#{treinoController.selectedTreino.descricao}"  required="true"
+                        requiredMessage="Descreva o Exercício"/> 
+                    <p:message for="txtDescricao"/>
+                   
+                    <h:outputText value="Duração"/>
+                    <p:inputText id="txtDuracao"
+                                     value="#{treinoController.selectedTreino.duracao}" 
+                        requiredMessage="Descreva o Exercício"/> 
+                    <p:message for="txtDuracao"/>
+          
+                   
+              <h:outputLabel value="Intensidade:*" for="Treino"/>
+              <p:selectOneMenu id="txtIntensidade" value="#{treinoController.selectedTreino.intensidade}" required="true" 
+                                requiredMessage="Favor informar a intensidade">
+                <f:selectItem itemLabel="Intensidade"/>
+                <f:selectItem itemValue="Alta" itemLabel="Alta"/>
+                <f:selectItem itemValue="Mediana" itemLabel="Mediana"/>
+                <f:selectItem itemValue="Baixa" itemLabel="Baixa"/>
+                </p:selectOneMenu>
+                <p:message for="txtIntensidade"/>
+                   
+                <h:outputText value="Aluno"/>
+                <p:inputText id="txtAluno"
+                                 value="#{treinoController.selectedTreino.aluno}"  required="false"
+                     requiredMessage="Informe o aluno"/> 
+                <p:message for="txtAluno"/>
+                
+                
+                <h:outputText value="Professor"/>
+                <p:inputText id="txtProfessor"
+                                 value="#{treinoController.selectedTreino.professor}" required="false"
+                     requiredMessage="Informe o Professor"/> 
+                <p:message for="txtProfessor"/>
+                    
+                <h:outputText value="Exercicios"/>
+                <p:inputText id="txtExercicios"
+                             value="#{treinoController.selectedTreino.exercicios}"  required="false"
+                     requiredMessage="Informe os Exercicios que compoem o treino"/> 
+                <p:message for="txtExercicios"/>
+                       
+                
+                
+                
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar" 
+                                 oncomplete="PF('widDialConfirmCadTreino').show()"/>
+
+            </p:fieldset>
+            
+            <p:messages/>
+            
+            <p:dialog id="dialConfirmCadTreino" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialConfirmCadTreino" header="Atenção!">
+                
+                <h:outputText value="Deseja realmente cadastrar o Treino?"/><br/>
+                <p:commandButton value="Sim" action="#{treinoController.adicionar()}"
+                                 update=":formCadTreino" oncomplete="PF('widDialConfirmCadTreino').hide();
+                                 "/>
+                <p:commandButton value="Não" oncomplete="PF('widDialConfirmTreino').hide()"/>
+                
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+
+
+
+
+
+
+
+

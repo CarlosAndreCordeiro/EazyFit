@@ -42,6 +42,7 @@ public class ExercicioController {
            this.selectedExercicio= new Exercicio();
            
     }
+    
      public String alterar() {
          instance.alterar(selectedExercicio);
         

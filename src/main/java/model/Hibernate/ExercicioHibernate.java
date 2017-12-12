@@ -49,7 +49,7 @@ public class ExercicioHibernate implements ExercicioDao {
             session.flush();
             t.commit();
         }catch (Exception e){
-            System.out.println("deu merda ao Adicionar exercicio ");
+            System.out.println("deu Erro ao Adicionar exercicio ");
             t.rollback();
         } finally{
             session.close();
@@ -107,14 +107,16 @@ public class ExercicioHibernate implements ExercicioDao {
     public List recuperarTodos() {
      Session session = this.sessions.openSession();
         List<Exercicio> exercicios = new ArrayList();
-        try{   
-    exercicios = session.createQuery("FROM exercicios").list();
-        }catch(Exception e){
-            System.out.println("deu *##@#@ na recuperacao de todos os exercicios cadastrados");
-        }finally{
+        try {
+
+            exercicios = session.createQuery("FROM Exercicio").list();
+        } catch (Exception e) {
+            System.out.println("deu Erro ao consultar lista de Exercícios");
+        } finally {
             session.close();
         }
-    return exercicios;
+        return exercicios;
+
      }
 
     @Override

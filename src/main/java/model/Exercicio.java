@@ -21,7 +21,7 @@ public class Exercicio  {
     private int codigo;
     @Column(length = 20, unique = true)
     private String nome;
-    @Column(length = 120)
+    @Column
     private String descricao;
     @Column(length = 2)
     private int repeticoes;

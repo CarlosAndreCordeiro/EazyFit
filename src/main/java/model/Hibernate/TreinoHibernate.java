@@ -103,7 +103,7 @@ public class TreinoHibernate implements TreinoDao {
         List<Treino> treinos = new ArrayList();
 
         try {
-            treinos = session.createQuery("FROM treino").list();
+            treinos = session.createQuery("FROM Treino").list();
         } catch (Exception e) {
             System.out.println("Erro ao Recuperar Treinos");
 

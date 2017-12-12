@@ -11,14 +11,13 @@
     <h:body>
         <ui:include src="menu.xhtml"/>
         <p:growl id="gro" showDetail="true"/>
-        <h:form id="formApresentaPro">
-            <p:dataTable id="tableProfessor" var="item" value="#{professorController.recuperarTodos()}"
+        <h:form id="formApresentaAlu">
+            <p:dataTable id="tableAluno" var="item" value="#{alunoController.recuperarTodos()}"
                          paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
-                         selection="#{professorController.selectedProfessor}">
-                
+                         selection="#{alunoController.selectedAluno}">
                 
                 <f:facet name="header">
-                    Professores Cadastrados
+                    Alunos Cadastrados
                 </f:facet>
 <!--                <p:column headerText="Codigo" >
                     #{item.codigo}
@@ -26,49 +25,53 @@
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
                     #{item.nome}
                 </p:column>
-                
-                <p:column headerText="CREF" filterBy="#{item.cref}" >
-                    #{item.cref}
-                </p:column>
+
                 <p:column headerText="E-mail">
                     #{item.email}
                 </p:column>
             </p:dataTable>
-            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaProfessor').show()"
-                             update="dialVisualizaProfessor"/>
-            <p:commandButton value="Alterar" action="alteraprofessor.xhtml"/>
-            <p:commandButton value="Deletar" action="#{professorController.deletar(professorController.selectedProfessor)}"
-                             update="tableProfessor :gro">
+            
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaAluno').show()"
+                             update="dialVisualizaAluno"/>
+            <p:commandButton value="Alterar" action="alteraaluno.xhtml"/>
+            <p:commandButton value="Deletar" action="#{alunoController.deletar(alunoController.selectedAluno)}"
+                             update="tableAluno :gro">
                 <p:confirm header="Atenção" message="deseja realmente Apagar" />
             </p:commandButton>
             
-            <p:dialog id="dialVisualizaProfessor" visible="false" modal="true" header="Professor Cadastrado"
-                      resizable="false" widgetVar="widDialVisualizaProfessor">
+            <p:dialog id="dialVisualizaAluno" visible="false" modal="true" header="Aluno Cadastrado"
+                      resizable="false" widgetVar="widDialVisualizaAluno">
                 <p:panelGrid columns="2">
                     
                     <h:outputText value="Código:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.codigo}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.codigo}"/>
                     
                     <h:outputText value="Nome:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.nome}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.nome}"/>
                     
                     <h:outputText value="CPF:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.cpf}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.cpf}"/>
                     
-                    <h:outputText value="CREF"/>
-                    <h:outputText value="#{professorController.selectedProfessor.cref}"/>
+                    <h:outputText value="Objetivo"/>
+                    <h:outputText value="#{alunoController.selectedAluno.objetivo}"/>
+                    
+                    <h:outputText value="Peso"/>
+                    <h:outputText value="#{alunoController.selectedAluno.peso}"/>
+                    
+                    <h:outputText value="Altura"/>
+                    <h:outputText value="#{alunoController.selectedAluno.altura}"/>
                     
                     <h:outputText value="Data de Nascimento:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.dataNascimento}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.dataNascimento}"/>
                     
                     <h:outputText value="Endereço:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.endereco}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.endereco}"/>
                     
                     <h:outputText value="Sexo"/>
-                    <h:outputText value="#{professorController.selectedProfessor.sexo}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.sexo}"/>
                     
                     <h:outputText value="e-mail:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.email}"/>
+                    <h:outputText value="#{alunoController.selectedAluno.email}"/>
                 </p:panelGrid>
             </p:dialog>
             

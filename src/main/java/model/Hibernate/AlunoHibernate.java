@@ -74,18 +74,17 @@ public class AlunoHibernate implements AlunoDao {
     @Override
     public void alterar(Aluno aluno) {
 
-        this.sessions.getCurrentSession().close();
-
         Session session = this.sessions.openSession();
         Transaction t = session.beginTransaction();
 
         try {
             session.update(aluno);
+            session.flush();
             t.commit();
         } catch (Exception e) {
-            System.out.println("Erro ao alterar Aluno");
+            System.out.println("Erro ao alterar o aluno!!");
             t.rollback();
-
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -133,14 +132,12 @@ public class AlunoHibernate implements AlunoDao {
             return (Aluno) session.getSession().createQuery("From Aluno Where cpf='" + cpf + "'").getResultList().get(0);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("CPF não encontrado!!");
+            System.out.println("CPF do aluno não encontrado!!");
             return null;
 
         } finally {
             //Fechamos a sessão
             session.close();
-
         }
     }
-
 }

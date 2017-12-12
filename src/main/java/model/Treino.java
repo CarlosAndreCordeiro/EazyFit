@@ -24,32 +24,42 @@ public class Treino {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
+    
     @Column(length = 20, unique = true)
     private String nome;
+    
     @Column(length = 70)
     private String descricao;
+    
     @Column(length = 3)
     private int duracao;
+    
     @OneToOne 
     private Professor professor;   
+    
     @Column(length = 6)
     private String intensidade;    
-    @OneToMany
+    
+    @OneToMany (fetch = FetchType.EAGER)
     private List<Exercicio> exercicios;
+    
     @ManyToOne
     @JoinColumn(name = "aluno_id")
     private Aluno aluno;
 
+    @Deprecated
     public Treino() {
     }
 
-    public Treino(String nome, String descricao, int duracao, Professor professor, String intensidade, List<Exercicio> exercicios) {
+    public Treino( String nome, String descricao, int duracao, Professor professor, String intensidade, List<Exercicio> exercicios, Aluno aluno) {
+        
         this.nome = nome;
         this.descricao = descricao;
         this.duracao = duracao;
         this.professor = professor;
         this.intensidade = intensidade;
         this.exercicios = exercicios;
+        this.aluno = aluno;
     }
 
     public int getCodigo() {
@@ -115,4 +125,5 @@ public class Treino {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
+
 }

@@ -35,7 +35,7 @@ public class teste {
         ProfessorHibernate ph = new ProfessorHibernate();
         Professor p = new Professor("cref", "cpf", "nome", "endereco", "M", "data", "email");
                 ph.adiciona(p);
-        p = ph.recuperaCpf("cpf");
+        p = ph.recuperarCpf("cpf");
                               
         ExercicioHibernate eh = new ExercicioHibernate();
         Exercicio e = new Exercicio("Agachammento", "Agacha e levanta rapidamente", 5);
@@ -48,18 +48,23 @@ public class teste {
         e2 = eh.recuperarNome("contrai relaxa");
         exercicios.add(e2);
 
+     
+        AlunoHibernate ah = new AlunoHibernate();
+        Aluno a = new Aluno("objetivo", 19, 40, treinos, "cpf2", "nome", "endereco", "M", "DATA", "email");
+        
+        ah.adiciona(a);
+        
+        
+        
         TreinoHibernate th = new TreinoHibernate();
-        Treino t = new Treino("rasga peito", "treino intenso para peito", 4, p, "alta", exercicios);
+        Treino t = new Treino("rasga peito", "descricao", 0, p, "intensidade", exercicios, a);
         th.adiciona(t);
         t = th.recuperarNome("rasga peito");
         treinos.add(t);
-      
-        AlunoHibernate ah = new AlunoHibernate();
-        Aluno a = new Aluno("objetivo", 19, 40, treinos, "cpf2", "nome", "endereco", "M", "DATA", "email");
-      
-        ah.adiciona(a);
-//        a = ah.recuperarCpf("cpf2");
+       
         t.setAluno(a);
+     
+     
         
         
       

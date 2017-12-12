@@ -113,7 +113,7 @@ public class ProfessorHibernate implements ProfessorDao {
     }
 
     @Override
-    public Professor recuperaCpf(String cpf) {
+    public Professor recuperarCpf(String cpf) {
         Session session = this.sessions.openSession();
         try {
 

@@ -23,6 +23,8 @@ public class Aluno extends Pessoa {
     @OneToMany (mappedBy = "aluno", cascade = CascadeType.MERGE)
     private List<Treino> treinos;
    
+    
+    @Deprecated
     public Aluno(){
     }
 

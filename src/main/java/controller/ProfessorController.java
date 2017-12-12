@@ -6,6 +6,7 @@ import static javafx.beans.binding.Bindings.select;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.Hibernate.ProfessorHibernate;
 import model.Professor;
@@ -15,6 +16,7 @@ import model.Professor;
  * @author BobaNote
  */
 @ManagedBean(name = "professorController")
+//@ViewScoped
 @SessionScoped
 public class ProfessorController {
     
@@ -59,7 +61,7 @@ public class ProfessorController {
         return instance.recuperar(codigo);
     }
     public Professor recuperarCpf(String cpf){
-        return instance.recuperaCpf(cpf);
+        return instance.recuperarCpf(cpf);
     }
     public List<Professor> recuperarTodos(){
         return instance.recuperarTodos();
