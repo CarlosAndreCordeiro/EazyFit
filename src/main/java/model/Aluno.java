@@ -20,7 +20,7 @@ public class Aluno extends Pessoa {
     private double altura;
     @Column()
     private double peso;  
-    @OneToMany (mappedBy = "aluno", cascade = CascadeType.MERGE)
+    @OneToMany (mappedBy = "aluno", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Treino> treinos;
    
     
