@@ -34,13 +34,13 @@
                     <p:message for="txtObjetivo"/>
                    
                     <h:outputText value="Peso"/>
-                    <p:inputText id="txtPeso"                                 
-                                 value="#{alunoController.selectedAluno.peso}"/>
+                    <p:inputMask id="txtPeso"                                 
+                                 value="#{alunoController.selectedAluno.peso}" mask="999.99"/>
                     <p:message for="txtPeso"/>
                     
                     <h:outputText value="Altura"/>
-                    <p:inputText id="txtAltura"                                 
-                                 value="#{alunoController.selectedAluno.altura}"/>
+                    <p:inputMask id="txtAltura"                                 
+                                 value="#{alunoController.selectedAluno.altura}" mask="9.99"/>
                     <p:message for="txtAltura"/>
                     
                     
@@ -60,14 +60,14 @@
                     <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
                     <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
                     </p:selectOneMenu>
-                    <p:message for="txtSexo"/>
-               
+<!--                    <p:message for="txtSexo"/>-->
+                    
             
              
-            <h:outputText value="Treinos"/>
+<!--            <h:outputText value="Treinos"/>
             <p:inputText id="txtTreinos"                                 
                          value="#{alunoController.selectedAluno.treinos}"/>
-            <p:message for="txtTreinos"/>
+            <p:message for="txtTreinos"/>-->
 
 
             <h:outputText value="E-mail"/>

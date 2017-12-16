@@ -35,22 +35,23 @@ public class TreinoController {
     }
    
     public void adicionar(){
-
-        
-            instance.adiciona(selectedTreino);
+           instance.adiciona(selectedTreino);
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Treino "+ selectedTreino.getNome() +" foi cadastrado com sucesso"));
            this.selectedTreino= new Treino();
-           
     }
-     public String alterar() {
-         instance.alterar(selectedTreino);
+
+    public String alterar() {
+    
+        instance.alterar(selectedTreino);
+        this.selectedTreino = new Treino();
         
-         return "apresentatreinos.xhtml";
+        return "apresentatreinos.xhtml";
 
      }
     
    public void deletar(Treino treino){
        instance.deletar(treino);
+       this.selectedTreino = new Treino();
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Treino foi excluído com sucesso"));
         
    } 

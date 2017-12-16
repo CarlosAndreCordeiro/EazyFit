@@ -47,13 +47,15 @@ public class ProfessorController {
     }
      public String alterar() {
          instance.alterar(selectedProfessor);
-        
+       this.selectedProfessor = new Professor();
          return "apresentaprofessores.xhtml";
 
      }
     
    public void deletar(Professor professor){
        instance.deletar(professor);
+    this.selectedProfessor = new Professor();
+   
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Professor foi excluído com sucesso"));
         
    } 

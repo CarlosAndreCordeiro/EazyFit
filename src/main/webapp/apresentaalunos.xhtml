@@ -36,7 +36,7 @@
             <p:commandButton value="Alterar" action="alteraaluno.xhtml"/>
             <p:commandButton value="Deletar" action="#{alunoController.deletar(alunoController.selectedAluno)}"
                              update="tableAluno :gro">
-                <p:confirm header="Atenção" message="deseja realmente Apagar" />
+                <p:confirm header="Atenção" message="Deseja realmente Apagar ?"  />
             </p:commandButton>
             
             <p:dialog id="dialVisualizaAluno" visible="false" modal="true" header="Aluno Cadastrado"

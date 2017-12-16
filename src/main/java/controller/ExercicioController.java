@@ -45,6 +45,7 @@ public class ExercicioController {
     
      public String alterar() {
          instance.alterar(selectedExercicio);
+           this.selectedExercicio= new Exercicio();
         
          return "apresentaexercicios.xhtml";
 
@@ -52,6 +53,8 @@ public class ExercicioController {
     
    public void deletar(Exercicio exercicio){
        instance.deletar(exercicio);
+           this.selectedExercicio= new Exercicio();
+    
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Exercicio foi excluído com sucesso"));
         
    } 

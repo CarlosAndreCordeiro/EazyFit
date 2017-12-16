@@ -43,6 +43,7 @@ public class AlunoController {
     }
      public String alterar() {
          instance.alterar(selectedAluno);
+           this.selectedAluno = new Aluno();
         
          return "apresentaalunos.xhtml";
 
@@ -50,6 +51,8 @@ public class AlunoController {
     
    public void deletar(Aluno aluno){
        instance.deletar(aluno);
+           this.selectedAluno = new Aluno();
+
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Aluno foi excluído com sucesso"));
         
    } 
