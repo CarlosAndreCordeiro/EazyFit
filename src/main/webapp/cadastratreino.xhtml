@@ -10,10 +10,27 @@
     </h:head>
     <h:body>
         <ui:include src="menu.xhtml"/>
-        <h:form id="formCadTreino">
+        <h:form>
             <p:growl life="4000" showDetail="true" showSummary="true" sticky="true"/>
+
+        </h:form>  
+<br/>  
+        <p:toolbar>
+        </p:toolbar>
+<br/>        
+        
+        <h:form id="formCadTreino">
+
             <p:fieldset id="fieldCadTre" legend="Cadastro de Treino">
-                <p:panelGrid columns="3">
+                 
+    <p:growl id="growl" sticky="true" showDetail="true"/>
+ 
+    <p:wizard >
+        <p:tab id="addTreino" title="Treino">
+            <p:panel header="Detalhes do Treino">
+             
+ 
+                    <p:panelGrid columns="3">
 
                     <h:outputText  value="Nome*:"/>
                     <p:inputText id="txtNome" 
@@ -43,46 +60,71 @@
                 <f:selectItem itemValue="Baixa" itemLabel="Baixa"/>
                 </p:selectOneMenu>
                 <p:message for="txtIntensidade"/>
-                   
-                <h:outputText value="Aluno"/>
-                <p:inputText id="txtAluno"
-                                 value="#{treinoController.selectedTreino.aluno}"  required="false"
-                     requiredMessage="Informe o aluno"/> 
-                <p:message for="txtAluno"/>
-                
-                
-                <h:outputText value="Professor"/>
-                <p:inputText id="txtProfessor"
-                                 value="#{treinoController.selectedTreino.professor}" required="false"
-                     requiredMessage="Informe o Professor"/> 
-                <p:message for="txtProfessor"/>
-                    
-                <h:outputText value="Exercicios"/>
-                <p:inputText id="txtExercicios"
-                             value="#{treinoController.selectedTreino.exercicios}"  required="false"
-                     requiredMessage="Informe os Exercicios que compoem o treino"/> 
-                <p:message for="txtExercicios"/>
-                       
-                
-                
-                
                 </p:panelGrid>
-                <p:commandButton value="Cadastrar" 
-                                 oncomplete="PF('widDialConfirmCadTreino').show()"/>
+                </p:panel>
+            </p:tab>
 
-            </p:fieldset>
-            
+        <p:tab id="addAluno" title="Aluno" >
+            <p:panel header="Selecione o Aluno">
+                <p:dataTable id="tableAluno" var="item" value="#{alunoController.recuperarTodos()}"
+                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
+                         selection="#{treinoController.selectedTreino.aluno}">
+                    <p:column headerText="Nome" filterBy="#{item.nome}" >
+                    #{item.nome}
+                    </p:column>
+                    <p:column headerText="CPF"  >
+                        #{item.cpf}
+                    </p:column>
+                    <p:column headerText="Adicionar">
+                         <p:commandButton value="Adicionar"  >
+                             <f:setPropertyActionListener value="#{item}" target="#{treinoController.selectedTreino.aluno}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </p:tab>
+        <p:tab id="addExercicio" title="Exercicios">
+            <p:panel header="Exercicios">
+                
+                
+                <p:dataTable id="tabelaExercicios" var="itemExercicio" value="#{exercicioController.recuperarTodos()}"
+                            rowKey="#{itemExercicio.codigo}" rows="5" paginator="true" 
+                            selection="#{treinoController.selectedTreino.exercicios}">
+                    <p:column selectionMode="multiple">
+                        
+                    </p:column>
+                    
+                    <p:column headerText="Nome">
+                        #{itemExercicio.nome}
+                    </p:column>
+                    <p:column headerText="Descrição">
+                        #{itemExercicio.descricao}
+                    </p:column>
+                </p:dataTable>
+ 
+                
+                
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+    </p:fieldset>  
+              
+</h:form>
+        
+        
+        
+        
+        <p:separator/>
+        <p:separator/>
+        <h:form>
+                <p:commandButton value="Cadastrar" oncomplete="PF('widDialConfirmCadTreino').show()"/>
             <p:messages/>
-            
             <p:dialog id="dialConfirmCadTreino" visible="false" resizable="false"
                       modal="true" widgetVar="widDialConfirmCadTreino" header="Atenção!">
-                
                 <h:outputText value="Deseja realmente cadastrar o Treino?"/><br/>
                 <p:commandButton value="Sim" action="#{treinoController.adicionar()}"
-                                 update=":formCadTreino" oncomplete="PF('widDialConfirmCadTreino').hide();
-                                 "/>
+                                 update=":formCadTreino" oncomplete="PF('widDialConfirmCadTreino').hide();"/>
                 <p:commandButton value="Não" oncomplete="PF('widDialConfirmTreino').hide()"/>
-                
             </p:dialog>
         </h:form>
     </h:body>

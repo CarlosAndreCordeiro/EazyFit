@@ -18,19 +18,24 @@
                 
                 
                 <f:facet name="header">
-                    Exercícios Cadastrados
+                    Treinos Cadastrados
                 </f:facet>
-
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
                     #{item.nome}
                 </p:column>
-                
-
                 <p:column headerText="Descrição">
                     #{item.descricao}
                 </p:column>
+                <p:column headerText="Aluno">
+                    #{item.aluno.nome}
+                </p:column>
+                <p:column headerText="Exercicios">
+                    <ui:repeat var="listExercicios" value="#{item.exercicios}">
+                        #{listExercicios.nome}<br/>
+                    </ui:repeat>
+                </p:column>
                 
-
+                
             </p:dataTable>
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaTreino').show()"
                              update="dialVisualizaTreino"/>
@@ -56,11 +61,8 @@
                     <h:outputText value="Duração"/>
                     <h:outputText value="#{treinoController.selectedTreino.duracao}"/>
                     
-                     
                     <h:outputText value="Intensidade"/>
                     <h:outputText value="#{treinoController.selectedTreino.intensidade}"/>
-                    
-    
                     
                     <h:outputText value="Exercicios"/>
                     <h:outputText value="#{treinoController.selectedTreino.exercicios}"/>
