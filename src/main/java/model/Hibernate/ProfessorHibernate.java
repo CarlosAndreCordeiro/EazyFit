@@ -12,8 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 public class ProfessorHibernate implements ProfessorDao {
 
-    private EntityManager em;
-    private SessionFactory sessions;
+    private final SessionFactory sessions;
     private static ProfessorHibernate instance = null;
 
     public static ProfessorHibernate getInstance() {
@@ -102,7 +101,7 @@ public class ProfessorHibernate implements ProfessorDao {
         List<Professor> professores = new ArrayList();
         try {
 
-            professores = session.createQuery("FROM Professor").list();
+            professores = (List) session.createQuery("FROM Professor").list();
         } catch (Exception e) {
             System.out.println("deu Erro ao consultar lista de professores");
         } finally {

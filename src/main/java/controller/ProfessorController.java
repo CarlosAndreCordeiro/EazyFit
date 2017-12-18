@@ -24,7 +24,6 @@ public class ProfessorController {
     private List<Professor> repositorioProfessor = null;
     
     private Professor selectedProfessor;
-    
     private ProfessorHibernate instance;
 
     public ProfessorController(){
@@ -33,24 +32,22 @@ public class ProfessorController {
        this.selectedProfessor = new Professor();
     }
    
-    public void adicionar(){
-//        if(model.ValidaCPF.isCPF(selectedProfessor.getCpf())== true){
-        
-//            selectedProfessor.setCpf(ValidaCPF.imprimeCPF(selectedProfessor.getCpf())); 
+    public String adicionar(){
             
             instance.adiciona(selectedProfessor);
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Professor "+selectedProfessor.getNome()+" foi cadastrado com sucesso"));
         
             this.selectedProfessor = new Professor();
-    
-//        }
+            
+    return "indexlogar.xhtml";
     }
      public String alterar() {
          instance.alterar(selectedProfessor);
        this.selectedProfessor = new Professor();
-         return "apresentaprofessores.xhtml";
+         return  "apresentaprofessorlogado.xhtml";
 
      }
+     
     
    public void deletar(Professor professor){
        instance.deletar(professor);

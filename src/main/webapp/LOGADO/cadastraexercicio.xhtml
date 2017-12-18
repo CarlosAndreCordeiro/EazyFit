@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>CadExercicio</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menuprofessorlogado.xhtml"/>
+        
+            <c:if test="${loginProfessorController.professorLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+            </c:if>
+        
+        
+        <h:form id="formCadExercicio">
+            <p:growl life="400" showDetail="true" showSummary="true" sticky="true"/>
+            <p:fieldset id="fieldCadExe" legend="Cadastro de Exercicio">
+                <p:panelGrid columns="3">
+                    
+                    
+                    
+                    <h:outputText  value="Nome:"/>
+                    <p:inputText id="txtNome" 
+                                 value="#{exercicioController.selectedExercicio.nome}" required="true"
+                                 requiredMessage="Nome Obriatório"/>
+                    <p:message for="txtNome"/>
+               
+                    
+                    <h:outputText value="Descrição"/>
+                    <p:inputTextarea id="txtDescricao"
+                                 value="#{exercicioController.selectedExercicio.descricao}" required="true"
+                        requiredMessage="Descreva o Exercício"/> 
+                    <p:message for="txtDescricao"/>
+                   
+                    
+                    <h:outputText value="Repetições"/>
+                    <p:inputMask id="txtRepeticoes" value="#{exercicioController.selectedExercicio.repeticoes}" mask="99"/>
+                    <p:message for="txtRepeticoes"/>
+                    
+                    
+                    
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar" 
+                                 oncomplete="PF('widDialConfirmCadExercicio').show()"/>
+                
+               
+            </p:fieldset>
+            
+            <p:messages/>
+            
+            <p:dialog id="dialConfirmCadExercicio" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialConfirmCadExercicio" header="Atenção!">
+                
+                <h:outputText value="Deseja realmente cadastrar o Exercicio?"/>
+                <br/>
+                <p:commandButton value="Sim" action="#{exercicioController.adicionar()}"
+                                 update=":formCadExercicio" oncomplete="PF('widDialConfirmCadExercicio').hide();"/>
+                <p:commandButton value="Não" oncomplete="PF('widDialConfirmExercicio').hide()"/>
+                
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+
+
+
+
+
+
+
+

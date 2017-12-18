@@ -4,40 +4,45 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="menuprofessorlogado.xhtml"/>
+            
+        <c:if test="${loginProfessorController.professorLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+        </c:if>
         <p:growl id="gro" showDetail="true"/>
         <h:form id="formApresentaPro">
-            <p:dataTable id="tableProfessor" var="item" value="#{professorController.recuperarTodos()}"
+            <p:dataTable id="tableProfessor" var="item" value="#{loginProfessorController.professorLogado}"
                          paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
-                         selection="#{professorController.selectedProfessor}">
+                         selection="#{professorController.selectedProfessor=loginProfessorController.professorLogado}">
                 
                 
                 <f:facet name="header">
-                    Professores Cadastrados
+                    Professor Logado
                 </f:facet>
 <!--                <p:column headerText="Codigo" >
                     #{item.codigo}
                 </p:column>-->
-                <p:column headerText="Nome" filterBy="#{item.nome}" >
+                <p:column headerText="Nome"  >
                     #{item.nome}
                 </p:column>
                 
-                <p:column headerText="CREF" filterBy="#{item.cref}" >
+                <p:column headerText="CREF">
                     #{item.cref}
                 </p:column>
                 <p:column headerText="E-mail">
                     #{item.email}
                 </p:column>
             </p:dataTable>
-            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaProfessor').show()"
+            <p:commandButton value="Visualizar Detalhes" oncomplete="PF('widDialVisualizaProfessor').show()"
                              update="dialVisualizaProfessor"/>
-            <p:commandButton value="Alterar" action="alteraprofessor.xhtml"/>
-            <p:commandButton value="Deletar" action="#{professorController.deletar(professorController.selectedProfessor)}"
+          
+            <p:commandButton value="Deletar Perfil" action="#{professorController.deletar(professorController.selectedProfessor)}"
                              update="tableProfessor :gro">
                 <p:confirm header="Atenção" message="deseja realmente Apagar" />
             </p:commandButton>
@@ -47,28 +52,32 @@
                 <p:panelGrid columns="2">
                     
                     <h:outputText value="Código:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.codigo}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.codigo}"/>
                     
                     <h:outputText value="Nome:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.nome}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.nome}"/>
                     
                     <h:outputText value="CPF:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.cpf}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.cpf}"/>
                     
                     <h:outputText value="CREF"/>
-                    <h:outputText value="#{professorController.selectedProfessor.cref}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.cref}"/>
                     
                     <h:outputText value="Data de Nascimento:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.dataNascimento}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.dataNascimento}"/>
                     
                     <h:outputText value="Endereço:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.endereco}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.endereco}"/>
                     
                     <h:outputText value="Sexo"/>
-                    <h:outputText value="#{professorController.selectedProfessor.sexo}"/>
-                    
+                    <h:outputText value="#{loginProfessorController.professorLogado.sexo}"/>
                     <h:outputText value="e-mail:"/>
-                    <h:outputText value="#{professorController.selectedProfessor.email}"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.email}"/>
+
+                    <h:outputText value="Senha"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.senha}"/>
+                    
+
                 </p:panelGrid>
             </p:dialog>
             

@@ -33,7 +33,7 @@ public class teste {
 
 
         ProfessorHibernate ph = new ProfessorHibernate();
-        Professor p = new Professor("cref", "cpf", "nome", "endereco", "M", "data", "email");
+        Professor p = new Professor("cref", "cpf", "nome", "endereco", "M", "data", "email", "senha" );
                 ph.adiciona(p);
         p = ph.recuperarCpf("cpf");
                               
@@ -50,7 +50,7 @@ public class teste {
 
      
         AlunoHibernate ah = new AlunoHibernate();
-        Aluno a = new Aluno("objetivo", 19, 40, treinos, "cpf2", "nome", "endereco", "M", "DATA", "email");
+        Aluno a = new Aluno("objetivo", 19, 40, treinos, "cpf2", "nome", "endereco", "M", "DATA", "email", "senha"  );
         
         ah.adiciona(a);
         

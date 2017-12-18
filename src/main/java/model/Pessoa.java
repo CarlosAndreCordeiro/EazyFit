@@ -2,6 +2,7 @@ package model;
 
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,18 +48,21 @@ public abstract class Pessoa implements Serializable{
     private String dataNascimento;
     @Column(length = 30)
     private String email;
-
+    @Column(length = 20)
+    private String senha;
+    
     public Pessoa() {
     }
 
-    public Pessoa( String cpf, String nome, String endereco, String sexo, String dataNascimento, String email) {
-//        this.codigo = codigo;
+    public Pessoa( String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha) {
+        
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
         this.sexo = sexo;
         this.dataNascimento = dataNascimento;
         this.email = email;
+        this.senha = senha;
     }
 
     public int getCodigo() {
@@ -117,6 +121,72 @@ public abstract class Pessoa implements Serializable{
         this.email = email;
     }
 
- 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "codigo=" + codigo + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", email=" + email + ", senha=" + senha + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.codigo;
+        hash = 97 * hash + Objects.hashCode(this.cpf);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.endereco);
+        hash = 97 * hash + Objects.hashCode(this.sexo);
+        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.senha);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pessoa other = (Pessoa) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        if (!Objects.equals(this.sexo, other.sexo)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        return true;
+    }
+
+    
     
 }

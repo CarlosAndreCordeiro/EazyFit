@@ -33,19 +33,19 @@ public class AlunoController {
        this.selectedAluno = new Aluno();
     }
    
-    public void adicionar(){
+    public String adicionar(){
     
             instance.adiciona(selectedAluno);
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Aluno "+selectedAluno.getNome()+" foi cadastrado com sucesso"));
         
             this.selectedAluno = new Aluno();
-    
+            return "indexlogar.xhtml";
     }
      public String alterar() {
          instance.alterar(selectedAluno);
            this.selectedAluno = new Aluno();
         
-         return "apresentaalunos.xhtml";
+         return "menualunologado.xhtml";
 
      }
     

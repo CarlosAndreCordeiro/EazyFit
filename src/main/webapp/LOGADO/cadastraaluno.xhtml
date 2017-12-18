@@ -9,9 +9,9 @@
         <title>CadAluno</title>
     </h:head>
     <h:body>
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="menuindexlogado.xhtml"/>
         <h:form id="formCadAluno">
-            <p:growl life="4000" showDetail="true" showSummary="true" sticky="true"/>
+            <p:growl life="200" showDetail="true" showSummary="true" sticky="true"/>
             <p:fieldset id="fieldCadAluno" legend="Cadastro de Aluno">
                 <p:panelGrid columns="3">
                     
@@ -26,6 +26,11 @@
                                  requiredMessage="Nome Obriatório"/>
                     <p:message for="txtNome"/>
                
+                    <h:outputText  value="Senha*:"/>
+                    <p:inputText id="txtSenha" 
+                                 value="#{alunoController.selectedAluno.senha}" required="true"
+                                 requiredMessage="Senha Obriatória"/>
+                    <p:message for="txtSenha"/>
                     
                     <h:outputText value="Objetivo"/>
                     <p:inputText id="txtObjetivo"
@@ -49,10 +54,11 @@
                     <p:message for="txtDataNascimento"/>
 
                     <h:outputText value="Endereço*:"/>
-                    <p:inputText id="txtEndereco"                                
-                                         value="#{alunoController.selectedAluno.endereco}"/>
+                    <p:inputText id="txtEndereco" value="#{alunoController.selectedAluno.endereco}"/>
                     <p:message for="txtEndereco"/>
-
+                    
+                    
+                    
                     <h:outputLabel value="Sexo: *" for="sexo"/>
                     <p:selectOneMenu id="txtSexo" value="#{alunoController.selectedAluno.sexo}" required="true" 
                                         requiredMessage="Favor informar o sexo">
@@ -60,16 +66,9 @@
                     <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
                     <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
                     </p:selectOneMenu>
-<!--                    <p:message for="txtSexo"/>-->
+                    <p:message for="txtSexo"/>
+
                     
-            
-             
-<!--            <h:outputText value="Treinos"/>
-            <p:inputText id="txtTreinos"                                 
-                         value="#{alunoController.selectedAluno.treinos}"/>
-            <p:message for="txtTreinos"/>-->
-
-
             <h:outputText value="E-mail"/>
             <p:inputText id="txtEmail"                                 
                                 value="#{alunoController.selectedAluno.email}"/>

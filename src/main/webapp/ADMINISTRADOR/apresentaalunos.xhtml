@@ -29,6 +29,15 @@
                 <p:column headerText="E-mail">
                     #{item.email}
                 </p:column>
+            
+                <p:column headerText="Treinos">
+                    <ui:repeat var="listTreinos" value="#{item.treinos}">
+                        #{listTreinos.nome}<br/>
+                    </ui:repeat>
+                </p:column>
+
+            
+            
             </p:dataTable>
             
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaAluno').show()"
@@ -72,6 +81,10 @@
                     
                     <h:outputText value="e-mail:"/>
                     <h:outputText value="#{alunoController.selectedAluno.email}"/>
+                    
+                    <h:outputText value="Senha"/>
+                    <h:outputText value="#{alunoController.selectedAluno.senha}"/>
+                    
                 </p:panelGrid>
             </p:dialog>
             

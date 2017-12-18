@@ -47,7 +47,7 @@ public class ExercicioController {
          instance.alterar(selectedExercicio);
            this.selectedExercicio= new Exercicio();
         
-         return "apresentaexercicios.xhtml";
+         return "apresentatreinosprofessor.xhtml";
 
      }
     

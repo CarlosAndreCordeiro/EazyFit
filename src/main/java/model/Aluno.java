@@ -1,6 +1,7 @@
 package model;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,9 +29,10 @@ public class Aluno extends Pessoa {
     public Aluno(){
     }
 
-
-    public Aluno(String objetivo, double altura, double peso, List<Treino> treinos, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email) {
-        super(cpf, nome, endereco, sexo, dataNascimento, email);
+    
+    
+    public Aluno(String objetivo, double altura, double peso, List<Treino> treinos, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha) {
+        super(cpf, nome, endereco, sexo, dataNascimento, email, senha);
         this.objetivo = objetivo;
         this.altura = altura;
         this.peso = peso;
@@ -69,5 +71,49 @@ public class Aluno extends Pessoa {
         this.treinos = treinos;
     }
 
+    @Override
+    public String toString() {
+        return "Aluno{" + "objetivo=" + objetivo + ", altura=" + altura + ", peso=" + peso + ", treinos=" + treinos + '}';
+    }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 71 * hash + Objects.hashCode(this.objetivo);
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
+        hash = 71 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.treinos);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (Double.doubleToLongBits(this.altura) != Double.doubleToLongBits(other.altura)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.peso) != Double.doubleToLongBits(other.peso)) {
+            return false;
+        }
+        if (!Objects.equals(this.objetivo, other.objetivo)) {
+            return false;
+        }
+        if (!Objects.equals(this.treinos, other.treinos)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    
 }

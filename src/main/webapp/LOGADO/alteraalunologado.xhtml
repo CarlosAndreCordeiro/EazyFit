@@ -4,51 +4,65 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Altera Aluno</title>
     </h:head>
     <h:body>
-        <ui:include src="menu.xhtml"/>
+        <ui:include src="menualunologado.xhtml"/>
+        
+        <c:if test="${loginAlunoController.alunoLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+        </c:if>
+        
         
         <h:form>
             <p:fieldset legend="Alterar Aluno">
                 <p:panelGrid columns="2">
                     <h:outputText value="Código"/>
-                    <h:outputText value="#{alunoController.selectedAluno.codigo}"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.codigo}"/>
                     
                     <h:outputText value="Nome"/>
-                    <p:inputText value="#{alunoController.selectedAluno.nome}"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.nome}"/>
                     
                     <h:outputText value="CPF"/>
-                    <p:inputMask value="#{alunoController.selectedAluno.cpf}" mask="999.999.999-99" />
+                    <p:inputMask value="#{loginAlunoController.alunoLogado.cpf}" mask="999.999.999-99" />
                     
                     <h:outputText value="Objetivo"/>
-                    <p:inputText value="#{alunoController.selectedAluno.objetivo}"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.objetivo}"/>
                     
                     <h:outputText value="Peso"/>
-                    <p:inputText value="#{alunoController.selectedAluno.peso}"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.peso}"/>
                     
                     <h:outputText value="altura"/>
-                    <p:inputText value="#{alunoController.selectedAluno.altura}"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.altura}"/>
                     
                     <h:outputText value="Endereço"/>
-                    <p:inputText value="#{alunoController.selectedAluno.endereco}"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.endereco}"/>
                     
                     <h:outputText value="Data de Nascimento"/>
-                    <p:inputMask value="#{alunoController.selectedAluno.dataNascimento}"
+                    <p:inputMask value="#{loginAlunoController.alunoLogado.dataNascimento}"
                                  mask="99/99/9999"/>
                     
                     <h:outputLabel value="Sexo: *" for="sexo"/>
-                    <p:selectOneMenu id="txtSexo" value="#{alunoController.selectedAluno.sexo}" required="true">
+                    <p:selectOneMenu id="txtSexo" value="#{loginAlunoController.alunoLogado.sexo}" required="true">
                     <f:selectItem itemLabel="Escolha"/>
                     <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
                     <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
                     </p:selectOneMenu>
                     <h:outputText value="e-mail"/>
-                    <p:inputText value="#{alunoController.selectedAluno.email}"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.email}"/>
+                    
+                    <h:outputText value="Senha"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.senha}"/>
+
+                    
+                    
+                    
                 </p:panelGrid>
-                <p:commandButton value="alterar" action="#{alunoController.alterar()}"/>
+               
+                <p:commandButton value="Alterar" action="#{alunoController.alterar}"/>
                 
             </p:fieldset>
         </h:form>

@@ -12,40 +12,50 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import model.Treino;
 import model.Hibernate.TreinoHibernate;
+import model.Professor;
 
 /**
  *
  * @author BobaNote
  */
-
 @ManagedBean(name = "treinoController")
 @SessionScoped
 public class TreinoController {
-    
-        private List<Treino> repositorioTreino = null;
-    
+
+    private List<Treino> repositorioTreino = null;
+
     private Treino selectedTreino;
-    
+
     private TreinoHibernate instance;
 
-    public TreinoController(){
+    public TreinoController() {
         instance = new TreinoHibernate();
-        this.repositorioTreino= instance.recuperarTodos();
-       this.selectedTreino = new Treino();
-    }
-   
-    public void adicionar(){
-           instance.adiciona(selectedTreino);
-           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Treino "+ selectedTreino.getNome() +" foi cadastrado com sucesso"));
-           this.selectedTreino= new Treino();
+        this.repositorioTreino = instance.recuperarTodos();
+        this.selectedTreino = new Treino();
     }
 
-    public String alterar() {
+    public void adicionar() {
+
+//       Professor p = (Professor) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("professorLogado");
+//
+//        this.selectedTreino.setProfessor(p);
+
+        this.instance.adiciona(this.selectedTreino);
+       
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Treino " + selectedTreino.getNome() + " foi cadastrado com sucesso"));
+
+        this.selectedTreino = new Treino();
+
+    }
+
+
+
+public String alterar() {
     
         instance.alterar(selectedTreino);
         this.selectedTreino = new Treino();
         
-        return "apresentatreinos.xhtml";
+        return "apresentatreinosprofessor.xhtml";
 
      }
     
