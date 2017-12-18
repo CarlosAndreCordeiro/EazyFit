@@ -3,7 +3,8 @@ package controller;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import model.Aluno;
+import javax.faces.context.FacesContext;
+import model.Professor;
 import model.Professor;
 
 
@@ -25,26 +26,32 @@ public class LoginProfessorController {
         this.professorLogado = professorLogado;
     }
 
-    public String realizarLoginProfessor(String login, String senha) {
-
-        List<Professor> professor = new ProfessorController().recuperarTodos();
-        for (Professor p : professor) {
-            if (p.getCpf().equals(login)) {
-                if (p.getSenha().equals(senha)) {
-                    this.professorLogado = p;
-                }
-                break;
-            }
-        }
-        if (professorLogado == null) {
-            return null;
-        } else {
-            return "menuprofessorlogado.xhtml";
-        }
+public String realizarLoginProfessor(String login,String senha){
+    
+    professorLogado=null;
+    List<Professor> professors = new ProfessorController().recuperarTodos();
+     
+     for(Professor m : professors){
+         if(m.getCpf().equals(login)){
+             if(m.getSenha().equals(senha)){
+                   this.professorLogado = m;
+                  FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("professorLogado", m);
+                 return "menuprofessorlogado.xhtml";
+             }
+         }
+     }
+     return "indexlogar.xhtml";
     }
-    
-    
-    
-    
-    
+
+
+
+
+        public void logoutProfessor(){
+        professorLogado=null;
 }
+
+
+
+
+}
+ 

@@ -11,27 +11,24 @@
     <h:body>
         <ui:include src="menuindexlogado.xhtml"/>
         <p:separator/>
+
         
         <div align="center" >
         <p:fieldset id="field" legend="EzFit Home Fitness">
-        
-            <div align="center" >
-           
-               
-        
+        <div align="center" >
         <p:graphicImage   
       url="https://cdn.shopify.com/s/files/1/0969/9128/products/Spirit_Of_Sports_-_Digital_Art_-_Running_The_Distance_674513fd-46c8-437e-922e-6d78c092d164_grande.jpg?v=1480335905"/>
-
             </div>
-         
-       
-        
         </p:fieldset>
          </div>
-        
-        
+                         
+                                
+                                <p:dialog visible="false" >
+                                #{loginAlunoController.logoutAluno()}
+                                #{loginProfessorController.logoutProfessor()}
+                                </p:dialog>
+                                
+       
+
     </h:body>
 </html>
-
-<!--        <p:graphicImage   url="https://x93fitness.com/wp-content/uploads/2013/10/banner21.png"
-                         />-->

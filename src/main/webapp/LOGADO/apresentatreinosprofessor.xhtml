@@ -12,6 +12,7 @@
     <h:body>
       
         <ui:include src="menuprofessorlogado.xhtml"/>
+        
         <c:if test="${loginProfessorController.professorLogado==null}">
                 <script>location.href="indexlogar.xhtml";</script>
         </c:if>

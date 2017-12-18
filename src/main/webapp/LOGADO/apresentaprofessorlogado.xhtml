@@ -42,10 +42,6 @@
             <p:commandButton value="Visualizar Detalhes" oncomplete="PF('widDialVisualizaProfessor').show()"
                              update="dialVisualizaProfessor"/>
           
-            <p:commandButton value="Deletar Perfil" action="#{professorController.deletar(professorController.selectedProfessor)}"
-                             update="tableProfessor :gro">
-                <p:confirm header="Atenção" message="deseja realmente Apagar" />
-            </p:commandButton>
             
             <p:dialog id="dialVisualizaProfessor" visible="false" modal="true" header="Professor Cadastrado"
                       resizable="false" widgetVar="widDialVisualizaProfessor">

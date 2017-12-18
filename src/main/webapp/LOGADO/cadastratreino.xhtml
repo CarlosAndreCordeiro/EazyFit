@@ -28,13 +28,22 @@
                         <p:panel header="Detalhes do Treino">
                             <p:panelGrid columns="3">
                                
+                                
+                                <c:if test="${loginProfessorController.professorLogado!=null}">
+                                <script> treinoController.selectedTreino.professor=loginProfessorController.professorLogado;</script>
+                                </c:if>
+        
+                                
                                 <h:outputText value="Professor"/>
-                                <h:outputText value="#{loginProfessorController.professorLogado.nome}" />
-                               
+                                <h:outputText value="#{treinoController.selectedTreino.professor.nome}" />
+           
+                                
+                                
+<!--                                
                                 <p:dialog visible="false" >
                                     #{treinoController.selectedTreino.professor=loginProfessorController.professorLogado}
                                 </p:dialog>
-                                
+                                -->
                                 <h:outputText  value="Nome*:"/>
                                 <p:inputText id="txtNome" 
                                              value="#{treinoController.selectedTreino.nome}" required="true"
