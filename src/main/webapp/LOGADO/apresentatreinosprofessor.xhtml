@@ -11,11 +11,13 @@
     </h:head>
     <h:body>
       
+        
+        
         <ui:include src="menuprofessorlogado.xhtml"/>
         
-        <c:if test="${loginProfessorController.professorLogado==null}">
-                <script>location.href="indexlogar.xhtml";</script>
-        </c:if>
+            <c:if test="${loginProfessorController.professorLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+            </c:if>
         
         
         
@@ -57,10 +59,10 @@
             <p:commandButton value="Alterar" action="alteratreino.xhtml"/>
             <p:commandButton value="Deletar" action="#{treinoController.deletar(treinoController.selectedTreino)}"
                              update="tableTreino :gro">
-                <p:confirm header="Atenção" message="deseja realmente Apagar o Exercício" />
+                <p:confirm header="Atenção" message="deseja realmente Apagar o Treino" />
             </p:commandButton>
             
-            <p:dialog id="dialVisualizaTreino" visible="false" modal="true" header="Exercicios Cadastrados"
+            <p:dialog id="dialVisualizaTreino" visible="false" modal="true" header="Treinos Cadastrados"
                       resizable="false" widgetVar="widDialVisualizaTreino">
                 <p:panelGrid columns="2">
                     
@@ -79,11 +81,8 @@
                     <h:outputText value="Intensidade"/>
                     <h:outputText value="#{treinoController.selectedTreino.intensidade}"/>
                     
-                    <h:outputText value="Exercicios"/>
-                    <h:outputText value="#{treinoController.selectedTreino.exercicios}"/>
-                    
                     <h:outputText value="Professor"/>
-                    <h:outputText value="#{treinoController.selectedTreino.professor}"/>
+                    <h:outputText value="#{treinoController.selectedTreino.professor.nome}"/>
                     
                     
                     

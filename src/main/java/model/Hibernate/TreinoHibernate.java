@@ -30,7 +30,7 @@ public class TreinoHibernate implements TreinoDao {
         return instance;
     }
 
-    public TreinoHibernate() {
+    private TreinoHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();

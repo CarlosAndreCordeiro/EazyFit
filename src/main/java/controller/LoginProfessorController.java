@@ -15,7 +15,7 @@ public class LoginProfessorController {
     private Professor professorLogado = null;
 
     public LoginProfessorController() {
-        professorLogado = new Professor();
+     
     }
 
     public Professor getProfessorLogado() {
@@ -27,8 +27,6 @@ public class LoginProfessorController {
     }
 
 public String realizarLoginProfessor(String login,String senha){
-    
-    professorLogado=null;
     List<Professor> professors = new ProfessorController().recuperarTodos();
      
      for(Professor m : professors){

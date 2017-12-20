@@ -11,10 +11,10 @@
     </h:head>
     <h:body>
         <ui:include src="menualunologado.xhtml"/>
-        
         <c:if test="${loginAlunoController.alunoLogado==null}">
             <script>location.href="indexlogar.xhtml";</script>
         </c:if>
+        
         
         
         <p:growl id="gro" showDetail="true"/>
@@ -56,10 +56,6 @@
                     
                     <h:outputText value="Descrição:"/>
                     <h:outputText value="#{exercicioController.selectedExercicio.descricao}"/>
-                    
-                    <h:outputText value="Repetições"/>
-                    <h:outputText value="#{exercicioController.selectedExercicio.repeticoes}"/>
-                    
                 </p:panelGrid>
             </p:dialog>
             

@@ -1,6 +1,9 @@
 package model;
 
 import java.util.List;
+import java.util.Objects;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,6 +21,8 @@ import javax.persistence.OneToOne;
  * @author BobaNote
  */
 @Entity
+@ManagedBean
+@RequestScoped
 public class Treino {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +36,7 @@ public class Treino {
     
     @Column(length = 3)
     private int duracao;
+
     
     @OneToOne 
     private Professor professor;   
@@ -38,19 +44,20 @@ public class Treino {
     @Column(length = 6)
     private String intensidade;    
     
+
     @ManyToMany (fetch = FetchType.EAGER)
     private List<Exercicio> exercicios;
     
     @ManyToOne
-    @JoinColumn(name = "aluno_id"  )
+    @JoinColumn(name = "aluno_id" )
     private Aluno aluno;
 
+    
     @Deprecated
     public Treino() {
     }
 
     public Treino( String nome, String descricao, int duracao, Professor professor, String intensidade, List<Exercicio> exercicios, Aluno aluno) {
-        
         this.nome = nome;
         this.descricao = descricao;
         this.duracao = duracao;
@@ -123,5 +130,66 @@ public class Treino {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.codigo;
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.descricao);
+        hash = 67 * hash + this.duracao;
+        hash = 67 * hash + Objects.hashCode(this.professor);
+        hash = 67 * hash + Objects.hashCode(this.intensidade);
+        hash = 67 * hash + Objects.hashCode(this.exercicios);
+        hash = 67 * hash + Objects.hashCode(this.aluno);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Treino other = (Treino) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (this.duracao != other.duracao) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.intensidade, other.intensidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.professor, other.professor)) {
+            return false;
+        }
+        if (!Objects.equals(this.exercicios, other.exercicios)) {
+            return false;
+        }
+        if (!Objects.equals(this.aluno, other.aluno)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Treino{" + "codigo=" + codigo + ", nome=" + nome + ", descricao=" + descricao + ", duracao=" + duracao + ", professor=" + professor + ", intensidade=" + intensidade + ", exercicios=" + exercicios + ", aluno=" + aluno + '}';
+    }
+
+
+
 
 }

@@ -11,20 +11,16 @@
     </h:head>
     <h:body>
        
-      
         <ui:include src="menuprofessorlogado.xhtml"/>
-
-        <c:if test="${loginProfessorController.professorLogado==null}">
-                <script>location.href="indexlogar.xhtml";</script>
-        </c:if>
         
-        
-        
+            <c:if test="${loginProfessorController.professorLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+            </c:if>
         
         <p:growl id="gro" showDetail="true"/>
         <h:form id="formApresentaExe">
             <p:dataTable id="tableExercicio" var="item" value="#{exercicioController.recuperarTodos()}"
-                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
+                         paginator="true" rows="10" rowKey="#{item.codigo}" selectionMode="single"
                          selection="#{exercicioController.selectedExercicio}">
                 
                 
@@ -63,10 +59,7 @@
                     
                     <h:outputText value="Descrição:"/>
                     <h:outputText value="#{exercicioController.selectedExercicio.descricao}"/>
-                    
-                    <h:outputText value="Repetições"/>
-                    <h:outputText value="#{exercicioController.selectedExercicio.repeticoes}"/>
-                    
+
                 </p:panelGrid>
             </p:dialog>
             

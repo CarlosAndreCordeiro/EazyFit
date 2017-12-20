@@ -27,7 +27,7 @@ public class ProfessorController {
     private ProfessorHibernate instance;
 
     public ProfessorController(){
-        instance = new ProfessorHibernate();
+        instance = ProfessorHibernate.getInstance();
         this.repositorioProfessor= instance.recuperarTodos();
        this.selectedProfessor = new Professor();
     }

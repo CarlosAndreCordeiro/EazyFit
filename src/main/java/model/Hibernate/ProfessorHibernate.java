@@ -27,7 +27,7 @@ public class ProfessorHibernate implements ProfessorDao {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ProfessorHibernate() {
+    private ProfessorHibernate() {
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();
     }

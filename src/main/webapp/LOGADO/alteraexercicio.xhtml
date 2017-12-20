@@ -9,12 +9,13 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+
         <ui:include src="menuprofessorlogado.xhtml"/>
         
-        <c:if test="${loginProfessorController.professorLogado==null}">
+            <c:if test="${loginProfessorController.professorLogado==null}">
             <script>location.href="indexlogar.xhtml";</script>
-        </c:if>
-        
+            </c:if>
+                
         
         
         
@@ -31,11 +32,10 @@
                     
                     <h:outputText value="Descricção"/>
                     <p:inputTextarea value="#{exercicioController.selectedExercicio.descricao}"/>
-                    
-                    <h:outputText value="Repetições"/>
-                    <p:inputText value="#{exercicioController.selectedExercicio.repeticoes}"/>
-                    
-                    
+
+                    <h:outputText value="Repetções"/>
+                    <p:inputTextarea value="#{exercicioController.selectedExercicio.repeticoes}"/>
+
                 </p:panelGrid>
                 <p:commandButton value="alterar" action="#{exercicioController.alterar}"/>
                 

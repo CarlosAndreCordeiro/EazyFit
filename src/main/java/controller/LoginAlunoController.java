@@ -55,7 +55,6 @@ public class LoginAlunoController {
 
 public String realizarLoginAluno(String login,String senha){
     
-    alunoLogado=null;
     List<Aluno> alunos = new AlunoController().recuperarTodos();
      
      for(Aluno m : alunos){

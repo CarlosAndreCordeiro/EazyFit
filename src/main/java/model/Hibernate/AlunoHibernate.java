@@ -32,7 +32,7 @@ public class AlunoHibernate implements AlunoDao {
 
     }
 
-    public AlunoHibernate() {
+    private AlunoHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();

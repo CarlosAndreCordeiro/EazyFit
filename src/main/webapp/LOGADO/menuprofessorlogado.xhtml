@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>EzFitMenu</title>
     </h:head>
@@ -13,7 +14,15 @@
     </h:head>
 
     <h:body>
-     
+
+        
+            <c:if test="${loginProfessorController.professorLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+            </c:if>
+        
+        
+        
+        
         <h:form id="ezformMenu">
             <h:form id="formMenu">
                 <p:menubar>

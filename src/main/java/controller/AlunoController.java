@@ -28,7 +28,7 @@ public class AlunoController {
     private AlunoHibernate instance;
 
     public AlunoController(){
-        instance = new AlunoHibernate();
+        instance = AlunoHibernate.getInstance();
         this.repositorioAluno= instance.recuperarTodos();
        this.selectedAluno = new Aluno();
     }

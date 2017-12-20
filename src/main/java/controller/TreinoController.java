@@ -5,11 +5,13 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import model.Exercicio;
 import model.Treino;
 import model.Hibernate.TreinoHibernate;
 import model.Professor;
@@ -22,32 +24,33 @@ import model.Professor;
 @SessionScoped
 public class TreinoController {
 
-    private List<Treino> repositorioTreino = null;
-
+    private List<Treino> repositorioTreino = new ArrayList<>();
+    private List<Exercicio> exercicios = null; 
     private Treino selectedTreino;
 
     private TreinoHibernate instance;
 
     public TreinoController() {
-        instance = new TreinoHibernate();
+        instance = TreinoHibernate.getInstance(); 
         this.repositorioTreino = instance.recuperarTodos();
         this.selectedTreino = new Treino();
+        this.exercicios = new ArrayList<>(); 
+        
     }
 
-    public void adicionar() {
+    public String adicionar() {
 
 //       Professor p = (Professor) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("professorLogado");
 //
 //        this.selectedTreino.setProfessor(p);
+//        this.selectedTreino.setExercicios(this.exercicios);
 
         this.instance.adiciona(this.selectedTreino);
-       
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Treino " + selectedTreino.getNome() + " foi cadastrado com sucesso"));
-
         this.selectedTreino = new Treino();
-
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Treino " + selectedTreino.getNome() + " foi cadastrado com sucesso"));
+        
+        return "apresentatreinosprofessor.xhtml";
     }
-
 
 
 public String alterar() {
@@ -96,4 +99,20 @@ public String alterar() {
     public void setInstance(TreinoHibernate instance) {
         this.instance = instance;
     }
+
+    public List<Exercicio> getExercicios() {
+        return exercicios;
+    }
+
+    public void setExercicios(List<Exercicio> rexercicios) {
+        this.exercicios = exercicios;
+    }
+    
+    public void listaExercicio(Exercicio ex) {
+        this.exercicios.add(ex);
+        
+        this.selectedTreino.setExercicios(this.exercicios);
+        
+    }
+    
 }

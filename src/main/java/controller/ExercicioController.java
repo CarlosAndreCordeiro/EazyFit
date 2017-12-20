@@ -29,17 +29,18 @@ public class ExercicioController {
     private ExercicioHibernate instance;
 
     public ExercicioController(){
-        instance = new ExercicioHibernate();
+        instance = ExercicioHibernate.getInstance();
         this.repositorioExercicio= instance.recuperarTodos();
        this.selectedExercicio = new Exercicio();
     }
    
-    public void adicionar(){
+    public String adicionar(){
 
         
             instance.adiciona(selectedExercicio);
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Exercicio "+ selectedExercicio.getNome() +" foi cadastrado com sucesso"));
            this.selectedExercicio= new Exercicio();
+           return "apresentaexerciciosprofessor.xhtml";
            
     }
     

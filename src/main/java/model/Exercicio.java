@@ -1,6 +1,7 @@
 
 package model;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,19 +24,17 @@ public class Exercicio  {
     private String nome;
     @Column
     private String descricao;
-    @Column(length = 2)
-    private int repeticoes;
 
+    
     
     @Deprecated
     public Exercicio() {
     }
 
-    public Exercicio(String nome, String descricao, int repeticoes) {
+    public Exercicio( String nome, String descricao, int repeticoes) {
+        
         this.nome = nome;
         this.descricao = descricao;
-        this.repeticoes = repeticoes;
-        
     }
 
     public int getCodigo() {
@@ -62,15 +61,46 @@ public class Exercicio  {
         this.descricao = descricao;
     }
 
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.codigo;
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.descricao);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Exercicio other = (Exercicio) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Exercicio{" + "codigo=" + codigo + ", nome=" + nome + ", descricao=" + descricao + '}';
+    }
+
     
-    public int getRepeticoes() {
-        return repeticoes;
-    }
-
-    public void setRepeticoes(int repeticoes) {
-        this.repeticoes = repeticoes;
-    }
-
+    
+    
     
 }
 

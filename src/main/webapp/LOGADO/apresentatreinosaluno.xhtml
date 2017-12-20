@@ -11,6 +11,7 @@
     </h:head>
     <h:body>
         
+      
         <ui:include src="menualunologado.xhtml"/>
         
         <c:if test="${loginAlunoController.alunoLogado==null}">
@@ -22,7 +23,7 @@
         <p:growl id="gro" showDetail="true"/>
         <h:form id="formApresentaTre">
             <p:dataTable id="tableTreino" var="item" value="#{treinoController.recuperarTodos()}"
-                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
+                         paginator="true" rows="10" rowKey="#{item.codigo}" selectionMode="single"
                          selection="#{treinoController.selectedTreino}">
                 
                 
@@ -56,7 +57,7 @@
                              update="dialVisualizaTreino"/>
             
             
-            <p:dialog id="dialVisualizaTreino" visible="false" modal="true" header="Exercicios Cadastrados"
+            <p:dialog id="dialVisualizaTreino" visible="false" modal="true" header="Treino Cadastrado"
                       resizable="false" widgetVar="widDialVisualizaTreino">
                 <p:panelGrid columns="2">
                     
@@ -75,11 +76,9 @@
                     <h:outputText value="Intensidade"/>
                     <h:outputText value="#{treinoController.selectedTreino.intensidade}"/>
                     
-                    <h:outputText value="Exercicios"/>
-                    <h:outputText value="#{treinoController.selectedTreino.exercicios}"/>
-                    
                     <h:outputText value="Professor"/>
-                    <h:outputText value="#{treinoController.selectedTreino.professor}"/>
+                    <h:outputText value="#{treinoController.selectedTreino.professor.nome}"/>
+                    
                     
                     
                     
