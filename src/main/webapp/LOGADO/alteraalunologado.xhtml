@@ -22,17 +22,17 @@
         <h:form>
             <p:fieldset legend="Alterar Aluno">
                 <p:panelGrid columns="2">
-                    <h:outputText value="Código"/>
-                    <h:outputText value="#{loginAlunoController.alunoLogado.codigo}"/>
-                    
-                    <h:outputText value="Nome"/>
-                    <p:inputText value="#{loginAlunoController.alunoLogado.nome}"/>
-                    
+                   
+                
                     <h:outputText value="CPF"/>
                     <p:inputMask value="#{loginAlunoController.alunoLogado.cpf}" mask="999.999.999-99" />
+                        
+                    <h:outputText value="Telefone"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.telefone}"/>
+                    
                     
                     <h:outputText value="Objetivo"/>
-                    <p:inputText value="#{loginAlunoController.alunoLogado.objetivo}"/>
+                    <p:inputTextarea value="#{loginAlunoController.alunoLogado.objetivo}"/>
                     
                     <h:outputText value="Peso"/>
                     <p:inputText value="#{loginAlunoController.alunoLogado.peso}"/>
@@ -57,7 +57,7 @@
                     <p:inputText value="#{loginAlunoController.alunoLogado.email}"/>
                     
                     <h:outputText value="Senha"/>
-                    <p:inputText value="#{loginAlunoController.alunoLogado.senha}"/>
+                    <p:password  value="#{loginAlunoController.alunoLogado.senha}"/>
 
                     
                     

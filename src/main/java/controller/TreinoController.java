@@ -11,6 +11,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import model.Aluno;
 import model.Exercicio;
 import model.Treino;
 import model.Hibernate.TreinoHibernate;
@@ -76,8 +77,8 @@ public String alterar() {
         return instance.recuperarTodos();
     }
 
-        public List<Treino> recuperarPorCodigo(){
-        return instance.recuperarTodos();
+        public List<Treino> recuperarPorCodigo(int codigo){
+        return instance.recuperarPorCodigo(codigo);
     }
 
         
@@ -120,4 +121,5 @@ public String alterar() {
         
     }
     
+   
 }

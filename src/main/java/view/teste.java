@@ -49,21 +49,21 @@ public class teste {
 //        exercicios.add(e2);
 
      
-        AlunoHibernate ah = new AlunoHibernate();
-        Aluno a = new Aluno( );
-        
-        ah.adiciona(a);
-        
-        
-        
-        TreinoHibernate th = new TreinoHibernate();
-        Treino t = new Treino("rasga peito", "descricao", 0, null, "intensidade", exercicios, a);
-        th.adiciona(t);
-        t = th.recuperarNome("rasga peito");
-        treinos.add(t);
-       
-        t.setAluno(a);
-     
+//        AlunoHibernate ah = new AlunoHibernate();
+//        Aluno a = new Aluno( );
+//        
+//        ah.adiciona(a);
+//        
+//        
+//        
+//        TreinoHibernate th = new TreinoHibernate();
+//        Treino t = new Treino("rasga peito", "descricao", 0, null, "intensidade", exercicios, a);
+//        th.adiciona(t);
+//        t = th.recuperarNome("rasga peito");
+//        treinos.add(t);
+//       
+//        t.setAluno(a);
+//     
      
     }
 }

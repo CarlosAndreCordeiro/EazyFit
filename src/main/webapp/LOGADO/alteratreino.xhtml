@@ -66,13 +66,13 @@
                                 <p:column headerText="Nome" filterBy="#{item.nome}" >
                                     #{item.nome}
                                 </p:column>
-                                <p:column headerText="CPF"  >
-                                    #{item.cpf}
+                                <p:column headerText="Telefone"  >
+                                    #{item.telefone}
                                 </p:column>
-                                <p:column headerText="Adicionar">
-                                    <p:commandButton value="Adicionar"  >
-                                        <f:setPropertyActionListener value="#{item}" target="#{treinoController.selectedTreino.aluno}"/>
-                                    </p:commandButton>
+                                <p:column headerText="Objetivo">
+                                    #{item.objetivo}
+                                   
+                                        
                                 </p:column>
                             </p:dataTable>
                         </p:panel>

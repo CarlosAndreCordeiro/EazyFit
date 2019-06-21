@@ -34,15 +34,13 @@
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
                     #{item.nome}
                 </p:column>
-                <p:column headerText="Descrição" filterBy="#{item.descricao}">
-                    #{item.descricao}
-                </p:column>
+                
                 <p:column headerText="Aluno" filterBy="#{item.aluno.nome}">
                     #{item.aluno.nome}
                 </p:column>
                 <p:column headerText="Exercicios">
                     <ui:repeat var="listExercicios" value="#{item.exercicios}">
-                        #{listExercicios.nome}<br/>
+                        #{listExercicios.nome} <br/>  
                     </ui:repeat>
                 </p:column>
                 
@@ -89,9 +87,10 @@
                     <a href="apresentaexerciciosprofessor.xhtml">Exercícios</a>
                      
                    
-                        <ui:repeat var="listExercicios" 
+                                   <ui:repeat var="listExercicios" 
                         value="#{treinoController.selectedTreino.exercicios}">
-                      ● #{listExercicios.nome }<br/>
+                            ● #{listExercicios.nome }  <a href=" #{listExercicios.link}" target="_blank">Assistir</a> <br/>
+                        
                     </ui:repeat>
                     
                     

@@ -9,6 +9,11 @@
         <title>CadAluno</title>
     </h:head>
     <h:body>
+        
+        
+        
+        
+                                
         <ui:include src="menuindexlogado.xhtml"/>
         <h:form id="formCadAluno">
             <p:growl life="200" showDetail="true" showSummary="true" sticky="true"/>
@@ -17,25 +22,34 @@
                 
                 <p:panelGrid columns="3">
                     
-                    <h:outputText value="CPF*:"/>
-                    <p:inputMask id="txtCPF" value="#{alunoController.selectedAluno.cpf}" mask="999.999.999-99" required="true" requiredMessage="CPF Obrigatório"/>
-                    <p:message for='txtCPF' />
-                
+                  
+                    
                     
                     <h:outputText  value="Nome*:"/>
                     <p:inputText id="txtNome" 
                                  value="#{alunoController.selectedAluno.nome}" required="true"
                                  requiredMessage="Nome Obriatório"/>
                     <p:message for="txtNome"/>
+                    
+                  
+                    
+                    
+                    <h:outputText value="CPF:"/>
+                    <p:inputMask id="txtCPF" value="#{alunoController.selectedAluno.cpf}" 
+                                 mask="999.999.999-99" required="true" requiredMessage="CPF Obrigatório"/>
+                    <p:message for='txtCPF' />
+                
+                    
+                    
                
                     <h:outputText  value="Senha*:"/>
-                    <p:inputText id="txtSenha" 
+                     <p:password  id="txtSenha" 
                                  value="#{alunoController.selectedAluno.senha}" required="true"
                                  requiredMessage="Senha Obriatória"/>
                     <p:message for="txtSenha"/>
                     
                     <h:outputText value="Objetivo"/>
-                    <p:inputText id="txtObjetivo"
+                    <p:inputTextarea id="txtObjetivo"
                                  value="#{alunoController.selectedAluno.objetivo}" required="true"
                         requiredMessage="Objetivo obrigatório"/> 
                     <p:message for="txtObjetivo"/>
@@ -50,6 +64,7 @@
                                  value="#{alunoController.selectedAluno.altura}" mask="9.99"/>
                     <p:message for="txtAltura"/>
                     
+                   
                     
                     <h:outputText value="Data de Nascimento"/>
                     <p:inputMask id="txtDataNascimento" value="#{alunoController.selectedAluno.dataNascimento}" mask="99/99/9999"/>

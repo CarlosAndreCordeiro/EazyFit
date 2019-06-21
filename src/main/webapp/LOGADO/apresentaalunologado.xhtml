@@ -33,7 +33,7 @@
 <!--                <p:column headerText="Codigo" >
                     #{item.codigo}
                 </p:column>-->
-                <p:column headerText="Nome" filterBy="#{item.nome}" >
+                <p:column headerText="Nome" >
                     #{item.nome}
                 </p:column>
 
@@ -58,8 +58,10 @@
                       resizable="false" widgetVar="widDialVisualizaAluno">
                 <p:panelGrid columns="2">
                     
-                    <h:outputText value="Código:"/>
-                    <h:outputText value="#{loginAlunoController.alunoLogado.codigo}"/>
+                   <h:outputText value="Telefone:"/>
+                   <h:outputText value="#{loginAlunoController.alunoLogado.telefone}"/>
+                    
+                    
                     
                     <h:outputText value="Nome:"/>
                     <h:outputText value="#{loginAlunoController.alunoLogado.nome}"/>
@@ -88,9 +90,9 @@
                     <h:outputText value="e-mail:"/>
                     <h:outputText value="#{loginAlunoController.alunoLogado.email}"/>
                     
-                    <h:outputText value="Senha"/>
-                    <h:outputText value="#{loginAlunoController.alunoLogado.senha}"/>
-                    
+                    <h:outputText value="Kms:"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.kms}"/>
+                   
                 </p:panelGrid>
             </p:dialog>
             
