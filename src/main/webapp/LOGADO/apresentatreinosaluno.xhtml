@@ -31,7 +31,7 @@
                     Treinos Cadastrados
                 </f:facet>
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
-                    #{item.nome}
+                    111.111.111-11#{item.nome}
                 </p:column>
                 <p:column headerText="Descrição">
                     #{item.descricao}
@@ -41,7 +41,7 @@
                 </p:column>
                 <p:column headerText="Exercicios">
                     <ui:repeat var="listExercicios" value="#{item.exercicios}">
-                       ● #{listExercicios.nome}<br/>
+                       #{listExercicios.nome}<br/>
                     </ui:repeat>
                 </p:column>
                 
@@ -84,7 +84,7 @@
                      
                         <ui:repeat var="listExercicios" 
                         value="#{treinoController.selectedTreino.exercicios}">
-                        ● #{listExercicios.nome }<br/>
+                            ● #{listExercicios.nome }  <a href=" #{listExercicios.link}" target="_blank">Assistir</a> <br/>
                         
                     </ui:repeat>
                     
