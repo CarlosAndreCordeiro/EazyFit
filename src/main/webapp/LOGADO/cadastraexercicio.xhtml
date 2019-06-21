@@ -32,16 +32,25 @@
                     
                     <h:outputText  value="Nome:"/>
                     <p:inputText id="txtNome" 
-                                 value="#{exercicioController.selectedExercicio.nome}" required="true"
+                                 value="#{exercicioController.cadExercicio.nome}" required="true"
                                  requiredMessage="Nome Obriatório"/>
                     <p:message for="txtNome"/>
                
                     
                     <h:outputText value="Descrição"/>
                     <p:inputTextarea id="txtDescricao"
-                                 value="#{exercicioController.selectedExercicio.descricao}" required="true"
+                                     value="#{exercicioController.cadExercicio.descricao}" required="true"
                         requiredMessage="Descreva o Exercício"/> 
                     <p:message for="txtDescricao"/>
+                    
+                    
+                                        
+                    <h:outputText  value="Link:"/>
+                    <p:inputText id="txtLink" 
+                                 value="#{exercicioController.cadExercicio.link}" required="false"
+                                 requiredMessage="Link Obriatório"/>
+                    <p:message for="txtLink"/>
+               
                    
           
                 </p:panelGrid>

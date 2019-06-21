@@ -50,11 +50,12 @@ public abstract class Pessoa implements Serializable{
     private String email;
     @Column(length = 20)
     private String senha;
-    
-    public Pessoa() {
-    }
+    @Column
+    private double kms;
+    @Column 
+    private String telefone;
 
-    public Pessoa( String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha) {
+    public Pessoa( String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone) {
         
         this.cpf = cpf;
         this.nome = nome;
@@ -63,88 +64,105 @@ public abstract class Pessoa implements Serializable{
         this.dataNascimento = dataNascimento;
         this.email = email;
         this.senha = senha;
+        this.kms = kms;
+        this.telefone = telefone;
+        
+    }
+    public Pessoa() {
+        
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getEndereco() {
         return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 
     public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
     public String getDataNascimento() {
         return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getSenha() {
         return senha;
+    }
+
+    public double getKms() {
+        return kms;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+ 
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" + "codigo=" + codigo + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", email=" + email + ", senha=" + senha + '}';
+    public void setKms(double kms) {
+        this.kms = kms;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.codigo;
-        hash = 97 * hash + Objects.hashCode(this.cpf);
-        hash = 97 * hash + Objects.hashCode(this.nome);
-        hash = 97 * hash + Objects.hashCode(this.endereco);
-        hash = 97 * hash + Objects.hashCode(this.sexo);
-        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
-        hash = 97 * hash + Objects.hashCode(this.email);
-        hash = 97 * hash + Objects.hashCode(this.senha);
+        int hash = 7;
+        hash = 37 * hash + this.codigo;
+        hash = 37 * hash + Objects.hashCode(this.cpf);
+        hash = 37 * hash + Objects.hashCode(this.nome);
+        hash = 37 * hash + Objects.hashCode(this.endereco);
+        hash = 37 * hash + Objects.hashCode(this.sexo);
+        hash = 37 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 37 * hash + Objects.hashCode(this.email);
+        hash = 37 * hash + Objects.hashCode(this.senha);
+        hash = 37 * hash + (int) (Double.doubleToLongBits(this.kms) ^ (Double.doubleToLongBits(this.kms) >>> 32));
+        hash = 37 * hash + Objects.hashCode(this.telefone);
         return hash;
     }
 
@@ -161,6 +179,9 @@ public abstract class Pessoa implements Serializable{
         }
         final Pessoa other = (Pessoa) obj;
         if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.kms) != Double.doubleToLongBits(other.kms)) {
             return false;
         }
         if (!Objects.equals(this.cpf, other.cpf)) {
@@ -184,9 +205,16 @@ public abstract class Pessoa implements Serializable{
         if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
         return true;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Pessoa{" + "codigo=" + codigo + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", email=" + email + ", senha=" + senha + ", kms=" + kms + ", telefone=" + telefone + '}';
+    }
+        
     
 }

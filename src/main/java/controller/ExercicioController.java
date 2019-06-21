@@ -22,24 +22,27 @@ import model.Hibernate.ExercicioHibernate;
 @SessionScoped
 public class ExercicioController {
     
-        private List<Exercicio> repositorioExercicio = null;
+    private List<Exercicio> repositorioExercicio = null;
     
     private Exercicio selectedExercicio;
-    
+    private Exercicio cadExercicio;
     private ExercicioHibernate instance;
 
     public ExercicioController(){
         instance = ExercicioHibernate.getInstance();
-        this.repositorioExercicio= instance.recuperarTodos();
+        
+       this.repositorioExercicio= instance.recuperarTodos();
        this.selectedExercicio = new Exercicio();
+       this.cadExercicio = new Exercicio();
+
     }
    
     public String adicionar(){
 
         
-            instance.adiciona(selectedExercicio);
-           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Exercicio "+ selectedExercicio.getNome() +" foi cadastrado com sucesso"));
-           this.selectedExercicio= new Exercicio();
+            instance.adiciona(cadExercicio);
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Exercicio "+ cadExercicio.getNome() +" foi cadastrado com sucesso"));
+           this.cadExercicio= new Exercicio();
            return "apresentaexerciciosprofessor.xhtml";
            
     }
@@ -79,6 +82,15 @@ public class ExercicioController {
         return selectedExercicio;
     }
 
+    
+    public Exercicio getCadExercicio() {
+        return cadExercicio;
+    }
+
+      public void setCadExercicio(Exercicio CadExercicio) {
+        this.cadExercicio = cadExercicio;
+    }
+      
     public void setSelectedExercicio(Exercicio selectedExercicio) {
         this.selectedExercicio = selectedExercicio;
     }

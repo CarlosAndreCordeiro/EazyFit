@@ -46,13 +46,13 @@
                                 <h:outputText value="Descrição"/>
                                 <p:inputTextarea id="txtDescricao"
                                                  value="#{treinoController.selectedTreino.descricao}"  required="true"
-                                                 requiredMessage="Descreva o Exercício"/> 
+                                                 requiredMessage="Descreva o Treino"/> 
                                 <p:message for="txtDescricao"/>
 
                                 <h:outputText value="Duração"/>
                                 <p:inputMask id="txtDuracao"
                                              value="#{treinoController.selectedTreino.duracao}" mask="99" 
-                                             requiredMessage="Descreva o Exercício"/> 
+                                             requiredMessage="Descreva o Treino"/> 
                                 <p:message for="txtDuracao"/>
 
                                 <h:outputLabel value="Intensidade:*" for="Treino"/>
@@ -65,8 +65,10 @@
                                 </p:selectOneMenu>
                                 <p:message for="txtIntensidade"/>
                             </p:panelGrid>
+                            
                         </p:panel>
                     </p:tab>
+                    
                     <p:tab id="addAluno" title="Aluno" >
                         <p:panel header="Selecione o Aluno">
                             <p:dataTable id="tableAluno" var="itemAlno" value="#{alunoController.recuperarTodos()}"
@@ -78,18 +80,11 @@
                                 <p:column headerText="CPF"  >
                                     #{itemAlno.cpf}
                                 </p:column>
-                                
-                                <p:column headerText="Adicionar" width="15%">
-                                    <div align="center" >
-                                    <p:commandButton value="Adicionar"   >
-                                        <f:setPropertyActionListener value="#{itemAlno}" target="#{treinoController.selectedTreino.aluno}"/>
-                                    </p:commandButton>
-                                </div>
-                                </p:column>
                             </p:dataTable>
                         </p:panel>
                     </p:tab>
-                        <p:tab id="addExercicio" title="Exercicios">
+                    
+                   <p:tab id="addExercicio" title="Exercicios">
                         <p:panel header="Exercicios">
                             <p:dataTable id="tabelaExercicios" var="itemExercicio" value="#{exercicioController.recuperarTodos()}"
                                          rowKey="#{itemExercicio.codigo}" rows="5" paginator="true" 
@@ -107,7 +102,7 @@
                                     </div>
                                 <p:column headerText="Opções" width="15%">
                                     <div align="center" >
-                                        <p:commandButton value="Adicionar"  action="#{treinoController.listaExercicio(itemExercicio)}"  >
+                                        <p:commandButton value="Adicionar"  action="#{treinoController.listaExercicio(itemExercicio)}"  > 
                                         <f:setPropertyActionListener value="#{itemExercicio}" target="#{treinoController.selectedTreino.exercicios}"/>
                                     </p:commandButton>
                                       </div> 

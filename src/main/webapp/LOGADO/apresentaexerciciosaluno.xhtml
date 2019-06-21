@@ -20,7 +20,7 @@
         <p:growl id="gro" showDetail="true"/>
         <h:form id="formApresentaExe">
             <p:dataTable id="tableExercicio" var="item" value="#{exercicioController.recuperarTodos()}"
-                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
+                         paginator="true" rows="20" rowKey="#{item.codigo}" selectionMode="single"
                          selection="#{exercicioController.selectedExercicio}">
                 
                 
@@ -37,26 +37,34 @@
                     #{item.descricao}
                 </p:column>
                 
-
+                <p:column headerText="Demonstração">      
+                     <a href="#{item.link}" target="_blank">Assistir</a> 
+                </p:column>
+                
             </p:dataTable>
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaExercicio').show()"
                              update="dialVisualizaExercicio"/>
           
-            
+
             
             <p:dialog id="dialVisualizaExercicio" visible="false" modal="true" header="Exercício Cadastrado"
                       resizable="false" widgetVar="widDialVisualizaExercicio">
                 <p:panelGrid columns="2">
                     
-                    <h:outputText value="Código:"/>
-                    <h:outputText value="#{exercicioController.selectedExercicio.codigo}"/>
+
                     
                     <h:outputText value="Nome:"/>
                     <h:outputText value="#{exercicioController.selectedExercicio.nome}"/>
                     
                     <h:outputText value="Descrição:"/>
                     <h:outputText value="#{exercicioController.selectedExercicio.descricao}"/>
+                    
+                    <h:outputText value="Vídeo"/> 
+                         <a href="#{exercicioController.selectedExercicio.link}" target="_blank">Assistir</a> 
+                    
+                    
                 </p:panelGrid>
+
             </p:dialog>
             
             <p:confirmDialog  id="dialConfirm" global="true" widgetVar="widDialConfirma" >

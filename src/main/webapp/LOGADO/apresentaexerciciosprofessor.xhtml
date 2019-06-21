@@ -32,16 +32,21 @@
                     #{item.nome}
                 </p:column>
                 
-
                 <p:column headerText="Descrição">
                     #{item.descricao}
                 </p:column>
                 
-
+                 <p:column headerText="Demonstração">      
+                     <a href="#{item.link}" target="_blank">Assistir</a> 
+                </p:column>
+                
+                
             </p:dataTable>
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaExercicio').show()"
                              update="dialVisualizaExercicio"/>
+            
             <p:commandButton value="Alterar" action="alteraexercicio.xhtml"/>
+            
             <p:commandButton value="Deletar" action="#{exercicioController.deletar(exercicioController.selectedExercicio)}"
                              update="tableExercicio :gro">
                 <p:confirm header="Atenção" message="deseja realmente Apagar o Exercício" />
@@ -51,14 +56,16 @@
                       resizable="false" widgetVar="widDialVisualizaExercicio">
                 <p:panelGrid columns="2">
                     
-                    <h:outputText value="Código:"/>
-                    <h:outputText value="#{exercicioController.selectedExercicio.codigo}"/>
-                    
+                  
                     <h:outputText value="Nome:"/>
                     <h:outputText value="#{exercicioController.selectedExercicio.nome}"/>
                     
                     <h:outputText value="Descrição:"/>
                     <h:outputText value="#{exercicioController.selectedExercicio.descricao}"/>
+
+                    <h:outputText value="Vídeo"/> 
+                         <a href="#{exercicioController.selectedExercicio.link}" target="_blank">Assistir</a> 
+                    
 
                 </p:panelGrid>
             </p:dialog>

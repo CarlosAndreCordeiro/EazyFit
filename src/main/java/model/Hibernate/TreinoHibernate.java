@@ -8,6 +8,7 @@ package model.Hibernate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import model.Aluno;
 import model.DAO.TreinoDao;
 import model.Treino;
 import org.hibernate.Session;
@@ -30,7 +31,7 @@ public class TreinoHibernate implements TreinoDao {
         return instance;
     }
 
-    private TreinoHibernate() {
+    public TreinoHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();
@@ -113,6 +114,23 @@ public class TreinoHibernate implements TreinoDao {
 
         return treinos;
     }
+    
+    public List<Treino> recuperarPorCodigo(int codigo) {
+        Session session = this.sessions.openSession();
+        List<Treino> treinos = new ArrayList();
+
+        try {
+            treinos = (List<Treino>) session.createQuery( "From Treino Where aluno_id=" + codigo );
+        } catch (Exception e) {
+            System.out.println("Erro ao Recuperar Treinos");
+
+        } finally {
+            session.close();
+        }
+
+        return treinos;
+    }
+
 
     @Override
     public Treino recuperarNome(String nome) {

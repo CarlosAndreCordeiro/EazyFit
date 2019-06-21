@@ -24,26 +24,26 @@ public class Exercicio  {
     private String nome;
     @Column
     private String descricao;
-
+    @Column
+    private String link;
     
     
     @Deprecated
     public Exercicio() {
     }
 
-    public Exercicio( String nome, String descricao, int repeticoes) {
+    public Exercicio( String nome, String descricao, String link) {
         
         this.nome = nome;
         this.descricao = descricao;
+        this.link = link;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+ 
 
     public String getNome() {
         return nome;
@@ -61,13 +61,21 @@ public class Exercicio  {
         this.descricao = descricao;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 67 * hash + this.codigo;
-        hash = 67 * hash + Objects.hashCode(this.nome);
-        hash = 67 * hash + Objects.hashCode(this.descricao);
+        int hash = 7;
+        hash = 97 * hash + this.codigo;
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.descricao);
+        hash = 97 * hash + Objects.hashCode(this.link);
         return hash;
     }
 
@@ -86,8 +94,13 @@ public class Exercicio  {
         if (this.codigo != other.codigo) {
             return false;
         }
-
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
         if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.link, other.link)) {
             return false;
         }
         return true;
@@ -95,9 +108,10 @@ public class Exercicio  {
 
     @Override
     public String toString() {
-        return "Exercicio{" + "codigo=" + codigo + ", nome=" + nome + ", descricao=" + descricao + '}';
+        return "Exercicio{" + "codigo=" + codigo + ", nome=" + nome + ", descricao=" + descricao + ", link=" + link + '}';
     }
 
+           
     
     
     

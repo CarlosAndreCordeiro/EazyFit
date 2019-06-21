@@ -18,15 +18,13 @@ public class Professor extends Pessoa{
     public Professor() {
     }
 
-    
-    public Professor(String cref, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha) {
-        super(cpf, nome, endereco, sexo, dataNascimento, email, senha);
+    public Professor(String cref, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone) {
+        super(cpf, nome, endereco, sexo, dataNascimento, email, senha, kms, telefone);
         this.cref = cref;
     }
 
     public String getCref() {
         return cref;
-        
     }
 
     public void setCref(String cref) {
@@ -34,14 +32,9 @@ public class Professor extends Pessoa{
     }
 
     @Override
-    public String toString() {
-        return "Professor{" + "cref=" + cref + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.cref);
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.cref);
         return hash;
     }
 
@@ -63,6 +56,14 @@ public class Professor extends Pessoa{
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Professor{" + "cref=" + cref + '}';
+    }
+
+    
+    
+    
     
     
 }

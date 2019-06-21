@@ -29,12 +29,9 @@ public class Aluno extends Pessoa {
     public Aluno(){
     }
 
-    
-    
-    public Aluno(String objetivo, double altura, double peso, List<Treino> treinos, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha) {
-        super(cpf, nome, endereco, sexo, dataNascimento, email, senha);
+    public Aluno(String objetivo, double peso, List<Treino> treinos, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone) {
+        super(cpf, nome, endereco, sexo, dataNascimento, email, senha, kms, telefone);
         this.objetivo = objetivo;
-        this.altura = altura;
         this.peso = peso;
         this.treinos = treinos;
     }
@@ -43,28 +40,28 @@ public class Aluno extends Pessoa {
         return objetivo;
     }
 
-    public void setObjetivo(String objetivo) {
-        this.objetivo = objetivo;
-    }
-
     public double getAltura() {
         return altura;
-    }
-
-    public void setAltura(double altura) {
-        this.altura = altura;
     }
 
     public double getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
-        this.peso = peso;
-    }
-
     public List<Treino> getTreinos() {
         return treinos;
+    }
+
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
     public void setTreinos(List<Treino> treinos) {
@@ -72,17 +69,12 @@ public class Aluno extends Pessoa {
     }
 
     @Override
-    public String toString() {
-        return "Aluno{" + "objetivo=" + objetivo + ", altura=" + altura + ", peso=" + peso + ", treinos=" + treinos + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + Objects.hashCode(this.objetivo);
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
-        hash = 71 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
-        hash = 71 * hash + Objects.hashCode(this.treinos);
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.objetivo);
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
+        hash = 31 * hash + Objects.hashCode(this.treinos);
         return hash;
     }
 
@@ -113,7 +105,14 @@ public class Aluno extends Pessoa {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Aluno{" + "objetivo=" + objetivo + ", altura=" + altura + ", peso=" + peso + ", treinos=" + treinos + '}';
+    }
+
+
     
     
+       
     
 }

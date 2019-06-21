@@ -76,6 +76,11 @@ public String alterar() {
         return instance.recuperarTodos();
     }
 
+        public List<Treino> recuperarPorCodigo(){
+        return instance.recuperarTodos();
+    }
+
+        
     public List<Treino> getRepositorioTreino() {
         return repositorioTreino;
     }

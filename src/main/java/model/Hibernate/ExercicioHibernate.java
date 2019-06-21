@@ -34,7 +34,7 @@ public class ExercicioHibernate implements ExercicioDao {
         return instance;
     }
 
-     private ExercicioHibernate() {
+     public ExercicioHibernate() {
 
         Configuration cfg = new Configuration().configure();
         this.sessions = cfg.buildSessionFactory();

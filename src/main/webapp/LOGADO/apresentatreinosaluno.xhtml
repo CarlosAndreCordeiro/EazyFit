@@ -27,7 +27,7 @@
                          selection="#{treinoController.selectedTreino}">
                 
                 
-                <f:facet name="header">
+                 <f:facet name="header">
                     Treinos Cadastrados
                 </f:facet>
                 <p:column headerText="Nome" filterBy="#{item.nome}" >
@@ -41,16 +41,15 @@
                 </p:column>
                 <p:column headerText="Exercicios">
                     <ui:repeat var="listExercicios" value="#{item.exercicios}">
-                        #{listExercicios.nome}<br/>
+                       ● #{listExercicios.nome}<br/>
                     </ui:repeat>
                 </p:column>
                 
-                <p:column headerText="Professor">
+                <p:column headerText="Professor" filterBy="#{item.professor.nome}">
                     <ui:repeat var="itemProfessor" value="#{item.professor}">
                         #{itemProfessor.nome}<br/>
                     </ui:repeat>
                 </p:column>
-                                
                 
             </p:dataTable>
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaTreino').show()"
@@ -61,8 +60,7 @@
                       resizable="false" widgetVar="widDialVisualizaTreino">
                 <p:panelGrid columns="2">
                     
-                    <h:outputText value="Código:"/>
-                    <h:outputText value="#{treinoController.selectedTreino.codigo}"/>
+                   
                     
                     <h:outputText value="Nome:"/>
                     <h:outputText value="#{treinoController.selectedTreino.nome}"/>
@@ -78,6 +76,17 @@
                     
                     <h:outputText value="Professor"/>
                     <h:outputText value="#{treinoController.selectedTreino.professor.nome}"/>
+                    
+                      
+                    <a href="apresentaexerciciosaluno.xhtml">Exercícios</a>
+                     
+                   
+                     
+                        <ui:repeat var="listExercicios" 
+                        value="#{treinoController.selectedTreino.exercicios}">
+                        ● #{listExercicios.nome }<br/>
+                        
+                    </ui:repeat>
                     
                     
                     
