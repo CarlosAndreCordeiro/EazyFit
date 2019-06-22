@@ -37,21 +37,19 @@
                     #{item.descricao}
                 </p:column>
      
-                <p:column headerText="Exercicios">
+               
+                
+                <p:column headerText= "Exercícios"  >
+                    
                     <ui:repeat var="listExercicios" value="#{item.exercicios}">
                        #{listExercicios.nome} <br/>
                     </ui:repeat>
                   
                 </p:column>
                 
-         
-                
-                <p:column headerText="Professor" >
-                    <ui:repeat var="itemProfessor" value="#{item.professor}">
-                        #{itemProfessor.nome}<br/>
-                    </ui:repeat>
-                </p:column>
-                
+                             
+
+
             </p:dataTable>
             <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaTreino').show()"
                              update="dialVisualizaTreino"/>
@@ -75,19 +73,18 @@
                     <h:outputText value="Intensidade"/>
                     <h:outputText value="#{treinoController.selectedTreino.intensidade}"/>
                     
-                    <h:outputText value="Professor"/>
-                    <h:outputText value="#{treinoController.selectedTreino.professor.nome}"/>
+                    
+                     <a href="apresentaprofessoresaluno.xhtml"> Professor</a>
+                    
+                    <h:outputText value="#{treinoController.selectedTreino.professor.nome}" />
+                                    
                     
                       
                     <a href="apresentaexerciciosaluno.xhtml">Exercícios</a>
-                     
-                   
-                     
                         <ui:repeat var="listExercicios" 
                         value="#{treinoController.selectedTreino.exercicios}">
                             ● #{listExercicios.nome }  <a href=" #{listExercicios.link}" target="_blank">Assistir</a> <br/>
-                        
-                    </ui:repeat>
+                        </ui:repeat>
                     
                     
                     

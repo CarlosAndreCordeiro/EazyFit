@@ -23,23 +23,29 @@
             <p:fieldset legend="Alterar Aluno">
                 <p:panelGrid columns="2">
                    
-                
+                    
+                     
+                    <h:outputText value="Nome"/>
+                    <p:inputText value="#{loginAlunoController.alunoLogado.nome}"/>
+                    
                     <h:outputText value="CPF"/>
                     <p:inputMask value="#{loginAlunoController.alunoLogado.cpf}" mask="999.999.999-99" />
                         
                     <h:outputText value="Telefone"/>
-                    <p:inputText value="#{loginAlunoController.alunoLogado.telefone}"/>
+                    <p:inputMask value="#{loginAlunoController.alunoLogado.telefone}" mask="(99)9 9999-9999" />
                     
                     
                     <h:outputText value="Objetivo"/>
                     <p:inputTextarea value="#{loginAlunoController.alunoLogado.objetivo}"/>
                     
                     <h:outputText value="Peso"/>
-                    <p:inputText value="#{loginAlunoController.alunoLogado.peso}"/>
+                    <p:inputMask value="#{loginAlunoController.alunoLogado.peso}" mask="999.99"/>
                     
                     <h:outputText value="altura"/>
-                    <p:inputText value="#{loginAlunoController.alunoLogado.altura}"/>
+                    <p:inputMask value="#{loginAlunoController.alunoLogado.altura}" mask="9.99"/>
                     
+                     
+                   
                     <h:outputText value="Endereço"/>
                     <p:inputText value="#{loginAlunoController.alunoLogado.endereco}"/>
                     
@@ -47,9 +53,14 @@
                     <p:inputMask value="#{loginAlunoController.alunoLogado.dataNascimento}"
                                  mask="99/99/9999"/>
                     
+                     <h:outputText value="Kilometragen"/>
+                     <p:inputMask value="#{loginAlunoController.alunoLogado.kms}" mask="9999.99"/>
+                    
+                    
+                    
                     <h:outputLabel value="Sexo: *" for="sexo"/>
                     <p:selectOneMenu id="txtSexo" value="#{loginAlunoController.alunoLogado.sexo}" required="true">
-                    <f:selectItem itemLabel="Escolha"/>
+                       <f:selectItem itemLabel="Escolha"/>
                     <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
                     <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
                     </p:selectOneMenu>
@@ -59,12 +70,9 @@
                     <h:outputText value="Senha"/>
                     <p:password  value="#{loginAlunoController.alunoLogado.senha}"/>
 
-                    
-                    
-                    
-                </p:panelGrid>
+                    </p:panelGrid>
                
-                <p:commandButton value="Alterar" action="#{alunoController.alterar}"/>
+                <p:commandButton value="Alterar" action="#{alunoController.alterar()}"/>
                 
             </p:fieldset>
         </h:form>
