@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+    
+        
+        
+        <ui:include src="menuprofessorlogado.xhtml"/>
+        
+            <c:if test="${loginProfessorController.professorLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+            </c:if>
+        
+        
+        
+        
+        <p:growl id="gro" showDetail="true"/>
+        <h:form id="formApresentaPro">
+            <p:dataTable id="tableProfessor" var="item" value="#{loginProfessorController.professorLogado}"
+                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
+                         selection="#{professorController.selectedProfessor=loginProfessorController.professorLogado}">
+                
+                
+                <f:facet name="header">
+                    Professor Logado
+                </f:facet>
+<!--                <p:column headerText="Codigo" >
+                    #{item.codigo}
+                </p:column>-->
+                <p:column headerText="Nome"  >
+                    #{item.nome}
+                </p:column>
+                
+                <p:column headerText="CREF">
+                    #{item.cref}
+                </p:column>
+                <p:column headerText="E-mail">
+                    #{item.email}
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Visualizar Detalhes" oncomplete="PF('widDialVisualizaProfessor').show()"
+                             update="dialVisualizaProfessor"/>
+          
+            
+            <p:dialog id="dialVisualizaProfessor" visible="false" modal="true" header="Professor Cadastrado"
+                      resizable="false" widgetVar="widDialVisualizaProfessor">
+                <p:panelGrid columns="2">
+                    
+                    <h:outputText value="Código:"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.codigo}"/>
+                    
+                    <h:outputText value="Nome:"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.nome}"/>
+                    
+                    <h:outputText value="CPF:"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.cpf}"/>
+                    
+                    <h:outputText value="CREF"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.cref}"/>
+                    
+                    <h:outputText value="Data de Nascimento:"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.dataNascimento}"/>
+                    
+                    <h:outputText value="Endereço:"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.endereco}"/>
+                    
+                    <h:outputText value="Sexo"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.sexo}"/>
+                    <h:outputText value="e-mail:"/>
+                    <h:outputText value="#{loginProfessorController.professorLogado.email}"/>
+
+                  
+                </p:panelGrid>
+            </p:dialog>
+            
+            <p:confirmDialog  id="dialConfirm" global="true" widgetVar="widDialConfirma" >
+                <p:commandButton value="Sim" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"/>
+                <p:commandButton value="Não" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"/>
+            </p:confirmDialog>
+            
+        </h:form>
+    </h:body>
+</html>
+

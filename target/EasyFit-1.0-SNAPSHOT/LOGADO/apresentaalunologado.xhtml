@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+
+
+        <ui:include src="menualunologado.xhtml"/>
+        
+        <c:if test="${loginAlunoController.alunoLogado==null}">
+            <script>location.href="indexlogar.xhtml";</script>
+        </c:if>
+        
+
+        
+        <p:growl id="gro" showDetail="true"/>
+        <h:form id="formApresentaAlu">
+            <p:dataTable id="tableAluno" var="item" value="#{loginAlunoController.alunoLogado}"
+                         paginator="true" rows="5" rowKey="#{item.codigo}" selectionMode="single"
+                         selection="#{alunoController.selectedAluno=loginAlunoController.alunoLogado}">
+                
+                <f:facet name="header">
+                    Alunos Cadastrados
+                </f:facet>
+<!--                <p:column headerText="Codigo" >
+                    #{item.codigo}
+                </p:column>-->
+                <p:column headerText="Nome" >
+                    #{item.nome}
+                </p:column>
+
+                <p:column headerText="E-mail">
+                    #{item.email}
+                </p:column>
+            
+                <p:column headerText="Treinos">
+                    <ui:repeat var="listTreinos" value="#{item.treinos}">
+                        #{listTreinos.nome}<br/>
+                    </ui:repeat>
+                </p:column>
+
+            
+            
+            </p:dataTable>
+            
+            <p:commandButton value="visualizar" oncomplete="PF('widDialVisualizaAluno').show()"
+                             update="dialVisualizaAluno"/>
+          
+            <p:dialog id="dialVisualizaAluno" visible="false" modal="true" header="Aluno Cadastrado"
+                      resizable="false" widgetVar="widDialVisualizaAluno">
+                <p:panelGrid columns="2">
+                    
+                   <h:outputText value="Telefone:"/>
+                   <h:outputText value="#{loginAlunoController.alunoLogado.telefone}"/>
+                    
+                    
+                    
+                    <h:outputText value="Nome:"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.nome}"/>
+                    
+                    <h:outputText value="CPF:"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.cpf}"/>
+                    
+                    <h:outputText value="Objetivo"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.objetivo}"/>
+                    
+                    <h:outputText value="Peso"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.peso}"/>
+                    
+                    <h:outputText value="Altura"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.altura}"/>
+                    
+                    <h:outputText value="Data de Nascimento:"/>
+                    <h:outputText value="#{alunoController.selectedAluno.dataNascimento}"/>
+                    
+                    <h:outputText value="Endereço:"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.endereco}"/>
+                    
+                    <h:outputText value="Sexo"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.sexo}"/>
+                    
+                    <h:outputText value="e-mail:"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.email}"/>
+                    
+                    <h:outputText value="Kms:"/>
+                    <h:outputText value="#{loginAlunoController.alunoLogado.kms}"/>
+                   
+                </p:panelGrid>
+            </p:dialog>
+            
+            <p:confirmDialog  id="dialConfirm" global="true" widgetVar="widDialConfirma" >
+                <p:commandButton value="Sim" styleClass="ui-confirmdialog-yes" type="button" icon="ui-icon-check"/>
+                <p:commandButton value="Não" styleClass="ui-confirmdialog-no" type="button" icon="ui-icon-close"/>
+            </p:confirmDialog>
+            
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CadAluno</title>
+    </h:head>
+    <h:body>
+        <ui:include src="menu.xhtml"/>
+        <h:form id="formCadAluno">
+            <p:growl life="200" showDetail="true" showSummary="true" sticky="true"/>
+            <p:fieldset id="fieldCadAluno" legend="Cadastro de Aluno">
+                <p:panelGrid columns="3">
+                    
+                    <h:outputText value="CPF*:"/>
+                    <p:inputMask id="txtCPF" value="#{alunoController.selectedAluno.cpf}" mask="999.999.999-99" required="true" requiredMessage="CPF Obrigatório"/>
+                    <p:message for='txtCPF' />
+                
+                    
+                    <h:outputText  value="Nome*:"/>
+                    <p:inputText id="txtNome" 
+                                 value="#{alunoController.selectedAluno.nome}" required="true"
+                                 requiredMessage="Nome Obriatório"/>
+                    <p:message for="txtNome"/>
+               
+                    <h:outputText  value="Senha*:"/>
+                    <p:inputText id="txtSenha" 
+                                 value="#{professorController.selectedProfessor.senha}" required="true"
+                                 requiredMessage="Senha Obriatória"/>
+                    <p:message for="txtSenha"/>
+                    
+                    <h:outputText value="Objetivo"/>
+                    <p:inputText id="txtObjetivo"
+                                 value="#{alunoController.selectedAluno.objetivo}" required="true"
+                        requiredMessage="Objetivo obrigatório"/> 
+                    <p:message for="txtObjetivo"/>
+                   
+                    <h:outputText value="Peso"/>
+                    <p:inputMask id="txtPeso"                                 
+                                 value="#{alunoController.selectedAluno.peso}" mask="999.99"/>
+                    <p:message for="txtPeso"/>
+                    
+                    <h:outputText value="Altura"/>
+                    <p:inputMask id="txtAltura"                                 
+                                 value="#{alunoController.selectedAluno.altura}" mask="9.99"/>
+                    <p:message for="txtAltura"/>
+                    
+                    
+                    <h:outputText value="Data de Nascimento"/>
+                    <p:inputMask id="txtDataNascimento" value="#{alunoController.selectedAluno.dataNascimento}" mask="99/99/9999"/>
+                    <p:message for="txtDataNascimento"/>
+
+                    <h:outputText value="Endereço*:"/>
+                    <p:inputText id="txtEndereco"                                
+                                         value="#{alunoController.selectedAluno.endereco}"/>
+                    <p:message for="txtEndereco"/>
+
+                    <h:outputLabel value="Sexo: *" for="sexo"/>
+                    <p:selectOneMenu id="txtSexo" value="#{alunoController.selectedAluno.sexo}" required="true" 
+                                        requiredMessage="Favor informar o sexo">
+                    <f:selectItem itemLabel="Escolha"/>
+                    <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                    <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                    </p:selectOneMenu>
+<!--                    <p:message for="txtSexo"/>-->
+                    
+            
+             
+<!--            <h:outputText value="Treinos"/>
+            <p:inputText id="txtTreinos"                                 
+                         value="#{alunoController.selectedAluno.treinos}"/>
+            <p:message for="txtTreinos"/>-->
+
+
+            <h:outputText value="E-mail"/>
+            <p:inputText id="txtEmail"                                 
+                                value="#{alunoController.selectedAluno.email}"/>
+            <p:message for="txtEmail"/>
+                    
+                    
+                </p:panelGrid>
+                <p:commandButton value="cadastrar" 
+                                 oncomplete="PF('widDialConfirmCadAluno').show()"/>
+                
+               
+            </p:fieldset>
+            
+            
+            <p:dialog id="dialConfirmCadAluno" visible="false" resizable="false"
+                      modal="true" widgetVar="widDialConfirmCadAluno" header="atenção!">
+                
+                <h:outputText value="Deseja realmente cadastrar o Aluno?"/><br/>
+                <p:commandButton value="Sim" action="#{alunoController.adicionar()}"
+                                 update=":formCadAluno" oncomplete="PF('widDialConfirmCadAluno').hide();
+                                 "/>
+                <p:commandButton value="Não" oncomplete="PF('widDialConfirmAluno').hide()"/>
+                
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+
