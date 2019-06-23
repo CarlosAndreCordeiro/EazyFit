@@ -23,6 +23,8 @@ public class AlunoController {
      
     private List<Aluno> repositorioAluno = null;
     
+    private Aluno alunoLogado;
+    //configurando aluno logado pra ser o mesmo aluno selecionado
     private Aluno selectedAluno;
     
     private AlunoHibernate instance;
@@ -42,9 +44,12 @@ public class AlunoController {
             return "indexlogar.xhtml";
     }
      public String alterar() {
+         
+                  
          instance.alterar(selectedAluno);
-           this.selectedAluno = new Aluno();
+         this.selectedAluno = new Aluno();
         
+         
          return "menualunologado.xhtml";
 
      }

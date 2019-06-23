@@ -29,11 +29,7 @@
                 <p:column headerText="Aluno">
                     #{item.aluno.nome}
                 </p:column>
-                <p:column headerText="Exercicios">
-                    <ui:repeat var="listExercicios" value="#{item.exercicios}">
-                        #{listExercicios.nome}<br/>
-                    </ui:repeat>
-                </p:column>
+                
                 
                 <p:column headerText="Professor">
                     #{item.professor.nome}

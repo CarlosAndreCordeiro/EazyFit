@@ -18,20 +18,6 @@ import javax.persistence.InheritanceType;
 public abstract class Pessoa implements Serializable{
   
   
-  
-//  @Id
-//  @GeneratedValue
-//  private int codigo;
-//  @Column(unique = true)
-//  private String cpf;
-//  @Column(length = 14)
-//  private String nome;
-//  @Column(length = 50)
-//  private String endereco;
-//  @Column(length = 20)
-//  private String dataNasc;
-//  @Column(length =  1)
-//  private String sexo;
 
     @Id
     @GeneratedValue
@@ -54,9 +40,15 @@ public abstract class Pessoa implements Serializable{
     private double kms;
     @Column 
     private String telefone;
+    @Column
+    private double altura;
+    @Column()
+    private double peso;  
 
-    public Pessoa( String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone) {
-        
+    public Pessoa() {        
+    }
+
+    public Pessoa(String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone, double altura, double peso) {
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
@@ -66,103 +58,119 @@ public abstract class Pessoa implements Serializable{
         this.senha = senha;
         this.kms = kms;
         this.telefone = telefone;
-        
-    }
-    public Pessoa() {
-        
+        this.altura = altura;
+        this.peso = peso;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
+  
+
     public String getCpf() {
         return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public double getKms() {
-        return kms;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
- 
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
     }
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
+    public double getKms() {
+        return kms;
+    }
+
     public void setKms(double kms) {
         this.kms = kms;
+    }
+
+    public String getTelefone() {
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + this.codigo;
-        hash = 37 * hash + Objects.hashCode(this.cpf);
-        hash = 37 * hash + Objects.hashCode(this.nome);
-        hash = 37 * hash + Objects.hashCode(this.endereco);
-        hash = 37 * hash + Objects.hashCode(this.sexo);
-        hash = 37 * hash + Objects.hashCode(this.dataNascimento);
-        hash = 37 * hash + Objects.hashCode(this.email);
-        hash = 37 * hash + Objects.hashCode(this.senha);
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.kms) ^ (Double.doubleToLongBits(this.kms) >>> 32));
-        hash = 37 * hash + Objects.hashCode(this.telefone);
+        hash = 67 * hash + this.codigo;
+        hash = 67 * hash + Objects.hashCode(this.cpf);
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.endereco);
+        hash = 67 * hash + Objects.hashCode(this.sexo);
+        hash = 67 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 67 * hash + Objects.hashCode(this.email);
+        hash = 67 * hash + Objects.hashCode(this.senha);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.kms) ^ (Double.doubleToLongBits(this.kms) >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.telefone);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
         return hash;
     }
 
@@ -182,6 +190,12 @@ public abstract class Pessoa implements Serializable{
             return false;
         }
         if (Double.doubleToLongBits(this.kms) != Double.doubleToLongBits(other.kms)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.altura) != Double.doubleToLongBits(other.altura)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.peso) != Double.doubleToLongBits(other.peso)) {
             return false;
         }
         if (!Objects.equals(this.cpf, other.cpf)) {
@@ -213,8 +227,12 @@ public abstract class Pessoa implements Serializable{
 
     @Override
     public String toString() {
-        return "Pessoa{" + "codigo=" + codigo + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", email=" + email + ", senha=" + senha + ", kms=" + kms + ", telefone=" + telefone + '}';
+        return "Pessoa{" + "codigo=" + codigo + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", sexo=" + sexo + ", dataNascimento=" + dataNascimento + ", email=" + email + ", senha=" + senha + ", kms=" + kms + ", telefone=" + telefone + ", altura=" + altura + ", peso=" + peso + '}';
     }
-        
+    
+    
+    
+    
+    
     
 }

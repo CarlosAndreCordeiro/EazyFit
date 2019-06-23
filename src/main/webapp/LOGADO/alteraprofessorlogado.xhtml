@@ -16,6 +16,7 @@
         
             <c:if test="${loginProfessorController.professorLogado==null}">
             <script>location.href="indexlogar.xhtml";</script>
+            <script> ${professorController.selectedProfessor = loginProfessorController.professorLogado} ;</script>
             </c:if>
         
         
@@ -24,38 +25,42 @@
             <p:fieldset legend="Alterar Professor">
                 <p:panelGrid columns="2">
                     <h:outputText value="Código"/>
-                    <h:outputText value="#{loginProfessorController.professorLogado.codigo}"/>
+                    <h:outputText value="#{professorController.selectedProfessor.codigo}"/>
                     
                     <h:outputText value="Nome"/>
-                    <p:inputText value="#{loginProfessorController.professorLogado.nome}"/>
+                    <p:inputText value="#{professorController.selectedProfessor.nome}"/>
                     
                     <h:outputText value="CPF"/>
-                    <p:inputMask value="#{loginProfessorController.professorLogado.cpf}"
+                    <p:inputMask value="#{professorController.selectedProfessor.cpf}"
                                  mask="999.999.999-99"/>
                     
                     <h:outputText value="CREF"/>
-                    <p:inputMask value="#{loginProfessorController.professorLogado.cref}"
+                    <p:inputMask value="#{professorController.selectedProfessor.cref}"
                                  mask="999999-a/aa"/>
                     
+                    <h:outputText value="Telefone"/>
+                    <p:inputMask value="#{professorController.selectedProfessor.telefone}" mask="(99)9 9999-9999" />
+                    
+                    
                     <h:outputText value="Endereço"/>
-                    <p:inputText value="#{loginProfessorController.professorLogado.endereco}"/>
+                    <p:inputText value="#{professorController.selectedProfessor.endereco}"/>
                     
                     <h:outputText value="Data de Nascimento"/>
-                    <p:inputMask value="#{loginProfessorController.professorLogado.dataNascimento}"
+                    <p:inputMask value="#{professorController.selectedProfessor.dataNascimento}"
                                  mask="99/99/9999"/>
                     
                     <h:outputLabel value="Sexo: *" for="sexo"/>
-                    <p:selectOneMenu id="txtSexo" value="#{loginProfessorController.professorLogado.sexo}" required="true">
+                    <p:selectOneMenu id="txtSexo" value="#{professorController.selectedProfessor.sexo}" required="true">
                     <f:selectItem itemLabel="Escolha"/>
                     <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
                     <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
                     </p:selectOneMenu>
                    
                     <h:outputText value="e-mail"/>
-                    <p:inputText value="#{loginProfessorController.professorLogado.email}"/>
+                    <p:inputText value="#{professorController.selectedProfessor.email}"/>
           
                     <h:outputText value="Senha"/>
-                    <p:password value="#{loginProfessorController.professorLogado.senha}"/>
+                    <p:password value="#{professorController.selectedProfessor.senha}"/>
                 
                 </p:panelGrid>
                 <p:commandButton value="Alterar" action="#{professorController.alterar}"/>

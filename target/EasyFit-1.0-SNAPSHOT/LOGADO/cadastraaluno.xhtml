@@ -32,6 +32,10 @@
                     <p:message for="txtNome"/>
                     
                   
+                     <h:outputText value="Telefone"/>
+                     <p:inputMask id="txtTelefone" value="#{alunoController.selectedAluno.telefone}" required="true"
+                                  requiredMessage="Informar Telefone" mask="(99)9 9999-9999" />
+                     <p:message for="txtTelefone"/>
                     
                     
                     <h:outputText value="CPF:"/>
@@ -67,11 +71,11 @@
                    
                     
                     <h:outputText value="Data de Nascimento"/>
-                    <p:inputMask id="txtDataNascimento" value="#{alunoController.selectedAluno.dataNascimento}" mask="99/99/9999"/>
+                    <p:inputMask id="txtDataNascimento" value="#{alunoController.selectedAluno.dataNascimento}" required="true" requiredMessage="Campo obrgtório" mask="99/99/9999"/>
                     <p:message for="txtDataNascimento"/>
 
                     <h:outputText value="Endereço*:"/>
-                    <p:inputText id="txtEndereco" value="#{alunoController.selectedAluno.endereco}"/>
+                    <p:inputText id="txtEndereco" value="#{alunoController.selectedAluno.endereco}" required="true" requiredMessage="Informe o Endereço"/>
                     <p:message for="txtEndereco"/>
                     
                     
@@ -88,7 +92,7 @@
                     
             <h:outputText value="E-mail"/>
             <p:inputText id="txtEmail"                                 
-                                value="#{alunoController.selectedAluno.email}"/>
+                         value="#{alunoController.selectedAluno.email}" required="true" requiredMessage="Informe seu E-mail"/>
             <p:message for="txtEmail"/>
                     
                     

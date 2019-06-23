@@ -20,58 +20,70 @@
             <p:fieldset id="fieldCadProfessor" legend="Cadastro de Professor">
                 <p:panelGrid columns="3">
                     
-                    <h:outputText value="CPF*:"/>
-                    <p:inputMask id="txtCPF" value="#{professorController.selectedProfessor.cpf}" mask="999.999.999-99" required="true" requiredMessage="CPF Obrigatório"/>
-                    <p:message for='txtCPF' />
-                
                     
-                    <h:outputText  value="Nome*:"/>
-                    <p:inputText id="txtNome" 
-                                 value="#{professorController.selectedProfessor.nome}" required="true"
-                                 requiredMessage="Nome Obriatório"/>
-                    <p:message for="txtNome"/>
-               
                     
-                    <h:outputText  value="Senha*:"/>
-                    <p:inputText id="txtSenha" 
-                                 value="#{professorController.selectedProfessor.senha}" required="true"
-                                 requiredMessage="Senha Obriatória"/>
-                    <p:message for="txtSenha"/>
-               
-
                     
                     <h:outputText value="CREF*:"/>
                     <p:inputMask id="txtCref"
                                  value="#{professorController.selectedProfessor.cref}" mask="999999-a/aa" required="true"
                         requiredMessage="CREF obrigatório"/> 
                     <p:message for="txtCref"/>
-                   
+
+                                        
                     
-                    <h:outputText value="Data de Nascimento*:"/>
+                    <h:outputText  value="Nome*:"/>
+                    <p:inputText id="txtNome" 
+                                 value="#{professorController.selectedProfessor.nome}" required="true"
+                                 requiredMessage="Nome Obriatório"/>
+                    <p:message for="txtNome"/>
+                    
+                  
+                    
+                    
+                    <h:outputText value="CPF:"/>
+                    <p:inputMask id="txtCPF" value="#{professorController.selectedProfessor.cpf}" 
+                                 mask="999.999.999-99" required="true" requiredMessage="CPF Obrigatório"/>
+                    <p:message for='txtCPF' />
+                
+                    
+                    
+               
+                    <h:outputText  value="Senha*:"/>
+                     <p:password  id="txtSenha" 
+                                 value="#{professorController.selectedProfessor.senha}" required="true"
+                                 requiredMessage="Senha Obriatória"/>
+                    <p:message for="txtSenha"/>
+                    
+
+
+                    
+                    <h:outputText value="Data de Nascimento"/>
                     <p:inputMask id="txtDataNascimento" value="#{professorController.selectedProfessor.dataNascimento}" mask="99/99/9999"/>
                     <p:message for="txtDataNascimento"/>
-                    
+
                     <h:outputText value="Endereço*:"/>
-                    <p:inputText id="txtEndereco"                                
-                                 value="#{professorController.selectedProfessor.endereco}"/>
+                    <p:inputText id="txtEndereco" value="#{professorController.selectedProfessor.endereco}"/>
                     <p:message for="txtEndereco"/>
                     
-          <h:outputLabel value="Sexo*: *" for="sexo"/>
-          <p:selectOneMenu id="txtSexo" value="#{professorController.selectedProfessor.sexo}" required="true" 
-                                requiredMessage="Favor informar o sexo">
-              <f:selectItem itemLabel="Escolha"/>
-              <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
-              <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
-           </p:selectOneMenu>
-            <p:message for="txtSexo"/>
-                   
-                   
-                   
-                    <h:outputText value="E-mail*:"/>
-                    <p:inputText id="txtEmail" required="true"                                 
-                                value="#{professorController.selectedProfessor.email}"/>
-                  <p:message for="txtEmail"/>
                     
+                    
+                    <h:outputLabel value="Sexo: *" for="sexo"/>
+                    <p:selectOneMenu id="txtSexo" value="#{professorController.selectedProfessor.sexo}" required="true" 
+                                        requiredMessage="Favor informar o sexo">
+                    <f:selectItem itemLabel="Escolha"/>
+                    <f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+                    <f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+                    </p:selectOneMenu>
+                    <p:message for="txtSexo"/>
+
+                    
+            <h:outputText value="E-mail"/>
+            <p:inputText id="txtEmail"                                 
+                         value="#{professorController.selectedProfessor.email}"/>
+            <p:message for="txtEmail"/>
+                    
+                 
+
                     
                 </p:panelGrid>
                 <p:commandButton value="cadastrar" 

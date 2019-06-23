@@ -18,9 +18,7 @@ public class Aluno extends Pessoa {
     @Column(length = 50)
     private String objetivo;
     @Column 
-    private double altura;
-    @Column()
-    private double peso;  
+   
     @OneToMany (mappedBy = "aluno", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Treino> treinos;
    
@@ -29,10 +27,10 @@ public class Aluno extends Pessoa {
     public Aluno(){
     }
 
-    public Aluno(String objetivo, double peso, List<Treino> treinos, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone) {
-        super(cpf, nome, endereco, sexo, dataNascimento, email, senha, kms, telefone);
+
+    public Aluno(String objetivo, List<Treino> treinos, String cpf, String nome, String endereco, String sexo, String dataNascimento, String email, String senha, double kms, String telefone, double altura, double peso) {
+        super(cpf, nome, endereco, sexo, dataNascimento, email, senha, kms, telefone, altura, peso);
         this.objetivo = objetivo;
-        this.peso = peso;
         this.treinos = treinos;
     }
 
@@ -40,28 +38,12 @@ public class Aluno extends Pessoa {
         return objetivo;
     }
 
-    public double getAltura() {
-        return altura;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public List<Treino> getTreinos() {
-        return treinos;
-    }
-
     public void setObjetivo(String objetivo) {
         this.objetivo = objetivo;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
+    public List<Treino> getTreinos() {
+        return treinos;
     }
 
     public void setTreinos(List<Treino> treinos) {
@@ -70,11 +52,9 @@ public class Aluno extends Pessoa {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.objetivo);
-        hash = 31 * hash + (int) (Double.doubleToLongBits(this.altura) ^ (Double.doubleToLongBits(this.altura) >>> 32));
-        hash = 31 * hash + (int) (Double.doubleToLongBits(this.peso) ^ (Double.doubleToLongBits(this.peso) >>> 32));
-        hash = 31 * hash + Objects.hashCode(this.treinos);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.objetivo);
+        hash = 97 * hash + Objects.hashCode(this.treinos);
         return hash;
     }
 
@@ -90,12 +70,6 @@ public class Aluno extends Pessoa {
             return false;
         }
         final Aluno other = (Aluno) obj;
-        if (Double.doubleToLongBits(this.altura) != Double.doubleToLongBits(other.altura)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.peso) != Double.doubleToLongBits(other.peso)) {
-            return false;
-        }
         if (!Objects.equals(this.objetivo, other.objetivo)) {
             return false;
         }
@@ -107,12 +81,10 @@ public class Aluno extends Pessoa {
 
     @Override
     public String toString() {
-        return "Aluno{" + "objetivo=" + objetivo + ", altura=" + altura + ", peso=" + peso + ", treinos=" + treinos + '}';
+        return "Aluno{" + "objetivo=" + objetivo + ", treinos=" + treinos + '}';
     }
 
 
     
-    
-       
     
 }
