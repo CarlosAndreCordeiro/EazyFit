@@ -26,7 +26,6 @@ public class AlunoController {
     private Aluno alunoLogado;
     //configurando aluno logado pra ser o mesmo aluno selecionado
     private Aluno selectedAluno;
-    
     private AlunoHibernate instance;
 
     public AlunoController(){
@@ -34,15 +33,20 @@ public class AlunoController {
         this.repositorioAluno= instance.recuperarTodos();
        this.selectedAluno = new Aluno();
     }
+    
+    
+    
    
     public String adicionar(){
     
             instance.adiciona(selectedAluno);
-           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Aluno "+selectedAluno.getNome()+" foi cadastrado com sucesso"));
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage
+        ("O Aluno "+selectedAluno.getNome()+" foi cadastrado com sucesso"));
         
             this.selectedAluno = new Aluno();
             return "indexlogar.xhtml";
     }
+    
      public String alterar() {
          
                   
@@ -58,7 +62,8 @@ public class AlunoController {
        instance.deletar(aluno);
            this.selectedAluno = new Aluno();
 
-       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O Aluno foi excluído com sucesso"));
+       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage
+        ("O Aluno foi excluído com sucesso"));
         
    } 
     public Aluno recuperar (int codigo){
@@ -96,3 +101,17 @@ public class AlunoController {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

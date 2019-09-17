@@ -16,14 +16,12 @@
                                 
         <ui:include src="menuindexlogado.xhtml"/>
         <h:form id="formCadAluno">
-            <p:growl life="200" showDetail="true" showSummary="true" sticky="true"/>
+            <p:growl life="100" showDetail="true" showSummary="true" sticky="true"/>
             <p:fieldset id="fieldCadAluno" legend="Cadastro de Aluno">
                 
                 
                 <p:panelGrid columns="3">
-                    
-                  
-                    
+                   
                     
                     <h:outputText  value="Nome*:"/>
                     <p:inputText id="txtNome" 
@@ -105,7 +103,7 @@
             
             
             <p:dialog id="dialConfirmCadAluno" visible="false" resizable="false"
-                      modal="true" widgetVar="widDialConfirmCadAluno" header="atenção!">
+                      modal="true" widgetVar="widDialConfirmCadAluno" header="Atenção!">
                 
                 <h:outputText value="Deseja realmente cadastrar o Aluno?"/><br/>
                 <p:commandButton value="Sim" action="#{alunoController.adicionar()}"
